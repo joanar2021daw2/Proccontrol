@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>        
+        <title>Proccontrol</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">  
+                    <nav>
+                        <ul class="nav nav-pills">
+                            <li role="presentation" class="active">
+                                <a href="/">
+                                    Inici
+                                </a>
+                            </li>
+                            <li role="presentation" class="active">
+                                <a href="/seccions/new">
+                                    Nova seccio
+                                </a>
+                            </li>
+                        </ul>    
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Seccions</h1>                  
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <th:block th:each="referencia : ${referenciesBD}">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                        <div class="thumbnail">
+                            <div class="caption">
+
+                                <label for="id">#</label>
+                                <h4 id="id" th:text="${referencia.idReferencia}"></h4> 
+
+                                <label for="nom">Nom de la referència:</label>
+                                <p id="nom" th:text="${referencia.nom}"></p>
+
+                                <label for="instalacio">Instal·lació:</label>
+                                <p id="instalacio" th:text="${referencia.instalacio.nom}"></p>
+
+                                <label for="processos">Processos associats:</label>                               
+                                <th:block th:if="${referencia.processos}" id="processos" th:each="proces : ${referencia.processos}">   
+                                    <p>sisisi</p>
+                                    <p id="proces" th:text="${referencia.processos.nom}"></p>
+                                </th:block>
+
+                                <p th:if="${referencia.processos}"> No s'han associat processos a aquesta referència </p>
+                                <p>
+                                    <a th:href="@{/referencies/seccio(idReferencia=${referencia.idReferencia})}" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-pencil glyphicon"/></span> modificar 
+                                    </a>
+                                    <a th:href="@{/referencies/delete(idReferencia=${referencia.idReferencia})}" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-remove glyphicon"/></span> eliminar 
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block> 
+        </section>
+    </body>
+</html>
