@@ -1,15 +1,5 @@
-<%-- 
-    Document   : menuProcessos
-    Created on : 13-mar-2021, 18:17:19
-    Author     : JoseAndrade
---%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,18 +20,18 @@
                     <nav>
                         <ul class="nav nav-pills">
                             <li role="presentation" class="active">
-                                <a href="<spring:url value= '/'/>">
+                                <a href="/">
                                     Inici
                                 </a>
                             </li>
                             <li role="presentation" class="active">
-                                <a href="<spring:url value= '#'/>">
-                                    Nova Procès
+                                <a href="/processos/new">
+                                    Nou procès
                                 </a>
                             </li>
                             <li role="presentation" class="active">
-                                <a href="<spring:url value= '#'/>">
-                                    Llista Processos
+                                <a href="/processos/all">
+                                    Llista de processos
                                 </a>
                             </li>
                         </ul>    
@@ -49,13 +39,13 @@
                 </div>
             </div>
         </div>
-            
+
         <section>
             <div class="jumbotron">
                 <div class="container">
-                    <h1> ${benvinguda} </h1>
+                    <h1 th:text="${benvinguda}"></h1>
                     <p>                        
-                       
+
                     </p>
                 </div>
             </div>

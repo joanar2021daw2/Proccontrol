@@ -1,13 +1,12 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,7 +26,7 @@ public class Proces implements Serializable{
     @Id
     @GeneratedValue
     @Column(name = "proces_id")
-    private long processId;
+    private long idProces;
 
     @Column(name = "nom", nullable = false)
     private String nom;
@@ -40,7 +39,7 @@ public class Proces implements Serializable{
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "regist_data", nullable = false)
-    private Calendar dataRegistre;
+    private Date dataRegistre;
 
     /**
      * OneToOne, ja que existeix una profunda relació entre l'entitat origen i
@@ -48,15 +47,15 @@ public class Proces implements Serializable{
      * nomès a aquesta. L'exisatència de l'entitat destí(RESULTAT) depend de
      * l'entitat origen(PROCES)
      */
-    @JoinColumn(name = "fk_resultat", nullable = false, updatable = false)
-    @OneToOne(optional = false, cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_resultat", updatable = false)
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Resultat resultat;
 
     public Proces() {
     }
 
-    public Proces(long processId, String nom, Referencia referencia, int numPassos, Calendar dataRegistre, Resultat resultat) {
-        this.processId = processId;
+    public Proces(long idProces, String nom, Referencia referencia, int numPassos, Date dataRegistre, Resultat resultat) {
+        this.idProces = idProces;
         this.nom = nom;
         this.referencia = referencia;
         this.numPassos = numPassos;
@@ -64,12 +63,12 @@ public class Proces implements Serializable{
         this.resultat = resultat;
     }
 
-    public long getProcessId() {
-        return processId;
+    public long getIdProces() {
+        return idProces;
     }
 
-    public void setProcessId(long processId) {
-        this.processId = processId;
+    public void setIdProces(long idProces) {
+        this.idProces = idProces;
     }
 
     public String getNom() {
@@ -96,11 +95,11 @@ public class Proces implements Serializable{
         this.numPassos = numPassos;
     }
 
-    public Calendar getDataRegistre() {
+    public Date getDataRegistre() {
         return dataRegistre;
     }
 
-    public void setDataRegistre(Calendar dataRegistre) {
+    public void setDataRegistre(Date dataRegistre) {
         this.dataRegistre = dataRegistre;
     }
 
