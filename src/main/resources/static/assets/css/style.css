@@ -2173,3 +2173,18 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+
+.addPaddingTop{
+	padding-top:50px;
+}
+
+.cardTitle{
+	color:#e96b56; 
+	font-size:3em;
+	font-weight: bold;
+}
+
+.cardBold{
+	font-weight: bold;
+}
