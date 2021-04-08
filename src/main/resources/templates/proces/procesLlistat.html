@@ -24,8 +24,8 @@
                                 </a>
                             </li>
                             <li role="presentation" class="active">
-                                <a href="/referencies/new">
-                                    Nova referència
+                                <a href="/processos/new">
+                                    Nou procès
                                 </a>
                             </li>
                         </ul>    
@@ -37,40 +37,37 @@
         <section>
             <div class="jumbotron">
                 <div class="container">
-                    <h1>referències</h1>                  
+                    <h1>Processos</h1>                  
                 </div>
             </div>
         </section>
         <section class="container">
-            <th:block th:each="referencia : ${referenciesBD}">
+            <th:block th:each="proces : ${processosBD}">
                 <div class="row">
                     <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                         <div class="thumbnail">
                             <div class="caption">
 
                                 <label for="id">#</label>
-                                <h4 id="id" th:text="${referencia.idReferencia}"></h4> 
+                                <h4 id="id" th:text="${proces.idProces}"></h4> 
 
-                                <label for="nom">Nom de la referència:</label>
-                                <p id="nom" th:text="${referencia.nom}"></p>
-
-                                <label for="instalacio">Instal·lació:</label>
-                                <p id="instalacio" th:text="${referencia.instalacio.nom}"></p>
-
-                                <label for="processos">Processos associats:</label>                               
-                                <th:block th:if="${referencia.processos}" id="processos" th:each="proces : ${referencia.processos}">                                      
-                                    <p id="proces" th:text="${proces.nom}"></p>                                    
-                                </th:block>
+                                <label for="nom">Nom del procès:</label>
+                                <p id="nom" th:text="${proces.nom}"></p>
                                 
-                                <div th:if="${#lists.isEmpty(referencia.processos)}">
-                                    <p>Encara no s'han associat processos</p>
-                                </div>
+                                <label for="numpassos">Número de passos del procès:</label>
+                                <p id="numpassosnom" th:text="${proces.numPassos}"></p>
 
+                                <label for="referencia">Pertany a la referència:</label>
+                                <p id="referencia" th:text="${proces.referencia.nom}"></p>
+                                
+                                <label for="data">Creat el:</label>
+                                <p id="data" th:text="${{proces.dataRegistre}}"></p>
+                               
                                 <p>
-                                    <a th:href="@{/referencies/referencia(idReferencia=${referencia.idReferencia})}" class="btn btn-primary">
+                                    <a th:href="@{/processos/proces(idProces=${proces.idProces})}" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-pencil glyphicon"/></span> modificar 
                                     </a>
-                                    <a th:href="@{/referencies/delete(idReferencia=${referencia.idReferencia})}" class="btn btn-danger">
+                                    <a th:href="@{/processos/delete(idProces=${proces.idProces})}" class="btn btn-danger">
                                         <span class="glyphicon glyphicon-remove glyphicon"/></span> eliminar 
                                     </a>
                                 </p>

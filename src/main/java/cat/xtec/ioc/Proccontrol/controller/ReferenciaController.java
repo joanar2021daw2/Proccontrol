@@ -26,7 +26,7 @@ public class ReferenciaController {
 
     @Autowired
     ReferenciaServiceImpl referenciaService;
-    
+
     @Autowired
     InstalacioServiceImpl instalacioService;
 
@@ -42,7 +42,7 @@ public class ReferenciaController {
     public String newReferencia(Model model) {
         List<Instalacio> instalacionsDisponibles = instalacioService.getAllInstalacions();
         Referencia formReferencia = new Referencia();
-        
+
         model.addAttribute("instalacionsBD", instalacionsDisponibles);
         model.addAttribute("act", "referencia/add");
         model.addAttribute("formreferencia", formReferencia);
@@ -58,17 +58,18 @@ public class ReferenciaController {
 
     /*Actualizta una referència*/
     @GetMapping("/referencia")
-    public String updateReferencia(@RequestParam("idSeccio") long idReferencia, Model model) {
-
+    public String updateReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
+        List<Instalacio> instalacionsDisponibles = instalacioService.getAllInstalacions();
         if (idReferencia != 0) {
             Referencia formReferencia = referenciaService.getReferenciaById(idReferencia);
+            model.addAttribute("instalacionsBD", instalacionsDisponibles);
             model.addAttribute("act", "referencia/update");
             model.addAttribute("formreferencia", formReferencia);
         } else {
             return "redirect:/referencies/all";
         }
 
-        return "seccioForm";
+        return "referenciaForm";
     }
 
     /*Processa el formulari i actualitza la referència a la BD*/

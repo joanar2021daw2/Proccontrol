@@ -92,24 +92,15 @@
 							<label class="form-label" for="name">
 								Nom referència:
 							</label>
-							<input id="name" th:field="*{nom}" type="text" class="form-control" required="true"
-								pattern="[0-9]+" />
+							<input id="name" th:field="*{nom}" type="text" class="form-control" required="true" />
 						</div>
 
 						<div class="form-group mt-3">
+						<label class="form-label" for="seccio">
+							 A quina instal·lació pertany?
+							</label>
 							<div class="col-md-12">
-								<select id="seccioProc" th:field="*{processos}" class="form-select">
-									<option value="">--Sel·lecciona una procès--</option>
-									<option th:each="proces : ${processosBD}" th:value="${proces.idProces}"
-										th:text="${proces.nom}">
-									</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group mt-3">
-							<div class="col-md-12">
-								<select id="seccioInst" th:field="*{instalacio}" class="form-select">
+								<select id="seccio" th:field="*{instalacio}" class="form-select">
 									<option value="">--Sel·lecciona una instalació--</option>
 									<option th:each="instalacio : ${instalacionsBD}"
 										th:value="${instalacio.idInstalacio}" th:text="${instalacio.nom}">
@@ -134,4 +125,5 @@
 
 </body>
 
+</html>
 </html>
