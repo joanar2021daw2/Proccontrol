@@ -100,7 +100,8 @@
 								<select id="seccio" th:field="*{seccio}" class="form-select">
 									<option value="">--Sel·lecciona una secció--</option>
 									<option th:each="seccio : ${seccionsBD}" th:value="${seccio.idSeccio}"
-										th:text="${seccio.nom}"></option>
+										th:text="${seccio.nom}">
+									</option>
 								</select>
 							</div>
 						</div>
