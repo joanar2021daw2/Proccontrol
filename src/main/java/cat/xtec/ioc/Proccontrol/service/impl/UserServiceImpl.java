@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService{
         existingUsuari.setCognom2(usuari.getCognom2());
         existingUsuari.setNumOperari(usuari.getNumOperari());
         existingUsuari.setActive(usuari.getActive());
-        existingUsuari.setPassword(usuari.getPassword());
+        existingUsuari.setRol(usuari.getRol());
         existingUsuari.setPassword(usuari.getPassword());
         return userRepository.save(existingUsuari);
     }
