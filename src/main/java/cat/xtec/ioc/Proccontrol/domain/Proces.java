@@ -1,5 +1,8 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -21,7 +24,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "proces")
-public class Proces implements Serializable{
+public class Proces implements Serializable {
 
     @Id
     @GeneratedValue
@@ -31,7 +34,7 @@ public class Proces implements Serializable{
     @Column(name = "nom", nullable = false)
     private String nom;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Referencia referencia;
 
     @Column(name = "num_passos", nullable = false)
@@ -47,6 +50,7 @@ public class Proces implements Serializable{
      * nomès a aquesta. L'exisatència de l'entitat destí(RESULTAT) depend de
      * l'entitat origen(PROCES)
      */
+    @JsonIgnore
     @JoinColumn(name = "fk_resultat", updatable = false)
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Resultat resultat;
@@ -111,5 +115,4 @@ public class Proces implements Serializable{
         this.resultat = resultat;
     }
 
- 
 }

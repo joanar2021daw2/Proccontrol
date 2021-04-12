@@ -60,6 +60,7 @@ public class ReferenciaController {
     @GetMapping("/referencia")
     public String updateReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
         List<Instalacio> instalacionsDisponibles = instalacioService.getAllInstalacions();
+
         if (idReferencia != 0) {
             Referencia formReferencia = referenciaService.getReferenciaById(idReferencia);
             model.addAttribute("instalacionsBD", instalacionsDisponibles);

@@ -33,7 +33,7 @@ public class ProcesController {
 
     /*Retorna llistat de tots els processos*/
     @RequestMapping("/all")
-    public String getAllReferencies(Model model) {
+    public String getAllProcessos(Model model) {
         model.addAttribute("processosBD", procesService.getAllProcessos());
         return "procesLlistat";
     }

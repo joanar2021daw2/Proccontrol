@@ -1,10 +1,12 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -31,11 +33,12 @@ public class Referencia implements Serializable {
 
     /*L'entitat Referencia pot tenir múltiples resultats(propietari de la relació 
     és a Resultat "ManyToOne Referencia referencia"*/
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "referencia")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "referencia", fetch = FetchType.LAZY)
     @OrderBy("created_on asc")
     private Set<Resultat> resultat;
 
     //La entitat Refernecia pot tenir múltiples processos
+    @JsonIgnore
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "referencia")
     private Set<Proces> processos;
 
@@ -46,8 +49,8 @@ public class Referencia implements Serializable {
     public Referencia() {
     }
 
-    public Referencia(int idReferencaia, String nom, Set<Resultat> resultat, Set<Proces> processos, Instalacio inst) {
-        this.idReferencia = idReferencaia;
+    public Referencia(long idReferencia, String nom, Set<Resultat> resultat, Set<Proces> processos, Instalacio inst) {
+        this.idReferencia = idReferencia;
         this.nom = nom;
         this.resultat = resultat;
         this.processos = processos;
@@ -58,7 +61,7 @@ public class Referencia implements Serializable {
         return idReferencia;
     }
 
-    public void setIdReferencaia(long idReferencia) {
+    public void setIdReferencia(long idReferencia) {
         this.idReferencia = idReferencia;
     }
 
@@ -70,6 +73,7 @@ public class Referencia implements Serializable {
         this.nom = nom;
     }
 
+    @JsonIgnore
     public Set<Resultat> getResultat() {
         return resultat;
     }
@@ -86,6 +90,11 @@ public class Referencia implements Serializable {
         this.processos = processos;
     }
 
+    /*
+    * Anotem amb JsonIgnore per tal de no mostrar les instal·lacions
+    * quan es genera la resposta Json de llistar processos i fer bucle
+     */
+    @JsonIgnore
     public Instalacio getInstalacio() {
         return instalacio;
     }
@@ -93,7 +102,5 @@ public class Referencia implements Serializable {
     public void setInstalacio(Instalacio instalacio) {
         this.instalacio = instalacio;
     }
-
-
 
 }
