@@ -33,7 +33,7 @@ public class Instalacio implements Serializable{
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Set<Referencia> referencies;
     
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Seccio seccio;
     
     public Instalacio(){

@@ -94,14 +94,23 @@
 							<td id="nom" th:text="${referencia.nom}"></td>
 							<td id="instalacio" th:text="${referencia.instalacio.nom}"></td>
 
-							<th:block th:if="${referencia.processos}" id="processos"
+
+							
+							<td th:switch="${#lists.isEmpty(referencia.processos)}">
+								<p th:case="true">Encara no s'han associat processos</p>
+								<th:block th:if="${referencia.processos}" id="processos" th:each="proces : ${referencia.processos}">
+								<p th:case="false" id="proces" th:text="${proces.nom}"></p>
+								</th:block>
+							</td>
+							
+							<!--<th:block th:if="${referencia.processos}" id="processos"
 								th:each="proces : ${referencia.processos}">
 								<td id="proces" th:text="${proces.nom}"></td>
 							</th:block>
 							
 							<td th:if="${#lists.isEmpty(referencia.processos)}">
                                     Encara no s'han associat processos
-                                </td>
+                                </td>-->
 							
 							<td>
 								<a th:href="@{/referencies/referencia(idReferencia=${referencia.idReferencia})}" class="btn btn-primary">

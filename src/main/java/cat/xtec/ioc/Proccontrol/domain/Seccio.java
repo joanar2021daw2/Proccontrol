@@ -32,7 +32,7 @@ public class Seccio implements Serializable {
     private String tipusProduccio;
 
     //La Secció conté instal·lacions
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "seccio")
+    @OneToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "seccio")
     private Set<Instalacio> instalacions;
 
     public Seccio() {
