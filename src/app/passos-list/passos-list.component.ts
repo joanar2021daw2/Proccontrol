@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { passos } from '../passos';
+import { Proces } from '../proces';
+import { ProcesService } from '../proces.service';
 
 @Component({
   selector: 'app-passos-list',
@@ -9,10 +11,13 @@ import { passos } from '../passos';
 export class PassosListComponent implements OnInit {
 
   passos = passos;
+  private proces: Proces | undefined;
 
-  constructor() { }
+  constructor(private procesService: ProcesService) { }
 
   ngOnInit(): void {
+    this.proces = this.procesService.getProcesDesat();
+    
   }
 
 }

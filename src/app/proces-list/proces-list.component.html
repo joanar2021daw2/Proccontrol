@@ -1,0 +1,25 @@
+<h2>Processos actuals</h2>
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Referència</th>
+            <th>Numero de passos</th>
+            <td>Accions</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let proces of processos">
+            <td>{{ proces.nom }}</td>
+            <td>{{ proces.referencia }}</td>
+            <td>{{ proces.numPassos }}</td>
+            <td>
+                <button (click) = "updateProces(proces.idProces)" class = "btn btn-info"> Editar </button>
+            </td>
+            <td>
+                <button (click) = "deleteProces(proces.idProces)" class = "btn btn-danger" style="margin-left: 10px"> Eliminar </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

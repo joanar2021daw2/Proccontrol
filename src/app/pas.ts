@@ -1,4 +1,5 @@
 export class Pas {
+    idPas : number | undefined;
     titol : string;
     descripcio : string;
     numeroDePas : number;

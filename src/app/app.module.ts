@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { ProcesFormComponent } from './proces-form/proces-form.component';
 import { FormsModule } from '@angular/forms';
 import { PassosListComponent } from './passos-list/passos-list.component';
+import { ProcesListComponent } from './proces-list/proces-list.component';
+import { UpdateProcesComponent } from './update-proces/update-proces.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProcesFormComponent,
-    PassosListComponent
+    PassosListComponent,
+    ProcesListComponent,
+    UpdateProcesComponent
   ],
   imports: [
     BrowserModule,

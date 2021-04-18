@@ -1,6 +1,13 @@
 <div class="col-md-6 offset-md-3">
-    <h4> Crear procès </h4>
+
+    <h4> Editar procès </h4>
     <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>Id del procès</label>
+            <input type="text" class="form-control" id="nomProces" [(ngModel)]="proces.idProces" name="idProces"
+                required="true" readonly="true">
+        </div>
 
         <div class="form-group">
             <label>Nom del procès</label>
@@ -10,7 +17,8 @@
 
         <div class="form-group">
             <label>Sel·lecciona la referència del producte</label>
-            <select class="custom-select" name="referencies" [(ngModel)]="proces.referencia" required="true">
+            <select class="custom-select" id="referencia" name="referencia" [(ngModel)]="proces.referencia"
+                required="true">
                 <option *ngFor="let referencia of referencies" [ngValue]="referencia">{{ referencia.nom }}</option>
             </select>
         </div>
@@ -29,10 +37,6 @@
             </svg>
         </button>
 
-
-
     </form>
-
-
 
 </div>

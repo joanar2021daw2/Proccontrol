@@ -3,6 +3,7 @@ import { Proces } from '../proces';
 import { Referencia } from '../referencia';
 import { ReferenciaService } from '../referencia.service';
 import { ProcesService } from '../proces.service';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +17,8 @@ export class ProcesFormComponent implements OnInit {
   proces: Proces = new Proces();
   referencies: Referencia[] | undefined;
 
-  constructor(private referenciaService: ReferenciaService, private procesService: ProcesService) { }
+  constructor(private referenciaService: ReferenciaService, private procesService: ProcesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getAllReferencies();
@@ -24,22 +26,31 @@ export class ProcesFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.proces);
-    this.saveProces();
+    this.procesService.desarproces(this.proces);
+    
+    //this.saveProces();
   }
 
-  //Petició GET a SpringBoot pel select de referencies
+  //Crida llistat referencies per sel·leccionar al formulari
   private getAllReferencies() {
     this.referenciaService.getAllReferencies().subscribe(dades => {
       this.referencies = dades;
     });
   }
 
-  //Petició POST a SpringBoot per crear el procés
+  //Desar proces completat a PringBoot
   private saveProces(){
     this.procesService.crearProces(this.proces).subscribe( dades => {
       console.log(dades);
+      this.goToProcesList();
     },
     error => console.log(error));
   }
+
+  goToProcesList(){
+    this.router.navigate(['/proces']);
+  }
+
+
 
 }

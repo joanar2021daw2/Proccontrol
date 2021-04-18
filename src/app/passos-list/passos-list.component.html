@@ -1,11 +1,18 @@
-<h2>Passos del procès:</h2>
 
-<div *ngFor="let pas of passos">
-    <h2>Pas num: {{ pas.numeroDePas }}</h2>
-    <h3>
-        {{ pas.titol}}
-    </h3>
-    <p>
-        {{ pas.descripcio }}
-    </p>
+
+<div class="container">
+
+    <h3>Passos del procès:</h3>
+
+    
+    <div class = "container" *ngFor="let pas of passos">
+        <h2>Pas num: {{ pas.numeroDePas }}</h2>
+        <h4>
+            {{ pas.titol}}
+        </h4>
+        <p>
+            {{ pas.descripcio }}
+        </p>
+    </div>
+
 </div>
