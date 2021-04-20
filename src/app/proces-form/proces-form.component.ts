@@ -4,7 +4,7 @@ import { Referencia } from '../referencia';
 import { ReferenciaService } from '../referencia.service';
 import { ProcesService } from '../proces.service';
 import { Router } from '@angular/router';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -24,11 +24,15 @@ export class ProcesFormComponent implements OnInit {
     this.getAllReferencies();
   }
 
+  procesForm = new FormGroup({
+    nom: new FormControl('', Validators.required)
+  })
+
   onSubmit() {
     console.log(this.proces);
     this.procesService.desarproces(this.proces);
     
-    //this.saveProces();
+    this.saveProces();
   }
 
   //Crida llistat referencies per sel·leccionar al formulari
@@ -38,7 +42,7 @@ export class ProcesFormComponent implements OnInit {
     });
   }
 
-  //Desar proces completat a PringBoot
+  //Desar proces completat a SpringBoot
   private saveProces(){
     this.procesService.crearProces(this.proces).subscribe( dades => {
       console.log(dades);
@@ -47,6 +51,7 @@ export class ProcesFormComponent implements OnInit {
     error => console.log(error));
   }
 
+  //Redirecciona a altre pàgina
   goToProcesList(){
     this.router.navigate(['/proces']);
   }

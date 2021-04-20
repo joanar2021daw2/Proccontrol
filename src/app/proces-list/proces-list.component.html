@@ -12,13 +12,12 @@
     <tbody>
         <tr *ngFor = "let proces of processos">
             <td>{{ proces.nom }}</td>
-            <td>{{ proces.referencia }}</td>
+            <td>{{ proces.referencia?.nom }}</td>
             <td>{{ proces.numPassos }}</td>
             <td>
-                <button (click) = "updateProces(proces.idProces)" class = "btn btn-info"> Editar </button>
-            </td>
-            <td>
+                <button (click) = "updateProces(proces.idProces)" class = "btn btn-info"> Editar </button>            
                 <button (click) = "deleteProces(proces.idProces)" class = "btn btn-danger" style="margin-left: 10px"> Eliminar </button>
+                <button (click) = "procesDetails(proces.idProces)" class = "btn btn-info" style="margin-left: 10px"> Veure </button>
             </td>
         </tr>
     </tbody>

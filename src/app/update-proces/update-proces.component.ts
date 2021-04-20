@@ -21,7 +21,7 @@ export class UpdateProcesComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    //Agafem l'id de l'url amb ActivatedRoute
+    //Agafem l'id de l'url amb ActivatedRoute per carregar-lo al formulari
     this.idProces = this.route.snapshot.params['idProces'];
 
     this.getProcesById(this.idProces);

@@ -4,10 +4,11 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProcesFormComponent } from './proces-form/proces-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PassosListComponent } from './passos-list/passos-list.component';
 import { ProcesListComponent } from './proces-list/proces-list.component';
 import { UpdateProcesComponent } from './update-proces/update-proces.component';
+import { ProcesDetailsComponent } from './proces-details/proces-details.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,15 @@ import { UpdateProcesComponent } from './update-proces/update-proces.component';
     ProcesFormComponent,
     PassosListComponent,
     ProcesListComponent,
-    UpdateProcesComponent
+    UpdateProcesComponent,
+    ProcesDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

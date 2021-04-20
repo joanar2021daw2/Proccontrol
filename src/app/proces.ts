@@ -3,10 +3,21 @@ import {Pas} from './pas';
 
 
 export class Proces {
-    idProces : number | undefined;
+    idProces : any;
     nom : string | undefined;
     referencia : Referencia | undefined;
     numPassos : number | undefined;
     passos: Pas[] | undefined;
 
+   /* constructor(idProces:number, nom: string, referencia: Referencia, numPassos: number, passos: Pas[]){
+        this.idProces = idProces;
+        this.nom  = nom;
+        this.referencia = referencia;
+        this.numPassos = numPassos;
+        this.passos = passos;
+    }*/
+
+    
+
 }
+

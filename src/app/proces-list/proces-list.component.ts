@@ -28,6 +28,10 @@ export class ProcesListComponent implements OnInit {
     })
   }
 
+  procesDetails(idProces: number){
+    this.router.navigate(['proces-details', idProces]);
+  }
+
   updateProces(idProces : number){
     this.router.navigate(['update-proces', idProces]);
   }
