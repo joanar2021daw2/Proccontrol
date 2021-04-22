@@ -8,7 +8,7 @@ import { Proces } from './proces';
 })
 export class ProcesService {
   
-  private procesDesat: Proces | undefined;
+  private procesDesat: Proces = new Proces();
 
   private baseURL = "http://localhost:8080/api/v1/newproces";
   private allProcessosURL = "http://localhost:8080/api/v1/processos";

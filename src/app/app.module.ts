@@ -9,6 +9,7 @@ import { PassosListComponent } from './passos-list/passos-list.component';
 import { ProcesListComponent } from './proces-list/proces-list.component';
 import { UpdateProcesComponent } from './update-proces/update-proces.component';
 import { ProcesDetailsComponent } from './proces-details/proces-details.component';
+import { PassosFormComponent } from './passos-form/passos-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProcesDetailsComponent } from './proces-details/proces-details.componen
     PassosListComponent,
     ProcesListComponent,
     UpdateProcesComponent,
-    ProcesDetailsComponent
+    ProcesDetailsComponent,
+    PassosFormComponent
   ],
   imports: [
     BrowserModule,

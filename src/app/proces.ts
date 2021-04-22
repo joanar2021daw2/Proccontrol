@@ -6,8 +6,8 @@ export class Proces {
     idProces : any;
     nom : string | undefined;
     referencia : Referencia | undefined;
-    numPassos : number | undefined;
-    passos: Pas[] | undefined;
+    numPassos : number = 0 ;
+    passos: Pas[] = [];
 
    /* constructor(idProces:number, nom: string, referencia: Referencia, numPassos: number, passos: Pas[]){
         this.idProces = idProces;

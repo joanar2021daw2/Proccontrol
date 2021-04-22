@@ -29,10 +29,10 @@ export class ProcesFormComponent implements OnInit {
   })
 
   onSubmit() {
-    console.log(this.proces);
+    //console.log(this.proces);
     this.procesService.desarproces(this.proces);
-    
-    this.saveProces();
+    this.router.navigate(['passos-form']);
+    //this.saveProces();
   }
 
   //Crida llistat referencies per sel·leccionar al formulari

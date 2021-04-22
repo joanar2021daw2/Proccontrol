@@ -1,0 +1,34 @@
+<div class="col-md-6 offset-md-3">
+
+    <h4>Passos de {{ proces.nom }}</h4>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>Nom del pas</label>
+            <input type="text" class="form-control" [(ngModel)]="pas.titol" name="titol">
+        </div>
+
+        <div class="form-group">
+            <label>Descripció</label>
+            <textarea type="text" cols="30" rows="8" class="form-control" [(ngModel)]="pas.descripcio"
+                name="descripcio"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Numero del pas</label>
+            <input type="number" class="form-control" [(ngModel)]="pas.numeroDePas" name="numeroDePas">
+        </div>
+
+        <div class="form-group">
+            <label>Selecciona una imatge</label>
+            <input type="file" class="form-control" [(ngModel)]="pas.imatge" name="imatge">
+        </div>
+
+        <button class="btn btn-success" type="submit">Acceptar
+
+        </button>
+
+    </form>
+
+</div>
