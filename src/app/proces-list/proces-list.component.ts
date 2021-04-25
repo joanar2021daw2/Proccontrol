@@ -11,6 +11,9 @@ import { ProcesService } from '../proces.service';
 
 export class ProcesListComponent implements OnInit {
 
+  popoverTitle="Confirmació d'eliminació";
+  popoverMessage="Realment vol eliminar el procés?";
+
   processos: Proces[] | undefined;
 
   constructor(private procesService: ProcesService,
@@ -42,5 +45,7 @@ export class ProcesListComponent implements OnInit {
       this.getAllProcessos();
     })
   }
+
+  cancelClicked(){}
 
 }

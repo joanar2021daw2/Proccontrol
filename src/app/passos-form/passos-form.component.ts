@@ -14,7 +14,7 @@ export class PassosFormComponent implements OnInit {
   proces: any;
   pas = new Pas();
   passos: Pas[] = [];
-  length: number | undefined;
+  length: number = 0;
 
   constructor(private procesService: ProcesService, private router: Router) {
   }
@@ -27,9 +27,21 @@ export class PassosFormComponent implements OnInit {
 
   }
 
+  onSelectFile(e: any){
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.pas.imatge= event.target.result;
+        console.log(this.pas.imatge);
+      }
+    }
+  }
+
   onSubmit() {
     //Afegim pas al procés i ho desem a memòria
     this.length = this.proces.passos.push(this.pas);
+    this.pas.numeroDePas = (this.length);
     this.proces.numPassos ++;
     this.procesService.desarproces(this.proces);    
     

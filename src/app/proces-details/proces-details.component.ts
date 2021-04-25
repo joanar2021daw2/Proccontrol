@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Pas } from '../pas';
 import { Proces } from '../proces';
 import { ProcesService } from '../proces.service';
 
@@ -15,13 +16,18 @@ export class ProcesDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private procesService: ProcesService) { }
 
+  //Agafem id del procés de la ruta i cridem ProcesService i ordenem passos
   ngOnInit(): void {
     this.idProces = this.route.snapshot.params['idProces'];
 
     this.proces = new Proces();
     this.procesService.getProcesbyId(this.idProces).subscribe( dades => {
       this.proces = dades;
+      this.proces.passos.sort(function(a, b){
+        return a.numeroDePas - b.numeroDePas;
+      })
     });
+ 
   }
 
 }

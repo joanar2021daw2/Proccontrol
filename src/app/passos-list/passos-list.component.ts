@@ -21,9 +21,6 @@ export class PassosListComponent implements OnInit {
     this.proces = this.procesService.getProcesDesat();
     //Per mostrar passos a la plantilla
     this.passos = this.proces.passos;
-    
-    console.log("ListOnInit: Proces amb pas");
-    console.log(this.proces);
   }
 
   afegirPas(){
@@ -31,5 +28,15 @@ export class PassosListComponent implements OnInit {
     this.procesService.desarproces(this.proces);
     this.route.navigate(['passos-form']);
   }
+
+    //Desar proces completat a SpringBoot
+    saveProces(){
+      this.proces.numPassos = this.proces.passos.length ;
+      this.procesService.crearProces(this.proces).subscribe( dades => {
+        console.log(dades);
+        this.route.navigate(['proces']);
+      },
+      error => console.log(error));
+    }
 
 }

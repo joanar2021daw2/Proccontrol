@@ -2,7 +2,7 @@
 
     <h4>Passos de {{ proces.nom }}</h4>
 
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
         <div class="form-group">
             <label>Nom del pas</label>
@@ -16,14 +16,11 @@
         </div>
 
         <div class="form-group">
-            <label>Numero del pas</label>
-            <input type="number" class="form-control" [(ngModel)]="pas.numeroDePas" name="numeroDePas">
+            <label>Selecciona una imatge descriptiva</label>
+            <input type="file" class="form-control" (change)="onSelectFile($event)" name="imatge">
         </div>
 
-        <div class="form-group">
-            <label>Selecciona una imatge</label>
-            <input type="file" class="form-control" [(ngModel)]="pas.imatge" name="imatge">
-        </div>
+
 
         <button class="btn btn-success" type="submit">Acceptar
 

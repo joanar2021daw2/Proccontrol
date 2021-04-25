@@ -1,12 +1,36 @@
-<h3> Detalls del procès </h3>
+<h3> Detalls del procès </h3><br>
 <div>
     <div>
-        <label><b>Nom del procès: </b></label> {{proces.nom}}
+        <label><b>{{proces.nom}}</b></label> de la referència<b> {{proces.referencia?.nom}}</b>, te {{proces.numPassos}}
+        passos.
     </div>
-    <div>
-        <label><b>Referència a la que pertany : </b></label>{{proces.referencia?.nom}}
-    </div>
-    <div>
-        <label><b>Numero de passos: </b></label> {{proces.numPassos}}
-    </div>
+
+    <br>
+
+    <h4>Passos:</h4>
+
+    <table class="table table-stripped">
+
+        <thead>
+            <tr>
+                <th>Imatge</th>
+                <th></th>
+                <th>Nom</th>
+                <th>Descripció</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pas of proces.passos">
+                <td><img class="imatge" [src]="pas.imatge" alt="" /></td>
+                <td><b>{{ pas.numeroDePas }}</b></td>
+                <td>{{ pas.titol }}</td>
+                <td>{{ pas.descripcio }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+
 </div>
