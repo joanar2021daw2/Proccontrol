@@ -94,7 +94,7 @@ public class Referencia implements Serializable {
     * Anotem amb JsonIgnore per tal de no mostrar les instal·lacions
     * quan es genera la resposta Json de llistar processos i fer bucle
      */
-    @JsonIgnore
+    
     public Instalacio getInstalacio() {
         return instalacio;
     }
