@@ -28,10 +28,22 @@ export class UpdateProcesComponent implements OnInit {
     this.getAllReferencies();
   }
 
+  //Mètode per modificar la imatge del pas corresponent
+  onSelectFile(e: any, pas: any) {
+    if (e.target.files) {
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        pas.imatge = event.target.result;
+        console.log(pas.imatge);
+      }
+    }
+  }
+
   onSubmit() {
     console.log(this.proces);
-    this.procesService.updateProces(this.idProces, this.proces).subscribe( dadaes => {
-      this.goToProcesList();
+    this.procesService.updateProces(this.idProces, this.proces).subscribe(dadaes => {
+      this.procesDetails(this.idProces);
     }, error => console.log(error));
   }
 
@@ -39,6 +51,9 @@ export class UpdateProcesComponent implements OnInit {
   private getProcesById(idProces: number) {
     this.procesService.getProcesbyId(idProces).subscribe(dades => {
       this.proces = dades;
+      this.proces.passos.sort(function (a, b) {
+        return a.numeroDePas - b.numeroDePas;
+      })
     }, error => console.log(error));
   }
 
@@ -49,8 +64,8 @@ export class UpdateProcesComponent implements OnInit {
     });
   }
 
-  goToProcesList(){
-    this.router.navigate(['/proces']);
+  procesDetails(idProces: number){
+    this.router.navigate(['proces-details', idProces]);
   }
 
 }

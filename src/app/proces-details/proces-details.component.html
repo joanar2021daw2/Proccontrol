@@ -1,4 +1,12 @@
-<h3> Detalls del procès </h3><br>
+<h3>
+    Detalls del procès
+    <button (click)="updateProces(proces.idProces)" class="btn btn-info" style="margin-left: 10px">
+        Editar-ho
+    </button>
+</h3>
+
+<br>
+
 <div>
     <div>
         <label><b>{{proces.nom}}</b></label> de la referència<b> {{proces.referencia?.nom}}</b>, te {{proces.numPassos}}

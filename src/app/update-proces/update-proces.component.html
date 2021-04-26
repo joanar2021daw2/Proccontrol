@@ -1,4 +1,4 @@
-<div class="col-md-6 offset-md-3">
+<div class="col-md-12 ">
 
     <h4> Editar procès </h4>
     <form (ngSubmit)="onSubmit()">
@@ -21,16 +21,36 @@
                 required="true">
                 <option *ngFor="let referencia of referencies" [ngValue]="referencia">{{ referencia.nom }}</option>
             </select>
-        </div>
+        </div><br>
 
-        <button class="btn btn-success" type="submit">Seguent
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-            </svg>
-        </button>
+        <button class="btn btn-success" type="submit">Acceptar</button>
 
-    </form>
+    </form><br>
+
+    <table class="table table-stripped">
+
+        <thead>
+            <tr>
+                <th>Imatge</th>
+                <th></th>
+                <th>Nom</th>
+                <th>Descripció</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let pas of proces.passos">
+                <td><img class="imatge" [src]="pas.imatge" alt="" />
+                    <input type="file" class="form-control" (change)="onSelectFile($event, pas)" name="imatge">
+                </td>
+                <td><b>{{ pas.numeroDePas }}</b></td>
+                <td><input type="text" class="form-control" [(ngModel)]="pas.titol" name="titol"></td>
+                <td><textarea type="text" cols="30" rows="8" class="form-control" [(ngModel)]="pas.descripcio"
+                        name="descripcio"></textarea></td>
+            </tr>
+        </tbody>
+
+    </table>
+
 
 </div>

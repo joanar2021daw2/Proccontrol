@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Pas } from '../pas';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Proces } from '../proces';
 import { ProcesService } from '../proces.service';
 
@@ -14,7 +13,8 @@ export class ProcesDetailsComponent implements OnInit {
   idProces: any;
   proces = new Proces();
 
-  constructor(private route: ActivatedRoute, private procesService: ProcesService) { }
+  constructor(private route: ActivatedRoute, private procesService: ProcesService,
+    private router: Router) { }
 
   //Agafem id del procés de la ruta i cridem ProcesService i ordenem passos
   ngOnInit(): void {
@@ -29,5 +29,11 @@ export class ProcesDetailsComponent implements OnInit {
     });
  
   }
+
+  
+  updateProces(idProces : number){
+    this.router.navigate(['update-proces', idProces]);
+  }
+
 
 }
