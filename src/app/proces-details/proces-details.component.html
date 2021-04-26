@@ -1,0 +1,44 @@
+<h3>
+    Detalls del procès
+    <button (click)="updateProces(proces.idProces)" class="btn btn-info" style="margin-left: 10px">
+        Editar-ho
+    </button>
+</h3>
+
+<br>
+
+<div>
+    <div>
+        <label><b>{{proces.nom}}</b></label> de la referència<b> {{proces.referencia?.nom}}</b>, te {{proces.numPassos}}
+        passos.
+    </div>
+
+    <br>
+
+    <h4>Passos:</h4>
+
+    <table class="table table-stripped">
+
+        <thead>
+            <tr>
+                <th>Imatge</th>
+                <th></th>
+                <th>Nom</th>
+                <th>Descripció</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pas of proces.passos">
+                <td><img class="imatge" [src]="pas.imatge" alt="" /></td>
+                <td><b>{{ pas.numeroDePas }}</b></td>
+                <td>{{ pas.titol }}</td>
+                <td>{{ pas.descripcio }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+</div>

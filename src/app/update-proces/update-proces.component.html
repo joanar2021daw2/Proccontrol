@@ -1,0 +1,56 @@
+<div class="col-md-12 ">
+
+    <h4> Editar procès </h4>
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>Id del procès</label>
+            <input type="text" class="form-control" id="nomProces" [(ngModel)]="proces.idProces" name="idProces"
+                required="true" readonly="true">
+        </div>
+
+        <div class="form-group">
+            <label>Nom del procès</label>
+            <input type="text" class="form-control" id="nomProces" [(ngModel)]="proces.nom" name="nomProces"
+                required="true">
+        </div>
+
+        <div class="form-group">
+            <label>Sel·lecciona la referència del producte</label>
+            <select class="custom-select" id="referencia" name="referencia" [(ngModel)]="proces.referencia"
+                required="true">
+                <option *ngFor="let referencia of referencies" [ngValue]="referencia">{{ referencia.nom }}</option>
+            </select>
+        </div><br>
+
+        <button class="btn btn-success" type="submit">Acceptar</button>
+
+    </form><br>
+
+    <table class="table table-stripped">
+
+        <thead>
+            <tr>
+                <th>Imatge</th>
+                <th></th>
+                <th>Nom</th>
+                <th>Descripció</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let pas of proces.passos">
+                <td><img class="imatge" [src]="pas.imatge" alt="" />
+                    <input type="file" class="form-control" (change)="onSelectFile($event, pas)" name="imatge">
+                </td>
+                <td><b>{{ pas.numeroDePas }}</b></td>
+                <td><input type="text" class="form-control" [(ngModel)]="pas.titol" name="titol"></td>
+                <td><textarea type="text" cols="30" rows="8" class="form-control" [(ngModel)]="pas.descripcio"
+                        name="descripcio"></textarea></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
