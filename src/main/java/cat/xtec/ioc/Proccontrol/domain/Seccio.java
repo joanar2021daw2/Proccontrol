@@ -1,5 +1,6 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class Seccio implements Serializable {
     private String tipusProduccio;
 
     //La Secció conté instal·lacions
-    @OneToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "seccio")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "seccio")
     private Set<Instalacio> instalacions;
 
     public Seccio() {
@@ -69,6 +70,7 @@ public class Seccio implements Serializable {
         this.tipusProduccio = tipusProduccio;
     }
 
+    @JsonBackReference
     public Set<Instalacio> getInstalacions() {
         return instalacions;
     }

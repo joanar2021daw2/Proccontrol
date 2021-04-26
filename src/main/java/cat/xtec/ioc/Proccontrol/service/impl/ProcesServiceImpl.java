@@ -1,5 +1,6 @@
 package cat.xtec.ioc.Proccontrol.service.impl;
 
+import cat.xtec.ioc.Proccontrol.Exception.ResourceNotFoundException;
 import cat.xtec.ioc.Proccontrol.domain.Proces;
 import cat.xtec.ioc.Proccontrol.repository.ProcesRepository;
 import java.util.List;
@@ -25,7 +26,8 @@ public class ProcesServiceImpl {
     }
 
     public Proces getProcesById(long id) {
-        return procesRepo.getOne(id);
+        return procesRepo.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("No existeix un procès amb la id " + id));
     }
 
     public Proces getProcesByNom(String nom) {

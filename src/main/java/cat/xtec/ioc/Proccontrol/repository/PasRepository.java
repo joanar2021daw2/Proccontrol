@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author JoseAndrade
  */
-//@Repository
-public interface PasRepository {
+@Repository
+public interface PasRepository extends JpaRepository<Pas, Long>{
     
 }

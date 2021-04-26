@@ -1,10 +1,9 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,6 +39,9 @@ public class Proces implements Serializable {
 
     @Column(name = "num_passos", nullable = false)
     private int numPassos;
+    
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private Set<Pas> passos;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "regist_data", nullable = false)
@@ -58,11 +61,12 @@ public class Proces implements Serializable {
     public Proces() {
     }
 
-    public Proces(long idProces, String nom, Referencia referencia, int numPassos, Date dataRegistre, Resultat resultat) {
+    public Proces(long idProces, String nom, Referencia referencia, int numPassos, Set<Pas> passos, Date dataRegistre, Resultat resultat) {
         this.idProces = idProces;
         this.nom = nom;
         this.referencia = referencia;
         this.numPassos = numPassos;
+        this.passos = passos;
         this.dataRegistre = dataRegistre;
         this.resultat = resultat;
     }
@@ -99,6 +103,14 @@ public class Proces implements Serializable {
         this.numPassos = numPassos;
     }
 
+    public Set<Pas> getPassos() {
+        return passos;
+    }
+
+    public void setPassos(Set<Pas> passos) {
+        this.passos = passos;
+    }
+
     public Date getDataRegistre() {
         return dataRegistre;
     }
@@ -114,5 +126,7 @@ public class Proces implements Serializable {
     public void setResultat(Resultat resultat) {
         this.resultat = resultat;
     }
+    
+    
 
 }
