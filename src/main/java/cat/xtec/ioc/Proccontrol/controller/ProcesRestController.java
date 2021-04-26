@@ -1,6 +1,5 @@
 package cat.xtec.ioc.Proccontrol.controller;
 
-import cat.xtec.ioc.Proccontrol.Exception.ResourceNotFoundException;
 import cat.xtec.ioc.Proccontrol.domain.Proces;
 import cat.xtec.ioc.Proccontrol.domain.Referencia;
 import cat.xtec.ioc.Proccontrol.service.impl.ProcesServiceImpl;
@@ -67,6 +66,7 @@ public class ProcesRestController {
         proces.setNom(procesDetails.getNom());
         proces.setReferencia(procesDetails.getReferencia());
         proces.setNumPassos(procesDetails.getNumPassos());
+        proces.setPassos(procesDetails.getPassos());        
 
         Proces updatedProces = procesService.saveProces(proces);
         return ResponseEntity.ok(updatedProces);

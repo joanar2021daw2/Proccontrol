@@ -3,6 +3,7 @@ package cat.xtec.ioc.Proccontrol.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -41,7 +42,7 @@ public class Proces implements Serializable {
     private int numPassos;
     
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    private Set<Pas> passos;
+    private List<Pas> passos;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "regist_data", nullable = false)
@@ -61,7 +62,7 @@ public class Proces implements Serializable {
     public Proces() {
     }
 
-    public Proces(long idProces, String nom, Referencia referencia, int numPassos, Set<Pas> passos, Date dataRegistre, Resultat resultat) {
+    public Proces(long idProces, String nom, Referencia referencia, int numPassos, List<Pas> passos, Date dataRegistre, Resultat resultat) {
         this.idProces = idProces;
         this.nom = nom;
         this.referencia = referencia;
@@ -103,11 +104,11 @@ public class Proces implements Serializable {
         this.numPassos = numPassos;
     }
 
-    public Set<Pas> getPassos() {
+    public List<Pas> getPassos() {
         return passos;
     }
 
-    public void setPassos(Set<Pas> passos) {
+    public void setPassos(List<Pas> passos) {
         this.passos = passos;
     }
 
