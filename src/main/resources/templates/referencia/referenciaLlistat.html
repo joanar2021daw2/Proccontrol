@@ -1,84 +1,134 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>        
-        <title>Proccontrol</title>
-    </head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 
-    <body>
+<head>
+	<!DOCTYPE html>
+	<html lang="en">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">  
-                    <nav>
-                        <ul class="nav nav-pills">
-                            <li role="presentation" class="active">
-                                <a href="/">
-                                    Inici
-                                </a>
-                            </li>
-                            <li role="presentation" class="active">
-                                <a href="/referencies/new">
-                                    Nova referència
-                                </a>
-                            </li>
-                        </ul>    
-                    </nav>
-                </div>
-            </div>
-        </div>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <section>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>referències</h1>                  
-                </div>
-            </div>
-        </section>
-        <section class="container">
-            <th:block th:each="referencia : ${referenciesBD}">
-                <div class="row">
-                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-                        <div class="thumbnail">
-                            <div class="caption">
+		<title>Proccontrol</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
 
-                                <label for="id">#</label>
-                                <h4 id="id" th:text="${referencia.idReferencia}"></h4> 
+		<!-- Favicons -->
+		<link href="../assets/img/favicon.png" rel="icon">
+		<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-                                <label for="nom">Nom de la referència:</label>
-                                <p id="nom" th:text="${referencia.nom}"></p>
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+			rel="stylesheet">
 
-                                <label for="instalacio">Pertany a la Instal·lació:</label>
-                                <p id="instalacio" th:text="${referencia.instalacio.nom}"></p>
+		<!-- Vendor CSS Files -->
+		<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+		<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+		<link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-                                <label for="processos">Processos associats:</label>                               
-                                <th:block th:if="${referencia.processos}" id="processos" th:each="proces : ${referencia.processos}">                                      
-                                    <p id="proces" th:text="${proces.nom}"></p>                                    
-                                </th:block>
-                                
-                                <div th:if="${#lists.isEmpty(referencia.processos)}">
-                                    <p>Encara no s'han associat processos</p>
-                                </div>
+		<!-- Template Main CSS File -->
+		<link href="../assets/css/style.css" rel="stylesheet">
+	</head>
 
-                                <p>
-                                    <a th:href="@{/referencies/referencia(idReferencia=${referencia.idReferencia})}" class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-pencil glyphicon"/></span> modificar 
-                                    </a>
-                                    <a th:href="@{/referencies/delete(idReferencia=${referencia.idReferencia})}" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-remove glyphicon"/></span> eliminar 
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </th:block> 
-        </section>
-    </body>
+<body>
+	<!-- ======= Header ======= -->
+	<header id="header" class="d-flex align-items-center">
+		<div class="container d-flex justify-content-between align-items-center">
+
+			<div class="logo">
+				<h1><a href="/">Proccontrol</a></h1>
+				<!-- Uncomment below if you prefer to use an image logo -->
+				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+			</div>
+
+			<nav id="navbar" class="navbar">
+				<ul>
+					<li role="presentation" class="active">
+						<a href="/">
+							Inici
+						</a>
+					</li>
+					<li role="presentation" class="active">
+						<a href="/edicio">
+							Edició i creació
+						</a>
+					</li>
+					<li role="presentation" class="active">
+						<a href="/referencies/new">
+							Nova referència
+						</a>
+					</li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav><!-- .navbar -->
+		</div>
+
+	</header><!-- End Header -->
+
+
+	<!-- ======= Table Section ======= -->
+	<section class="contact">
+		<div class="section-title addPaddingTop">
+			<h2>Referències</h2>
+		</div>
+		<div class="container">
+			<table class="table table-striped table-hover">
+				<thead class="table-danger">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Instal·lació</th>
+						<th scope="col">Processos associats</th>
+						<th scope="col">Accions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<th:block th:each="referencia : ${referenciesBD}">
+						<tr>
+							<th scope="row" id="id" th:text="${referencia.idReferencia}"></th>
+							<td id="nom" th:text="${referencia.nom}"></td>
+							<td id="instalacio" th:text="${referencia.instalacio.nom}"></td>
+
+
+							
+							<td th:switch="${#lists.isEmpty(referencia.processos)}">
+								<p th:case="true">Encara no s'han associat processos</p>
+								<th:block th:if="${referencia.processos}" id="processos" th:each="proces : ${referencia.processos}">
+								<p th:case="false" id="proces" th:text="${proces.nom}"></p>
+								</th:block>
+							</td>
+							
+							<!--<th:block th:if="${referencia.processos}" id="processos"
+								th:each="proces : ${referencia.processos}">
+								<td id="proces" th:text="${proces.nom}"></td>
+							</th:block>
+							
+							<td th:if="${#lists.isEmpty(referencia.processos)}">
+                                    Encara no s'han associat processos
+                                </td>-->
+							
+							<td>
+								<a th:href="@{/referencies/referencia(idReferencia=${referencia.idReferencia})}" class="btn btn-primary">
+									<i class="bi bi-pencil"></i>
+								</a>
+								<a th:href="@{/referencies/delete(idReferencia=${referencia.idReferencia})}" class="btn btn-danger">
+									<i class="bi bi-trash"></i>
+								</a>
+							</td>
+						</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</section><!-- End Table Section -->
+
+
+</body>
+
+</html>
 </html>

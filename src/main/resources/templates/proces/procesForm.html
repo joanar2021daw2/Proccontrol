@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+		<title>Proccontrol</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+
+		<!-- Favicons -->
+		<link href="../assets/img/favicon.png" rel="icon">
+		<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+			rel="stylesheet">
+
+		<!-- Vendor CSS Files -->
+		<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+		<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+		<link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+		<!-- Template Main CSS File -->
+		<link href="../assets/css/style.css" rel="stylesheet">
+	</head>
+
+<body>
+	<!-- ======= Header ======= -->
+	<header id="header" class="d-flex align-items-center">
+		<div class="container d-flex justify-content-between align-items-center">
+
+			<div class="logo">
+				<h1><a href="/">Proccontrol</a></h1>
+				<!-- Uncomment below if you prefer to use an image logo -->
+				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+			</div>
+
+			<nav id="navbar" class="navbar">
+				<ul>
+					<li role="presentation" class="active">
+						<a href="/">
+							Inici
+						</a>
+					</li>
+					<li role="presentation" class="active">
+						<a href="/edicio">
+							Edició i creació
+						</a>
+					</li>
+					<li role="presentation" class="active">
+						<a href="/processos/all">
+							Llista de processos
+						</a>
+					</li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav><!-- .navbar -->
+		</div>
+
+	</header><!-- End Header -->
+
+
+	<!-- ======= Contact Section ======= -->
+	<section class="contact">
+		<div class="container">
+			<div class="section-title addPaddingTop">
+				<h2>Afegir o canviar procès</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<form th:action="${act}" th:object="${formproces}" class="php-email-form">
+
+						<div class="form-group mt-3">
+							<label class="form-label" for="idProces">
+								Id usuari:
+							</label>
+							<input type="text" class="form-control" id="idProces" th:field="*{idProces}"
+								readonly="true" />
+						</div>
+
+						<div class="form-group mt-3">
+							<label class="form-label" for="name">
+								Nom procès:
+							</label>
+							<div class="col-md-12">
+								<input id="name" th:field="*{nom}" type="text" class="form-control" required="true" />
+							</div>
+						</div>
+
+						<div class="form-group mt-3">
+							<label class="form-label" for="numpassos">
+								Número de passos del procès:
+							</label>
+							<div class="col-md-12">
+								<input id="numpassos" th:field="*{numPassos}" type="text" class="form-control"
+									required="true" />
+							</div>
+						</div>
+
+						<div class="form-group mt-3">
+							<label class="form-label" for="seccio">
+								Procès de la referència:
+							</label>
+							<div class="col-md-12">
+								<select id="seccio" th:field="*{referencia}" class="form-select">
+									<option value="">--Sel·lecciona una referencia--</option>
+									<option th:each="referencia : ${referenciesBD}"
+										th:value="${referencia.idReferencia}" th:text="${referencia.nom}"> 
+									</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group mt-3">
+							<label class="form-label" for="data">
+								Última modificació:
+							</label>
+							<div class="col-md-12">
+								<input id="data" th:field="*{dataRegistre}" th:text="${{dataRegistre}}" class="form-control" readonly="true" />
+							</div>
+						</div>
+
+						<div class="my-3">
+							<div class="loading">Loading</div>
+							<div class="error-message">Error"</div>
+							<div class="sent-message">Petició enviat</div>
+						</div>
+
+						<div class="text-center"><button type="submit" id="btnAdd">Desar</button></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section><!-- End Contact Section -->
+
+
+</body>
+
+</html>
