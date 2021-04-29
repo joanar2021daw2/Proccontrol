@@ -25,7 +25,7 @@ public class Usuari implements Serializable {
     @Column(name = "user_id")
     private long userId;
 
-    @Column(name = "num_operari", nullable = false)
+    @Column(name = "num_operari", nullable = false, unique = true)
     private long numOperari;
 
     @Column(name = "nom", length = 20, nullable = false)
@@ -53,7 +53,7 @@ public class Usuari implements Serializable {
 
     public Usuari() {
     }
-
+        
     public Usuari(long userId, long numOperari, String nom, String cognom1, String cognom2, String rol, String password, Boolean active, Set<Resultat> resultats) {
         this.userId = userId;
         this.numOperari = numOperari;

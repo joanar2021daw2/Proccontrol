@@ -1,76 +1,119 @@
-<!DOCTYPE html>
-
-
-<html xmlns:sec="http://www.springframework.org/security/tags" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <title>Benvinguda</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-8">  
-                    <nav>
-                        <ul class="nav nav-pills">
-                            <li role="presentation" class="active">
-                                <a href="/">
-                                    Inici
-                                </a>
-                            </li>
-                            <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-                                <li role="Presentation" class="">
-                                    <a href="/j_spring_security_logout" class="btn btndanger btn-mini pull-right">desconnectar</a>
-                                </li>
-                            </sec:authorize>
-                        </ul>    
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <section>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Inicia sessió per accedir-hi</h1>
-                </div>
-            </div>
-        </section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-titol">Si us plau, proporcioni les seves dades</h3>
-                        </div>
-                        <div class="panel-body" th:if="${not empty error}">
-                            <div class="alert alert-danger">
-                                Credencials incorrectes
-                            </div>
-                            <form action="/login" method="post">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Usuari" name='username' type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Contrasenya" name='password' type="password">
-                                    </div>
-                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="submit">
-                                </fieldset>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+        <title>Proccontrol</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="../assets/img/favicon.png" rel="icon">
+        <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="../assets/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- ======= Header ======= -->
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex justify-content-between align-items-center">
+
+                <div class="logo">
+                    <h1><a href="/">Proccontrol</a></h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                </div>
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li role="presentation" class="active">
+                            <a href="/">
+                                Inici
+                            </a>
+                        </li>
+
+                        <li style="margin-left: 20px" th:if="${#authorization.expression('isAuthenticated()')}">
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" value="Sign Out"/>
                             </form>
+                        </li>
+
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
+            </div>
+
+        </header><!-- End Header -->
+
+
+        <!-- ======= Contact Section ======= -->
+        <section class="contact">
+            <div class="container">
+                <div class="section-title addPaddingTop">
+                    <h2>Inicia sessió a Proccontrol</h2>
+                </div>
+                <div class="row">
+
+                    <div style="margin-left: 15px" th:if="${#authorization.expression('isAuthenticated()')}">
+                        <h6 th:inline="text">Has iniciat sessió com [[${#httpServletRequest.remoteUser}]]</h6>                          
+                    </div>
+
+                    <div class="col-lg-12">
+
+                        <div th:if="${param.error}">
+                            Nom d'usuari i contrasenya incorrectes.
                         </div>
+                        <div th:if="${param.logout}">
+                            T'has desconnectat.
+                        </div>
+                        <form th:action="@{/login}" method="post" class="php-email-form">
+
+                            <div class="form-group mt-3">
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="username" placeholder="Nom d'usuari"/> </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <div class="col-md-12">
+                                    <input class="form-control" type="password" name="password" placeholder="Contrasenya"/> </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <div class="col-md-12">
+                                    <input class="form-control" type="submit" value="Sign In"/>
+                                </div>
+                            </div>
+
+                        </form>
+
                     </div>
                 </div>
             </div>
-        </div>
+        </section><!-- End Contact Section -->
+
+
     </body>
+
 </html>
+
+
+
