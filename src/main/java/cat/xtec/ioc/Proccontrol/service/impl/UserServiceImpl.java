@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,12 +17,16 @@ import org.springframework.stereotype.Service;
  * @author JoseAndrade
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public Usuari saveUsuari(Usuari usuari) {
+        usuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
         return userRepository.save(usuari);
     }
 
@@ -41,21 +46,20 @@ public class UserServiceImpl implements UserService{
         return userRepository.findByNumOperari(numOperari);
     }
 
-    
-    public String deleteUsuari(long id){
+    public String deleteUsuari(long id) {
         userRepository.deleteById(id);
         return "redirect:/users/all";
     }
-    
-    public Usuari updateUsuari (Usuari usuari){
-        Usuari existingUsuari=userRepository.findById(usuari.getUserId()).orElse(null);
+
+    public Usuari updateUsuari(Usuari usuari) {
+        Usuari existingUsuari = userRepository.findById(usuari.getUserId()).orElse(null);
         existingUsuari.setNom(usuari.getNom());
         existingUsuari.setCognom1(usuari.getCognom1());
         existingUsuari.setCognom2(usuari.getCognom2());
         existingUsuari.setNumOperari(usuari.getNumOperari());
         existingUsuari.setActive(usuari.getActive());
         existingUsuari.setRol(usuari.getRol());
-        existingUsuari.setPassword(usuari.getPassword());
+        existingUsuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
         return userRepository.save(existingUsuari);
     }
 
