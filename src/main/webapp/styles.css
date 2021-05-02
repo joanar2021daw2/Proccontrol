@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "../resources/static/assets/css/style.css";
 
 .footer{
     position: absolute;
@@ -9,4 +10,19 @@
     background-color: rgb(223, 146, 74);
     text-align: center;
     color: white;
+}
+
+.container2{
+    padding-left: 350px;
+    padding-right: 350px;
+}
+
+.container3{
+    padding-left: 350px;
+    padding-right: 350px;
+}
+
+.table-header{
+    background-color: #f8d7da;
+    border-bottom: 2.5px solid black;
 }

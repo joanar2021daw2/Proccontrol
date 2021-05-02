@@ -93,8 +93,6 @@
 							<th scope="row" id="id" th:text="${referencia.idReferencia}"></th>
 							<td id="nom" th:text="${referencia.nom}"></td>
 							<td id="instalacio" th:text="${referencia.instalacio.nom}"></td>
-
-
 							
 							<td th:switch="${#lists.isEmpty(referencia.processos)}">
 								<p th:case="true">Encara no s'han associat processos</p>
@@ -130,5 +128,4 @@
 
 </body>
 
-</html>
 </html>

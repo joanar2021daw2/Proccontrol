@@ -1,7 +1,6 @@
 import {Referencia} from './referencia';
 import {Pas} from './pas';
 
-
 export class Proces {
     idProces : any;
     nom : string | undefined;
@@ -16,8 +15,6 @@ export class Proces {
         this.numPassos = numPassos;
         this.passos = passos;
     }*/
-
-    
 
 }
 

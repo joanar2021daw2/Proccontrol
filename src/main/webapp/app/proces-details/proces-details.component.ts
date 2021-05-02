@@ -30,10 +30,8 @@ export class ProcesDetailsComponent implements OnInit {
  
   }
 
-  
   updateProces(idProces : number){
     this.router.navigate(['update-proces', idProces]);
   }
-
 
 }
