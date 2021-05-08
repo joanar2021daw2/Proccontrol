@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "../resources/static/assets/css/style.css";
+@import "assets/css/style.scss";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .footer{
     position: absolute;
@@ -12,7 +12,7 @@
     color: white;
 }
 
-.container2{
+/* .container2{
     padding-left: 350px;
     padding-right: 350px;
 }
@@ -25,4 +25,6 @@
 .table-header{
     background-color: #f8d7da;
     border-bottom: 2.5px solid black;
-}
+} */
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

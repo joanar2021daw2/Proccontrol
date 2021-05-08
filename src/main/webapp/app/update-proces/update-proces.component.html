@@ -20,7 +20,7 @@
 
         <div class="form-group mt-3">
             <label>Sel·lecciona la referència del producte</label>
-            <select class="custom-select" id="referencia" name="referencia" [(ngModel)]="proces.referencia"
+            <select class="form-select" id="referencia" name="referencia" [(ngModel)]="proces.referencia"
                 required="true">
                 <option *ngFor="let referencia of referencies" [ngValue]="referencia">{{ referencia.nom }}</option>
             </select>
@@ -33,7 +33,7 @@
     </form><br>
 
     <table class="table table-striped table-hover">
-        <thead class="table-header">
+        <thead class="table-danger">
             <tr>
                 <th>Imatge</th>
                 <th></th>

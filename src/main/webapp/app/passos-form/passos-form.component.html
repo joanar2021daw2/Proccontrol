@@ -1,6 +1,7 @@
 <div class="col-md-6 offset-md-3">
+    <br>
 
-    <h4>Passos de {{ proces.nom }}</h4>
+    <h4><b>Passos de {{ proces.nom }}</b></h4>
 
     <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
@@ -19,6 +20,7 @@
             <label>Selecciona una imatge descriptiva</label>
             <input type="file" class="form-control" (change)="onSelectFile($event)" name="imatge">
         </div>
+        <br>
 
         <button class="btn btn-success" type="submit">Acceptar
         </button>

@@ -16,6 +16,10 @@ export class ProcesFormComponent implements OnInit {
 
   proces: Proces = new Proces();
   referencies: Referencia[] | undefined;
+  procesForm: FormGroup = new FormGroup({
+    nom: new FormControl(null, Validators.required),
+    referencia: new FormControl(null, Validators.required),
+  });
 
   constructor(private referenciaService: ReferenciaService, private procesService: ProcesService,
     private router: Router) { }
@@ -24,9 +28,8 @@ export class ProcesFormComponent implements OnInit {
     this.getAllReferencies();
   }
 
-  procesForm = new FormGroup({
-    nom: new FormControl('', Validators.required)
-  })
+  get nom() { return this.procesForm.get('nom'); }
+  get referencia() { return this.procesForm.get('referencia'); }
 
   onSubmit() {
     //console.log(this.proces);
@@ -55,7 +58,5 @@ export class ProcesFormComponent implements OnInit {
   goToProcesList(){
     this.router.navigate(['/proces']);
   }
-
-
 
 }

@@ -5,28 +5,39 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <form (ngSubmit)="onSubmit()" class="php-email-form">
+                <form (ngSubmit)="onSubmit()" class="php-email-form" [formGroup]="procesForm">
 
                     <div class="form-group mt-3">
                         <label class="form-label">Nom del procès:</label>
-                        <input type="text" class="form-control" id="nomProces" [(ngModel)]="proces.nom" name="nomProces">
+                        <input type="text" class="form-control" id="nomProces" [(ngModel)]="proces.nom" formControlName="nom" name="nomProces"
+                            >
                     </div>
-            
+
+                    <div *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)" class="alert alert-danger">
+                            Name is required.
+                    </div>
+
                     <div class="form-group">
                         <label>Sel·lecciona la referència del producte:</label>
-                        <select class="custom-select" name="referencies" [(ngModel)]="proces.referencia" required="true">
-                            <option *ngFor="let referencia of referencies" [ngValue]="referencia">{{ referencia.nom }}</option>
+                        <select class="form-select" formControlName="referencia" name="referencies" [(ngModel)]="proces.referencia" required="true">
+                            <option *ngFor="let referencia of referencies" [ngValue]="referencia">{{ referencia.nom }}
+                            </option>
                         </select>
                     </div>
-            
-                    <button class="btn btn-success" type="submit">Següent
+
+                    <div *ngIf="referencia?.invalid && (referencia?.dirty || referencia?.touched)" class="alert alert-danger">
+                        Has de seleccionar una referència
+                    </div>
+                    <br>
+
+                    <button class="btn btn-success" type="submit" [disabled]="nom?.invalid || referencia?.invalid">Següent
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                         </svg>
                     </button>
-            
+
                 </form>
             </div>
         </div>

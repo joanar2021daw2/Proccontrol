@@ -11,6 +11,7 @@ import { ProcesListComponent } from './proces-list/proces-list.component';
 import { UpdateProcesComponent } from './update-proces/update-proces.component';
 import { ProcesDetailsComponent } from './proces-details/proces-details.component';
 import { PassosFormComponent } from './passos-form/passos-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PassosFormComponent } from './passos-form/passos-form.component';
     ReactiveFormsModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger'
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
