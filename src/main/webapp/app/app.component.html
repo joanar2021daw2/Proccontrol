@@ -11,14 +11,17 @@
                 <a href="http://localhost:8080/edicio" (click)="modal.close('Tornar')" class="nav-link">Tornar</a>
             </li>
             <li class="nav-item">
-                <a routerLink="/proces" class="nav-link" (click)="modal.close('Processos')" routerLinkActive="active">Processos</a>
+                <a routerLink="/proces" class="nav-link" (click)="modal.close('Processos')"
+                    routerLinkActive="active">Processos</a>
             </li>
             <li class="nav-item">
-                <a routerLink="/newproces" class="nav-link" (click)="modal.close('Nou procés')" routerLinkActive="active">Nou procés</a>
+                <a routerLink="/newproces" class="nav-link" (click)="modal.close('Nou procés')"
+                    routerLinkActive="active">Nou procés</a>
             </li>
         </ul>
     </div>
 </ng-template>
+
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
 
@@ -40,13 +43,15 @@
                     </li>
                 </ul>
             </div>
-            <button type="button" class="navbar-toggler mobile-nav-toggle d-lg-none"
-                (click)="openModal(menuMobile)"><i class="bi bi-list"></i></button>
+            <button type="button" class="navbar-toggler mobile-nav-toggle d-lg-none" (click)="openModal(menuMobile)">
+                <i class="bi bi-list"></i>
+            </button>
         </nav>
     </div>
 </header>
+
 <div class="container">
-<br>
-<br>
+    <br>
+    <br>
     <router-outlet></router-outlet>
 </div>

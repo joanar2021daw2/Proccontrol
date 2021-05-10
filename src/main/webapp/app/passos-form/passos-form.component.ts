@@ -15,13 +15,13 @@ export class PassosFormComponent implements OnInit {
   pas = new Pas();
   passos: Pas[] = [];
   length: number = 0;
-  
+
   passosForm: FormGroup = new FormGroup({
     titol: new FormControl(null, Validators.required),
     descripcio: new FormControl(null, Validators.required)
   });
 
-  
+
   constructor(private procesService: ProcesService, private router: Router) { }
 
   ngOnInit(): void {
@@ -33,12 +33,12 @@ export class PassosFormComponent implements OnInit {
   get titol() { return this.passosForm.get('titol'); }
   get descripcio() { return this.passosForm.get('descripcio'); }
 
-  onSelectFile(e: any){
-    if(e.target.files){
+  onSelectFile(e: any) {
+    if (e.target.files) {
       var reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
-      reader.onload=(event:any)=>{
-        this.pas.imatge= event.target.result;
+      reader.onload = (event: any) => {
+        this.pas.imatge = event.target.result;
         console.log(this.pas.imatge);
       }
     }
@@ -48,15 +48,15 @@ export class PassosFormComponent implements OnInit {
     //Afegim pas al procés i ho desem a memòria
     this.length = this.proces.passos.push(this.pas);
     this.pas.numeroDePas = (this.length);
-    this.proces.numPassos ++;
-    this.procesService.desarproces(this.proces);    
-    
+    this.proces.numPassos++;
+    this.procesService.desarproces(this.proces);
+
     this.goToPassosList();
   }
 
-    //Redirecciona a altre pàgina
-    goToPassosList(){
-      this.router.navigate(['/passos']);
-    }
+  //Redirecciona a altre pàgina
+  goToPassosList() {
+    this.router.navigate(['/passos']);
+  }
 
 }
