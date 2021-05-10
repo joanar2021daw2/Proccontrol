@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Proces } from '../proces';
 import { ProcesService } from '../proces.service';
@@ -16,6 +17,11 @@ export class UpdateProcesComponent implements OnInit {
   proces: Proces = new Proces();
   referencies: Referencia[] | undefined;
 
+  updateForm: FormGroup = new FormGroup({
+    nomProces: new FormControl(null, Validators.required),
+    referencia: new FormControl(null, Validators.required)
+  });
+
   constructor(private procesService: ProcesService,
     private route: ActivatedRoute, private referenciaService: ReferenciaService,
     private router: Router) { }
@@ -27,6 +33,9 @@ export class UpdateProcesComponent implements OnInit {
     this.getProcesById(this.idProces);
     this.getAllReferencies();
   }
+
+  get nomProces() { return this.updateForm.get('nomProces'); }
+  get referencia() { return this.updateForm.get('referencia'); }
 
   //Mètode per modificar la imatge del pas corresponent
   onSelectFile(e: any, pas: any) {

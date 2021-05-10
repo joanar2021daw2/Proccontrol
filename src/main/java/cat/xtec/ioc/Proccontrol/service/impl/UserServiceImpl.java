@@ -1,13 +1,9 @@
 package cat.xtec.ioc.Proccontrol.service.impl;
 
-import cat.xtec.ioc.Proccontrol.domain.Resultat;
-import cat.xtec.ioc.Proccontrol.domain.Usuari;
 import cat.xtec.ioc.Proccontrol.domain.Usuari;
 import cat.xtec.ioc.Proccontrol.repository.UserRepository;
 import cat.xtec.ioc.Proccontrol.service.UserService;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

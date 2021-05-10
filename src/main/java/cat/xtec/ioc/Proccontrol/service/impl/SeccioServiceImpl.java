@@ -4,7 +4,6 @@ import cat.xtec.ioc.Proccontrol.domain.Seccio;
 import cat.xtec.ioc.Proccontrol.repository.SeccioRepository;
 import cat.xtec.ioc.Proccontrol.service.SeccioService;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Pas } from '../pas';
-import { Proces } from '../proces';
 import { ProcesService } from '../proces.service';
 
 @Component({
@@ -15,17 +15,23 @@ export class PassosFormComponent implements OnInit {
   pas = new Pas();
   passos: Pas[] = [];
   length: number = 0;
+  
+  passosForm: FormGroup = new FormGroup({
+    titol: new FormControl(null, Validators.required),
+    descripcio: new FormControl(null, Validators.required)
+  });
 
-  constructor(private procesService: ProcesService, private router: Router) {
-  }
-
+  
+  constructor(private procesService: ProcesService, private router: Router) { }
 
   ngOnInit(): void {
     /*Carreguem el procés desat pel component proces-form
      per afegir-li els passos*/
     this.proces = this.procesService.getProcesDesat();
-
   }
+
+  get titol() { return this.passosForm.get('titol'); }
+  get descripcio() { return this.passosForm.get('descripcio'); }
 
   onSelectFile(e: any){
     if(e.target.files){

@@ -41,7 +41,9 @@ public class SeccioController {
     }
 
     /*Processa el formulari i afegeix la secció a la BD*/
+     //@PostMapping("/seccio/add")
     @GetMapping(value = "/seccio/add")
+    //@RequestMapping(value="/seccio/add", method = RequestMethod.POST)
     public String processAddForm(@ModelAttribute("formseccio") Seccio formSeccio, BindingResult result) {
         seccioService.saveSeccio(formSeccio);
         return "redirect:/seccions/all";
