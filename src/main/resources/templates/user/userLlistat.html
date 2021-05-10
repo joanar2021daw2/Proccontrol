@@ -2,130 +2,123 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<!DOCTYPE html>
-	<html lang="en">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<head>
-		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Proccontrol</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-		<title>Proccontrol</title>
-		<meta content="" name="description">
-		<meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-		<!-- Favicons -->
-		<link href="../assets/img/favicon.png" rel="icon">
-		<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-		<!-- Google Fonts -->
-		<link
-			href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-			rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-		<!-- Vendor CSS Files -->
-		<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-		<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-		<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-		<link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-		<link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-		<!-- Template Main CSS File -->
-		<link href="../assets/css/style.css" rel="stylesheet">
-	</head>
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
 
 <body>
-	<!-- ======= Header ======= -->
-	<header id="header" class="d-flex align-items-center">
-		<div class="container d-flex justify-content-between align-items-center">
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-between align-items-center">
 
-			<div class="logo">
-				<h1><a href="/">Proccontrol</a></h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-			</div>
+            <div class="logo">
+                <h1><a href="/">Proccontrol</a></h1>
+            </div>
 
-			<nav id="navbar" class="navbar">
-				<ul>
-					<li role="presentation" class="active">
-						<a href="/">
-							Inici
-						</a>
-					</li>
-					<li role="presentation" class="active">
-						<a href="/edicio">
-							Edició i creació
-						</a>
-					</li>
-					<li role="presentation" class="active">
-						<a href="/users/new">
-							Nou usuari
-						</a>
-					</li>
-				</ul>
-				<i class="bi bi-list mobile-nav-toggle"></i>
-			</nav><!-- .navbar -->
-		</div>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li role="presentation" class="active">
+                        <a href="/">
+                            Inici
+                        </a>
+                    </li>
+                    <li role="presentation" class="active">
+                        <a href="/edicio">
+                            Edició i creació
+                        </a>
+                    </li>
+                    <li role="presentation" class="active">
+                        <a href="/users/new">
+                            Nou usuari
+                        </a>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
 
-	</header><!-- End Header -->
+    </header><!-- End Header -->
 
+    <!-- ======= Table Section ======= -->
+    <section class="contact">
+        <div class="section-title addPaddingTop">
+            <h2>Usuaris</h2>
+        </div>
+        <div class="container">
+            <table class="table table-striped table-hover">
+                <thead class="table-danger">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Cognom 1</th>
+                        <th scope="col">Cognom 2</th>
+                        <th scope="col">Número operari</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Estat</th>
+                        <th scope="col">Accions</th>
+                    </tr>
+                </thead>
 
-	<!-- ======= Table Section ======= -->
-	<section class="contact">
-		<div class="section-title addPaddingTop">
-			<h2>Usuaris</h2>
-		</div>
-		<div class="container">
-			<table class="table table-striped table-hover">
-				<thead class="table-danger">
-					<tr>
-						<th scope="col">Id</th>
-						<th scope="col">Nom</th>
-						<th scope="col">Cognom 1</th>
-						<th scope="col">Cognom 2</th>
-						<th scope="col">Número operari</th>
-						<th scope="col">Rol</th>
-						<th scope="col">Estat</th>
-						<th scope="col">Accions</th>
-					</tr>
-				</thead>
+                <tbody>
+                    <th:block th:each="usuari : ${usuarisBD}">
+                        <tr>
+                            <th scope="row" id="id" th:text="${usuari.userId}"></th>
+                            <td id="nom" th:text="${usuari.nom}"></td>
+                            <td th:text="${usuari.cognom1}"></td>
+                            <td th:text="${usuari.cognom2}"></td>
+                            <td id="numop" th:text="${usuari.numOperari}"></td>
+                            <td id="rol" th:text="${usuari.rol}"></td>
+                            <td id="active" th:text="${usuari.active} ? 'Usuari actiu' : 'Usuari inactiu'"></td>
+                            <td>
+                                <a th:href="@{/users/user(userId=${usuari.userId})}" class="btn btn-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a th:href="@{/users/delete(userId=${usuari.userId})}" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                </tbody>
 
-				<tbody>
-					<th:block th:each="usuari : ${usuarisBD}">
-						<tr>
-							<th scope="row" id="id" th:text="${usuari.userId}"></th>
-							<td id="nom" th:text="${usuari.nom}"></td>
-							<td th:text="${usuari.cognom1}"></td>
-							<td th:text="${usuari.cognom2}"></td>
-							<td id="numop" th:text="${usuari.numOperari}"></td>
-							<td id="rol" th:text="${usuari.rol}"></td>
-							<td id="active" th:text="${usuari.active} ? 'Usuari actiu' : 'Usuari inactiu'"></td>
-							<td>
-								<a th:href="@{/users/user(userId=${usuari.userId})}" class="btn btn-primary">
-									<i class="bi bi-pencil"></i>
-								</a>
-								<a th:href="@{/users/delete(userId=${usuari.userId})}" class="btn btn-danger">
-									<i class="bi bi-trash"></i>
-								</a>
-							</td>
-						</tr>
-				</tbody>
+            </table>
+        </div>
+    </section><!-- End Table Section -->
 
-			</table>
-		</div>
-	</section><!-- End Table Section -->
+    <!-- Vendor JS Files -->
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
+    <script src="../assets/vendor/purecounter/purecounter.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-		<!-- Vendor JS Files -->
-	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="../assets/vendor/php-email-form/validate.js"></script>
-	<script src="../assets/vendor/purecounter/purecounter.js"></script>
-	<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-	<script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="../assets/js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

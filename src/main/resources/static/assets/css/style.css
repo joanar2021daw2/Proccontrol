@@ -1466,6 +1466,7 @@ section {
 }
 
 .contact .php-email-form2 button[type="submit"] {
+  margin-top:25px;
   background: #e96b56;
   border: 0;
   border-radius: 50px;
