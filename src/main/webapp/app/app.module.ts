@@ -12,6 +12,7 @@ import { UpdateProcesComponent } from './update-proces/update-proces.component';
 import { ProcesDetailsComponent } from './proces-details/proces-details.component';
 import { PassosFormComponent } from './passos-form/passos-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PrivacitatComponent } from './privacitat/privacitat.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProcesListComponent,
     UpdateProcesComponent,
     ProcesDetailsComponent,
-    PassosFormComponent
+    PassosFormComponent,
+    PrivacitatComponent
   ],
   imports: [
     BrowserModule,
