@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Classe del domini representa un usuari
  * @author JoseAndrade
  */
 @Entity

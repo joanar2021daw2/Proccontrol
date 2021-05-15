@@ -4,6 +4,7 @@
 /src/main/resources/static/ui
 /tmp
 /out-tsc
+/doc
 # Only exists if Bazel was run
 /bazel-out
 
