@@ -15,8 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
  * el menú general de l'aplicació
  * 
  * @author JoseAndrade
- * @Version 1.0
- * @Since1.0
+ * @version 1.0
+ * @since 1.0
  */
 
 @Controller

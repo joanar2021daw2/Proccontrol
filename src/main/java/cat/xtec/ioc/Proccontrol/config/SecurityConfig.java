@@ -25,8 +25,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Classe de configuració de Spring Security
  *
  * @author JoseAndrade
- * @Version 1.0
- * @Since1.0
+ * @version 1.0
+ * @since 1.0
  */
 @Configuration
 @EnableWebSecurity
@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * CORS configuration
      *
-     * @return
+     * @return Retorna la configuració de CORS que utilitzarà Spring Boot.
      */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
