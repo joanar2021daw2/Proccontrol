@@ -1,0 +1,33 @@
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <div class="logo">
+            <h1><a href="http://localhost:8080">Proccontrol</a></h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li class="nav-item">
+                    <a href="http://localhost:8080" class="nav-link">Tornar</a>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>
+
+<div class="section-title addPaddingTop">
+    <h2>
+        {{proces.nom}}
+    </h2>
+
+    <br>
+    <p>
+        Per iniciar el procés guiat polsa el botó start
+    </p>
+
+    <br><br><br>
+    <button (click)="iniciarProces()" class="btn-orange">
+        START
+    </button>
+</div>

@@ -11,6 +11,8 @@ import { ProcesListComponent } from './proces-list/proces-list.component';
 import { UpdateProcesComponent } from './update-proces/update-proces.component';
 import { ProcesDetailsComponent } from './proces-details/proces-details.component';
 import { PassosFormComponent } from './passos-form/passos-form.component';
+import { PlayProcesComponent } from './play-proces/play-proces.component';
+import { PlayPasComponent } from './play-pas/play-pas.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PassosFormComponent } from './passos-form/passos-form.component';
     ProcesListComponent,
     UpdateProcesComponent,
     ProcesDetailsComponent,
-    PassosFormComponent
+    PassosFormComponent,
+    PlayProcesComponent,
+    PlayPasComponent,
   ],
   imports: [
     BrowserModule,

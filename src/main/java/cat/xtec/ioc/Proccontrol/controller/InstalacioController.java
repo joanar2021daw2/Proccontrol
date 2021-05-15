@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class InstalacioController {
 
     @Autowired
-    InstalacioServiceImpl instService;
+    InstalacioServiceImpl instalacioService;
     
     @Autowired
     SeccioServiceImpl seccioService;
@@ -33,8 +33,15 @@ public class InstalacioController {
     /*Retorna llistat de totes les instal·lacions*/
     @RequestMapping("/all")
     public String getAllInstalacions(Model model) {
-        model.addAttribute("instalacionsBD", instService.getAllInstalacions());
+        model.addAttribute("instalacionsBD", instalacioService.getAllInstalacions());
         return "instalacioLlistat";
+    }
+    
+    /*Selecciona les instalacions que hi han a la seccio*/
+    @RequestMapping("/byseccio")
+    public String getInstalacionsBySeccio(@RequestParam("idSeccio") long idSeccio, Model model){               
+        model.addAttribute("instalacions", instalacioService.getInstalacioBySeccio(idSeccio));        
+        return "seleccioInstalacio";
     }
 
     /*Afegeix una instalació*/
@@ -52,7 +59,7 @@ public class InstalacioController {
     /*Processa el formulari i afegeix l'instalació a la BD*/
     @GetMapping(value = "/instalacio/add")
     public String processAddForm(@ModelAttribute("forminstalacio") Instalacio formInstalacio, BindingResult result) {
-        instService.saveInstalacio(formInstalacio);
+        instalacioService.saveInstalacio(formInstalacio);
         return "redirect:/instalacions/all";
     }
 
@@ -62,7 +69,7 @@ public class InstalacioController {
         List<Seccio> seccionsDisponibles = seccioService.getAllSeccions();        
         
         if (idInstalacio != 0) {
-            Instalacio formInstalacio = instService.getInstalacioById(idInstalacio);
+            Instalacio formInstalacio = instalacioService.getInstalacioById(idInstalacio);
             model.addAttribute("seccionsBD", seccionsDisponibles);
             model.addAttribute("act", "instalacio/update");
             model.addAttribute("forminstalacio", formInstalacio);
@@ -72,11 +79,11 @@ public class InstalacioController {
 
         return "instalacioForm";
     }
-
+    
     /*Processa el formulari i actualitza la instal·lació a la BD*/
     @GetMapping("/instalacio/update")
     public String processUpdateForm(@ModelAttribute("forminstalacio") Instalacio formInstalacio, BindingResult result) {
-        instService.updateInstalacio(formInstalacio);
+        instalacioService.updateInstalacio(formInstalacio);
         return "redirect:/instalacions/all";
     }
 
@@ -84,7 +91,7 @@ public class InstalacioController {
     @GetMapping("/delete")
     public String deleteInstalacio(@RequestParam("idInstalacio") long idInstalacio)
             throws ServletException, IOException {
-        instService.deleteInstalacio(idInstalacio);
+        instalacioService.deleteInstalacio(idInstalacio);
         return "redirect:/instalacions/all";
     }
 }

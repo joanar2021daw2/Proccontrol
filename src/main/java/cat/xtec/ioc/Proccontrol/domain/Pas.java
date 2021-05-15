@@ -5,6 +5,7 @@
  */
 package cat.xtec.ioc.Proccontrol.domain;
 
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "pas")
-public class Pas {
+public class Pas implements Serializable{
 
     @Id
     @GeneratedValue

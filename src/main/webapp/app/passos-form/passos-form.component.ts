@@ -33,7 +33,7 @@ export class PassosFormComponent implements OnInit {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event:any)=>{
         this.pas.imatge= event.target.result;
-        console.log(this.pas.imatge);
+        //console.log(this.pas.imatge);
       }
     }
   }

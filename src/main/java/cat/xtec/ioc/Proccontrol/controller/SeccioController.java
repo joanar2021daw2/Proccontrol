@@ -30,6 +30,13 @@ public class SeccioController {
         model.addAttribute("seccionsBD", seccioService.getAllSeccions());
         return "seccioLlistat";
     }
+    
+    /*Retorna seccions per que l'usuari seleccioni una i verue les instalacions*/
+    @RequestMapping("/selectone")
+    public String selectOneSeccio(Model model) {
+        model.addAttribute("seccionsBD", seccioService.getAllSeccions());
+        return "seleccioSeccio";
+    }    
 
     /*Afegeix una secció*/
     @GetMapping("/new")

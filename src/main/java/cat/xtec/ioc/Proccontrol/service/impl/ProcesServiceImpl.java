@@ -33,6 +33,10 @@ public class ProcesServiceImpl {
     public Proces getProcesByNom(String nom) {
         return procesRepo.findByNom(nom);
     }
+    
+    public List<Proces> getProcessosByReferencia(long idReferencia){
+        return procesRepo.findByReferenciaIdReferencia(idReferencia);
+    }
 
     public String deleteProces(long id) {
         procesRepo.deleteById(id);

@@ -31,6 +31,10 @@ public class ReferenciaServiceImpl {
     public Referencia getReferenciaByNom(String nom) {
         return referenciaRepo.findByNom(nom);
     }
+    
+    public List<Referencia> getReferenciesByInstalacio(long idInstalacio){
+        return referenciaRepo.findByInstalacioIdInstalacio(idInstalacio);
+    }
 
     public String deleteReferencia(long id) {
         referenciaRepo.deleteById(id);
@@ -42,7 +46,6 @@ public class ReferenciaServiceImpl {
         existingReferencia.setNom(referencia.getNom());
         existingReferencia.setInstalacio(referencia.getInstalacio());
         existingReferencia.setProcessos(referencia.getProcessos());
-        existingReferencia.setResultat(referencia.getResultat());
 
         return referenciaRepo.save(existingReferencia);
     }

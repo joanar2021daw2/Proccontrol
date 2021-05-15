@@ -1,4 +1,4 @@
-package cat.xtec.ioc.Proccontrol.controller;
+package cat.xtec.ioc.Proccontrol.restController;
 
 import cat.xtec.ioc.Proccontrol.domain.Proces;
 import cat.xtec.ioc.Proccontrol.domain.Referencia;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author JoseAndrade
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200", maxAge =3600)
+
 @RequestMapping("/api/v1/")
 public class ProcesRestController {
 
