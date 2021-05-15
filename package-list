@@ -1,0 +1,9 @@
+cat.xtec.ioc.Proccontrol
+cat.xtec.ioc.Proccontrol.Exception
+cat.xtec.ioc.Proccontrol.config
+cat.xtec.ioc.Proccontrol.controller
+cat.xtec.ioc.Proccontrol.domain
+cat.xtec.ioc.Proccontrol.repository
+cat.xtec.ioc.Proccontrol.repository.impl
+cat.xtec.ioc.Proccontrol.service
+cat.xtec.ioc.Proccontrol.service.impl
