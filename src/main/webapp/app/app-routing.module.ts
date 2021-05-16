@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'update-proces/:idProces', component: UpdateProcesComponent},
   {path: 'proces-details/:idProces', component: ProcesDetailsComponent},
   {path: 'passos-form', component: PassosFormComponent},
-  {path: 'privacitat', component: PrivacitatComponent}
+  {path: 'privacitat', component: PrivacitatComponent},
   {path: 'play-proces/:idProces/:idUsuari', component: PlayProcesComponent},
   {path: 'play-pas', component: PlayPasComponent}
 ];

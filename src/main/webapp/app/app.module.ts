@@ -25,7 +25,7 @@ import { PlayPasComponent } from './play-pas/play-pas.component';
     UpdateProcesComponent,
     ProcesDetailsComponent,
     PassosFormComponent,
-    PrivacitatComponent
+    PrivacitatComponent,
     PlayProcesComponent,
     PlayPasComponent,
   ],
