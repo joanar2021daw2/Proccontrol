@@ -8,7 +8,9 @@ import cat.xtec.ioc.Proccontrol.service.impl.ReferenciaServiceImpl;
 import cat.xtec.ioc.Proccontrol.service.impl.ResultatServiceImpl;
 import cat.xtec.ioc.Proccontrol.service.impl.SeccioServiceImpl;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,7 +47,7 @@ public class ResultatController {
     public String resultatDetails(@RequestParam("idResultat") long idResultat, Model model) {
         Resultat resultat = resultatService.getResultatById(idResultat);
         Proces proces = procesService.getProcesById(resultat.getProces().getIdProces());
-        model.addAttribute("resultatDetails", resultat);        
+        model.addAttribute("resultatDetails", resultat);
         model.addAttribute("procesDetails", proces);
         return "resultatDetails";
     }
@@ -59,8 +61,33 @@ public class ResultatController {
     @GetMapping("/byproces")
     public String getResultatByProces(@RequestParam("idProces") long idProces, Model model) {
         List<Resultat> resultatsPerProces = resultatService.getResultatsByProces(idProces);
+        model.addAttribute("idProces", idProces);
         model.addAttribute("resultatsBD", resultatsPerProces);
         return "resultatLlistat";
+    }
+
+    /*
+     * Mètode que retorna la vista de la gràfica de barres que mostra usuari/tempsTotal
+     * dels resultats obtinguts pels diferents usuaris que han realitzat un procés
+     *
+     * @RequestParam idProces id del procés seleccionat a l'hora de veure els resultats
+     * del mateix
+     */
+    @GetMapping("/byproceschart")
+    public String getResultatByProcesChart(@RequestParam("idProces") long idProces, Model model) {
+        Proces proces = procesService.getProcesById(idProces);
+        List<Resultat> resultatsPerProces = resultatService.getResultatsByProces(idProces);
+        Map<String, Long> barUsuariTempsTotal = new HashMap<>();
+
+        for (Resultat r : resultatsPerProces) {
+            barUsuariTempsTotal.put((r.getUsuari().getNom() + " "
+                    + r.getUsuari().getCognom1()), r.getTempsTotal());
+
+        }
+
+        model.addAttribute("proces", proces);
+        model.addAttribute("barUsuariTempsTotal", barUsuariTempsTotal);
+        return "graficaUsuariTempsTotal";
     }
 
     /*Retorna seccions per que l'usuari seleccioni una i verue les instalacions*/
@@ -95,11 +122,11 @@ public class ResultatController {
     @GetMapping("/delete")
     public String deleteResultat(@RequestParam("idResultat") long idResultat,
             RedirectAttributes redirectAttributes) throws ServletException, IOException {
-        Resultat resultat = resultatService.getResultatById(idResultat);  
+        Resultat resultat = resultatService.getResultatById(idResultat);
         redirectAttributes.addAttribute("idProces", resultat.getProces().getIdProces());
-        
-        resultatService.deleteResultat(idResultat);       
+
+        resultatService.deleteResultat(idResultat);
         return "redirect:/resultats/byproces/";
     }
- 
+
 }
