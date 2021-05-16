@@ -81,7 +81,11 @@
                                         <h4><a th:href="@{/resultats/byproces/(idProces=${proces.idProces})}" th:text="${proces.nom}"></a></h4>
                                     </div>
                                 </div>
-                            </th:block>
+                            </th:block>                                                       
+                        </div>
+
+                        <div  th:switch="${#lists.isEmpty(processos)}" th:case="true" class="col-lg-6 col-md-6">
+                            <p>Encara no hi han processos en aquesta referència</p>
                         </div>
 
                     </div>

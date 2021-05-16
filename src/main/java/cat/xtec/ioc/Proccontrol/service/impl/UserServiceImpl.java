@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public Usuari getUsuariById(long id) {
-        return userRepository.getOne(id);
+        return userRepository.findByUserId(id);
     }
 
     public Usuari getUsuariByNom(String nom) {

@@ -72,7 +72,7 @@
                         <h2>Selecciona la referència</h2>
                     </div>
                     <div class="row">
-
+                        
                         <div class="row">
                             <th:block th:each="referencia : ${referencies}">
                                 <div class="col-lg-4 col-md-6">
@@ -81,11 +81,15 @@
                                         <h4><a th:href="@{/resultats/byreferencia(idReferencia=${referencia.idReferencia})}" th:text="${referencia.nom}"></a></h4>
                                     </div>
                                 </div>
-                            </th:block>
+                            </th:block>                          
+                        </div>
+
+                        <div th:switch="${#lists.isEmpty(referencies)}" th:case="true" class="col-lg-6 col-md-6">
+                            <p>Encara no hi han referències en aquesta instal·lació</p>
                         </div>
 
                     </div>
-                </div>
+                </div>        
             </section><!-- End Services Section -->
 
 

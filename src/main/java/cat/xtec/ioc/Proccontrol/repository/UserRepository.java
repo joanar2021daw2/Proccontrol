@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface UserRepository extends JpaRepository<Usuari, Long> {
+    
+    Usuari findByUserId(long userId);
 
     Usuari findByNom(String nom);
 

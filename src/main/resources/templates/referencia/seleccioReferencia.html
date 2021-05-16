@@ -85,6 +85,11 @@
                         </div>
 
                     </div>
+
+                    <div th:switch="${#lists.isEmpty(referencies)}" th:case="true" class="col-lg-6 col-md-6">
+                        <p>Encara no hi han referències en aquesta instal·lació</p>
+                    </div>
+
                 </div>
             </section><!-- End Services Section -->
 
