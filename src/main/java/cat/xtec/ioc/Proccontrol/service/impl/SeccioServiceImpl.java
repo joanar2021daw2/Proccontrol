@@ -2,9 +2,7 @@ package cat.xtec.ioc.Proccontrol.service.impl;
 
 import cat.xtec.ioc.Proccontrol.domain.Seccio;
 import cat.xtec.ioc.Proccontrol.repository.SeccioRepository;
-import cat.xtec.ioc.Proccontrol.service.SeccioService;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @author JoseAndrade
  */
 @Service
-public class SeccioServiceImpl implements SeccioService {
+public class SeccioServiceImpl {
 
     @Autowired
     SeccioRepository seccioRepo;

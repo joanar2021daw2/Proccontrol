@@ -1,7 +1,6 @@
 package cat.xtec.ioc.Proccontrol.controller;
 
 import cat.xtec.ioc.Proccontrol.domain.Usuari;
-import cat.xtec.ioc.Proccontrol.service.UserService;
 import cat.xtec.ioc.Proccontrol.service.impl.UserServiceImpl;
 import java.io.IOException;
 import java.util.List;
@@ -13,11 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
