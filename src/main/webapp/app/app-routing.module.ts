@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PassosFormComponent } from './passos-form/passos-form.component';
 import { PassosListComponent } from './passos-list/passos-list.component';
 import { PrivacitatComponent } from './privacitat/privacitat.component';
+import { PlayPasComponent } from './play-pas/play-pas.component';
+import { PlayProcesComponent } from './play-proces/play-proces.component';
 import { ProcesDetailsComponent } from './proces-details/proces-details.component';
 import { ProcesFormComponent } from './proces-form/proces-form.component';
 import { ProcesListComponent } from './proces-list/proces-list.component';
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path: 'proces-details/:idProces', component: ProcesDetailsComponent},
   {path: 'passos-form', component: PassosFormComponent},
   {path: 'privacitat', component: PrivacitatComponent}
+  {path: 'play-proces/:idProces/:idUsuari', component: PlayProcesComponent},
+  {path: 'play-pas', component: PlayPasComponent}
 ];
 
 @NgModule({

@@ -103,4 +103,18 @@ public class TemplateResolver {
 
         return referenciesTemplateResolver;
     }
+    
+        /*-----------Mapeja el directori template resultat-----------*/
+    @Bean
+    public ClassLoaderTemplateResolver resultatTemplateResolver() {
+        ClassLoaderTemplateResolver referenciesTemplateResolver = new ClassLoaderTemplateResolver();
+        referenciesTemplateResolver.setPrefix("templates/resultat/");
+        referenciesTemplateResolver.setSuffix(".html");
+        referenciesTemplateResolver.setTemplateMode(TemplateMode.HTML);
+        referenciesTemplateResolver.setCharacterEncoding("UTF-8");
+        referenciesTemplateResolver.setOrder(1);
+        referenciesTemplateResolver.setCheckExistence(true);
+
+        return referenciesTemplateResolver;
+    }
 }

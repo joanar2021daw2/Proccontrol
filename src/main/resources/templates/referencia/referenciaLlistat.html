@@ -1,129 +1,125 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
+        <!DOCTYPE html>
+    <html lang="en">
 
-    <title>Proccontrol</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+        <head>
+            <meta charset="utf-8">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Favicons -->
-    <link href="../assets/img/favicon.png" rel="icon">
-    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+            <title>Proccontrol</title>
+            <meta content="" name="description">
+            <meta content="" name="keywords">
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+            <!-- Favicons -->
+            <link href="../assets/img/favicon.png" rel="icon">
+            <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Vendor CSS Files -->
-    <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+            <!-- Google Fonts -->
+            <link
+                href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+                rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="../assets/css/style.css" rel="stylesheet">
-</head>
+            <!-- Vendor CSS Files -->
+            <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+            <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+            <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+            <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+            <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-<body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center">
-        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Template Main CSS File -->
+            <link href="../assets/css/style.css" rel="stylesheet">
+        </head>
 
-            <div class="logo">
-                <h1><a href="/">Proccontrol</a></h1>
-            </div>
+        <body>
+            <!-- ======= Header ======= -->
+            <header id="header" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-between align-items-center">
 
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li role="presentation" class="active">
-                        <a href="/">
-                            Inici
-                        </a>
-                    </li>
-                    <li role="presentation" class="active">
-                        <a href="/edicio">
-                            Edició i creació
-                        </a>
-                    </li>
-                    <li role="presentation" class="active">
-                        <a href="/referencies/new">
-                            Nova referència
-                        </a>
-                    </li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-        </div>
+                    <div class="logo">
+                        <h1><a href="/">Proccontrol</a></h1>
+                        <!-- Uncomment below if you prefer to use an image logo -->
+                        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                    </div>
 
-    </header><!-- End Header -->
-
-
-    <!-- ======= Table Section ======= -->
-    <section class="contact">
-        <div class="section-title addPaddingTop">
-            <h2>Referències</h2>
-        </div>
-        <div class="container">
-            <table class="table table-striped table-hover">
-                <thead class="table-danger">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Instal·lació</th>
-                        <th scope="col">Processos associats</th>
-                        <th scope="col">Accions</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <th:block th:each="referencia : ${referenciesBD}">
-                        <tr>
-                            <th scope="row" id="id" th:text="${referencia.idReferencia}"></th>
-                            <td id="nom" th:text="${referencia.nom}"></td>
-                            <td id="instalacio" th:text="${referencia.instalacio.nom}"></td>
-
-                            <td th:switch="${#lists.isEmpty(referencia.processos)}">
-                                <p th:case="true">Encara no s'han associat processos</p>
-                                <th:block th:if="${referencia.processos}" id="processos"
-                                    th:each="proces : ${referencia.processos}">
-                                    <p th:case="false" id="proces" th:text="${proces.nom}"></p>
-                                </th:block>
-                            </td>
-
-                            <td>
-                                <a th:href="@{/referencies/referencia(idReferencia=${referencia.idReferencia})}"
-                                    class="btn btn-primary">
-                                    <i class="bi bi-pencil"></i>
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <li role="presentation" class="active">
+                                <a href="/">
+                                    Inici
                                 </a>
-                                <a th:href="@{/referencies/delete(idReferencia=${referencia.idReferencia})}"
-                                    class="btn btn-danger">
-                                    <i class="bi bi-trash"></i>
+                            </li>
+                            <li role="presentation" class="active">
+                                <a href="/edicio">
+                                    Edició i creació
                                 </a>
-                            </td>
-                        </tr>
-                </tbody>
+                            </li>
+                            <li role="presentation" class="active">
+                                <a href="/referencies/new">
+                                    Nova referència
+                                </a>
+                            </li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav><!-- .navbar -->
+                </div>
 
-            </table>
-        </div>
-    </section><!-- End Table Section -->
+            </header><!-- End Header -->
 
-    <!-- Vendor JS Files -->
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
-    <script src="../assets/vendor/purecounter/purecounter.js"></script>
-    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="../assets/js/main.js"></script>
-</body>
+            <!-- ======= Table Section ======= -->
+            <section class="contact">
+                <div class="section-title addPaddingTop">
+                    <h2>Referències</h2>
+                </div>
+                <div class="container">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-danger">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Instal·lació</th>
+                                <th scope="col">Processos associats</th>
+                                <th scope="col">Accions</th>
+                            </tr>
+                        </thead>
 
-</html>
+                        <tbody>
+                        <th:block th:each="referencia : ${referenciesBD}">
+                            <tr>
+                                <th scope="row" id="id" th:text="${referencia.idReferencia}"></th>
+                                <td id="nom" th:text="${referencia.nom}"></td>
+                                <td id="instalacio" th:text="${referencia.instalacio.nom}"></td>
+
+                                <td th:switch="${#lists.isEmpty(referencia.processos)}">
+                                    <p th:case="true">Encara no s'han associat processos</p>
+
+                                    <select th:case="false">     
+                                        <option th:if="${referencia.processos}"  th:each="proces : ${referencia.processos}" th:text="${proces.nom}">                                      
+                                    </select>
+                                </td>
+
+
+                                <td>
+                                    <a th:href="@{/referencies/referencia(idReferencia=${referencia.idReferencia})}" class="btn btn-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a th:href="@{/referencies/delete(idReferencia=${referencia.idReferencia})}" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+
+                    </table>
+                </div>
+            </section><!-- End Table Section -->
+
+
+        </body>
+
+    </html>

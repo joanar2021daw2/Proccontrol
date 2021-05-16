@@ -13,6 +13,8 @@ import { ProcesDetailsComponent } from './proces-details/proces-details.componen
 import { PassosFormComponent } from './passos-form/passos-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrivacitatComponent } from './privacitat/privacitat.component';
+import { PlayProcesComponent } from './play-proces/play-proces.component';
+import { PlayPasComponent } from './play-pas/play-pas.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { PrivacitatComponent } from './privacitat/privacitat.component';
     ProcesDetailsComponent,
     PassosFormComponent,
     PrivacitatComponent
+    PlayProcesComponent,
+    PlayPasComponent,
   ],
   imports: [
     BrowserModule,

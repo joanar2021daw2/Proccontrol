@@ -16,7 +16,7 @@ export class ProcesDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private procesService: ProcesService,
     private router: Router) { }
 
-  //Agafem id del procés de la ruta i cridem ProcesService i ordenem passos
+  //Agafem id del procés de la ruta, cridem ProcesService i ordenem passos
   ngOnInit(): void {
     this.idProces = this.route.snapshot.params['idProces'];
 

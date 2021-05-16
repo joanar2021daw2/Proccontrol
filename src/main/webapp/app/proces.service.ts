@@ -40,12 +40,12 @@ export class ProcesService {
     return this.httpClient.delete(`${this.allProcessosURL}/${idProces}`);
   }
 
-  //Desa proces en memòria
+  //Desa proces a memòria
   desarproces(proces: Proces){
     this.procesDesat = proces;
   }
 
-  //Getter del procesDesat
+  //Getter del proces desat a memòria
   getProcesDesat(){
     return this.procesDesat;
   }

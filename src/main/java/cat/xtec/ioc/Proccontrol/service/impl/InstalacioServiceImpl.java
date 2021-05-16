@@ -1,6 +1,7 @@
 package cat.xtec.ioc.Proccontrol.service.impl;
 
 import cat.xtec.ioc.Proccontrol.domain.Instalacio;
+import cat.xtec.ioc.Proccontrol.domain.Seccio;
 import cat.xtec.ioc.Proccontrol.repository.InstalacioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,10 @@ public class InstalacioServiceImpl {
      */
     public Instalacio getInstalacioByNom(String nom) {
         return instalacioRepo.findByNom(nom);
+    }
+    
+    public List<Instalacio> getInstalacioBySeccio(long seccio){
+        return instalacioRepo.findBySeccioIdSeccio(seccio);
     }
 
     /**

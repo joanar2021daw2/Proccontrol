@@ -1,5 +1,7 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -45,16 +47,18 @@ public class Usuari implements Serializable {
     @Column(name = "active", columnDefinition = "BOOLEAN DEFAULT true", nullable = false)
     private Boolean active;
 
-    /**
+    /*
      * Usuari conté resultats, mappedBy per indicar que és una relació bidireccional
-     * és a dir, tindrà també una rel·lació capa l'entitat User
+     * és a dir, tindrà també una rel·lació capa l'entitat Usuari
+     * Cascade remove per tal d'eliminar els resultats quan s'elimina un usuari.
      */
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "usuari")
+    @JsonIgnoreProperties("usuari")
+    @OneToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "usuari")
     private Set<Resultat> resultats;
 
     public Usuari() {
     }
-        
+
     public Usuari(long userId, long numOperari, String nom, String cognom1, String cognom2, String rol, String password, Boolean active, Set<Resultat> resultats) {
         this.userId = userId;
         this.numOperari = numOperari;

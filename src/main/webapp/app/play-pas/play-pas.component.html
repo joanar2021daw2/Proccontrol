@@ -1,0 +1,50 @@
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <div class="logo">
+            <h1><a href="http://localhost:8080">Proccontrol</a></h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li class="nav-item">
+                    <a href="http://localhost:8080" class="nav-link">Tornar</a>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>
+
+<div class="section-title addPaddingTop">
+    <h2>
+        {{proces.nom}}
+    </h2>
+</div>
+
+<div class="container2">
+
+    <h3>{{pas.numeroDePas}}: {{pas.titol}}</h3><br>
+
+    <div class="form-group">
+        <img class="imatge" [src]="pas.imatge" alt="" />
+    </div><br>
+
+    <div class="form-group">
+        <span> <b> Descripció del pas a realitzar:</b></span>
+        <p>{{ pas.descripcio }}</p><br>
+    </div>
+
+    <div class="form-group">
+        <span> <b> Pots deixar un comentari aquí</b></span>
+        <textarea type="text" cols="30" rows="8" class="form-control" [(ngModel)]="comentari"
+            name="descripcio"></textarea>
+    </div>
+
+    <div class="form-group">
+        <button (click)="pasSeguent()" class="btn-orange">
+            SEGUENT
+        </button>
+    </div>
+
+</div>

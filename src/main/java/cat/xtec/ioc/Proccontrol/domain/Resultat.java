@@ -1,7 +1,9 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,37 +29,37 @@ public class Resultat implements Serializable {
     private long idResultat;
 
     /**
-     * JPA permet tenir una referència sense la columna típica ID i s'encarregarà
-     * de realitzar un SELECT adicional per carregar l'entitat
-     */
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    * JPA permet tenir una referència sense la columna típica ID i s'encarregarà
+    * de realitzar un SELECT adicional per carregar l'entitat
+    */    
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Usuari usuari;
-
-    /**
-     * JPA permet tenir una referència sense la columna típica ID i s'encarregarà
-     * de realitzar un SELECT adicional per carregar l'entitat
-     */
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Referencia referencia;
+    
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private Proces proces;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_on", nullable = false)
-    private Calendar dataRegistre;
+    private Date dataRegistre;
 
+    @Column(name = "comentari_passos", nullable = true)
+    private String[] comentariPassos;
+    
     @Column(name = "temps_passos", nullable = false)
-    private String tempsPassos;
+    private long[] tempsPassos;
 
     @Column(name = "temps_total", nullable = false)
-    private int tempsTotal;
+    private long tempsTotal;
 
     public Resultat() {
     }
 
-    public Resultat(Integer idResultat, Usuari usuari, Referencia referencia, Calendar dataRegistre, String tempsPassos, int tempsTotal) {
+    public Resultat(long idResultat, Usuari usuari, Proces proces, Date dataRegistre, String[] comentariPassos, long[] tempsPassos, long tempsTotal) {
         this.idResultat = idResultat;
         this.usuari = usuari;
-        this.referencia = referencia;
+        this.proces = proces;
         this.dataRegistre = dataRegistre;
+        this.comentariPassos = comentariPassos;
         this.tempsPassos = tempsPassos;
         this.tempsTotal = tempsTotal;
     }
@@ -66,7 +68,7 @@ public class Resultat implements Serializable {
         return idResultat;
     }
 
-    public void setIdResultat(Integer idResultat) {
+    public void setIdResultat(long idResultat) {
         this.idResultat = idResultat;
     }
 
@@ -78,35 +80,43 @@ public class Resultat implements Serializable {
         this.usuari = usuari;
     }
 
-    public Referencia getReferencia() {
-        return referencia;
+    public Proces getProces() {
+        return proces;
     }
 
-    public void setReferencia(Referencia referencia) {
-        this.referencia = referencia;
+    public void setProces(Proces proces) {
+        this.proces = proces;
     }
 
-    public Calendar getDataRegistre() {
+    public Date getDataRegistre() {
         return dataRegistre;
     }
 
-    public void setDataRegistre(Calendar dataRegistre) {
+    public void setDataRegistre(Date dataRegistre) {
         this.dataRegistre = dataRegistre;
     }
 
-    public String getTempsPassos() {
+    public String[] getComentariPassos() {
+        return comentariPassos;
+    }
+
+    public void setComentariPassos(String[] comentariPassos) {
+        this.comentariPassos = comentariPassos;
+    }
+
+    public long[] getTempsPassos() {
         return tempsPassos;
     }
 
-    public void setTempsPassos(String tempsPassos) {
+    public void setTempsPassos(long[] tempsPassos) {
         this.tempsPassos = tempsPassos;
     }
 
-    public int getTempsTotal() {
+    public long getTempsTotal() {
         return tempsTotal;
     }
 
-    public void setTempsTotal(int tempsTotal) {
+    public void setTempsTotal(long tempsTotal) {
         this.tempsTotal = tempsTotal;
     }
 

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!DOCTYPE html>
+    <html lang="en">
+
+        <head>
+            <meta charset="utf-8">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+            <title>Proccontrol</title>
+            <meta content="" name="description">
+            <meta content="" name="keywords">
+
+            <!-- Favicons -->
+            <link href="../assets/img/favicon.png" rel="icon">
+            <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+            <!-- Google Fonts -->
+            <link
+                href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+                rel="stylesheet">
+
+            <!-- Vendor CSS Files -->
+            <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+            <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+            <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+            <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+            <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+            <!-- Template Main CSS File -->
+            <link href="../assets/css/style.css" rel="stylesheet">
+        </head>
+
+        <body>
+            <!-- ======= Header ======= -->
+            <header id="header" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-between align-items-center">
+
+                    <div class="logo">
+                        <h1><a href="/">Proccontrol</a></h1>
+                        <!-- Uncomment below if you prefer to use an image logo -->
+                        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                    </div>
+
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <li role="presentation" class="active">
+                                <a href="/">
+                                    Inici
+                                </a>
+                            </li>
+                            <li role="presentation" class="active">
+                                <a href="/edicio">
+                                    Edició i creació
+                                </a>
+                            </li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav><!-- .navbar -->
+                </div>                            
+            </header><!-- End Header -->
+
+
+            <section class="contact">
+
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                    <!-- Latest compiled and minified JavaScript -->
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script th:inline="javascript">
+                        $(function(){
+                        Highcharts.chart('container', {
+                        chart: {
+                        type: 'column'
+                        },
+                                title: {
+                                text: 'Seguiment resultats de procés: ' + [[${proces.nom}]]
+                                },
+                                subtitle: {
+                                text: 'Temps total emprat pel treballador'
+                                },
+                                xAxis: {
+                                categories: [[${barUsuariTempsTotal.keySet()}]],
+                                        crosshair: true
+                                },
+                                yAxis: {
+                                min: 0,
+                                        title: {
+                                        text: 'Temps emprat'
+                                        }
+                                },
+                                tooltip: {
+                                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                        '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+                                        footerFormat: '</table>',
+                                        shared: true,
+                                        useHTML: true
+                                },
+                                plotOptions: {
+                                column: {
+                                pointPadding: 0.2,
+                                        borderWidth: 0
+                                }
+                                },
+                                series: [{
+                                name: 'Temps',
+                                        data: [[${barUsuariTempsTotal.values()}]]
+
+                                }]
+                        });
+                        });
+                    </script>
+
+                </div>
+            </section>
+
+        </body>
+
+    </html>

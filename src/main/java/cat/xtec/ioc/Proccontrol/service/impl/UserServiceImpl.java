@@ -2,7 +2,6 @@ package cat.xtec.ioc.Proccontrol.service.impl;
 
 import cat.xtec.ioc.Proccontrol.domain.Usuari;
 import cat.xtec.ioc.Proccontrol.repository.UserRepository;
-import cat.xtec.ioc.Proccontrol.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @author JoseAndrade
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl {
 
 	/**
 	 * Repositori d'usuari
@@ -46,7 +45,7 @@ public class UserServiceImpl implements UserService {
      * Obtenir un usuari per id
      */
     public Usuari getUsuariById(long id) {
-        return userRepository.getOne(id);
+        return userRepository.findByUserId(id);
     }
 
     /**

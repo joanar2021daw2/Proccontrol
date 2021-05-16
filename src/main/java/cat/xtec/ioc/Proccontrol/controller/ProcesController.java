@@ -2,13 +2,17 @@ package cat.xtec.ioc.Proccontrol.controller;
 
 import cat.xtec.ioc.Proccontrol.domain.Proces;
 import cat.xtec.ioc.Proccontrol.domain.Referencia;
+import cat.xtec.ioc.Proccontrol.domain.Usuari;
 import cat.xtec.ioc.Proccontrol.service.impl.ProcesServiceImpl;
 import cat.xtec.ioc.Proccontrol.service.impl.ReferenciaServiceImpl;
+import cat.xtec.ioc.Proccontrol.service.impl.UserServiceImpl;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,11 +32,14 @@ public class ProcesController {
 	
     @Autowired
     ProcesServiceImpl procesService;
-    
+
     @Autowired
     ReferenciaServiceImpl referenciaService;
 
-    /**
+    @Autowired
+    UserServiceImpl userService;
+
+     /**
      * Retorna llistat de tots els processos
      */
     @RequestMapping("/all")
@@ -41,9 +48,26 @@ public class ProcesController {
         return "procesLlistat";
     }
 
-    /**
-     * Afegeix un procés
+    /*
+        Retorna llistat dels processos d'una referència de producte
+         passem l'id de l'usuari loguejat a angular (component play-proces)
+        per fer el resultat
      */
+    @GetMapping("/byreferencia")
+    public String byReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
+        Usuari usuari;
+        long usuariId;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        usuari = userService.getUsuariByNom(auth.getName());
+        usuariId = usuari.getUserId();
+
+        model.addAttribute("processos", procesService.getProcessosByReferencia(idReferencia));
+        model.addAttribute("usuerId", usuariId);
+        return "seleccioProces";
+    }
+
+    /*Afegeix un procès*/
     @GetMapping("/new")
     public String newProces(Model model) {
         List<Referencia> referenciesDisponibles = referenciaService.getAllReferencies();

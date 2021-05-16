@@ -44,6 +44,13 @@ public class ReferenciaController {
         model.addAttribute("referenciesBD", referenciaService.getAllReferencies());
         return "referenciaLlistat";
     }
+    
+    /*Retorna llistat de les referencias d'una instal·lació*/
+    @GetMapping("/byinstalacio")
+    public String byInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model){
+        model.addAttribute("referencies", referenciaService.getReferenciesByInstalacio(idInstalacio));
+        return "seleccioReferencia";
+    }
 
     /**
      * Afegeix una referència
