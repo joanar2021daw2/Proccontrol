@@ -32,14 +32,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	/**
+	 * Servei d'usuari
+	 */
     @Autowired
     private UserDetailsService userDetailService;
-
+    
+    /**
+     * 
+     * @return La contrasenya encriptada
+     */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+    
+    /**
+     * Configuració per diferents rol d'usuaris, cal iniciar sessió per accedir, exepte pàgina inicial
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -70,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * CORS configuration
      *
-     * @return Retorna la configuració de CORS que utilitzarà Spring Boot.
+     * @return Retorna la configuració de CORS que utilitzarà Spring Boot
      */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -82,6 +92,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
+    /**
+     * Configuració de CORS
+     * @return URL
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
@@ -100,6 +114,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
+    /**
+     * Autenticació global
+     * @param auth autenticació usuari
+     * @throws Exception Exepció per si dona error
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailService).passwordEncoder(bCryptPasswordEncoder());

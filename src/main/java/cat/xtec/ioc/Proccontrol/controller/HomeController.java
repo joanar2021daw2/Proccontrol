@@ -22,6 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
+	/**
+	 * 
+	 * Vincula URL / amb vista index
+	 */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,6 +35,10 @@ public class HomeController {
         return modelview;
     }
 
+	/**
+	 * 
+	 * Vincula URL /edicio amb vista menuEdicio, i ha de tenir rol de ADMIN
+	 */
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/edicio", method = RequestMethod.GET)
     public ModelAndView menuEdicio(HttpServletRequest request, HttpServletResponse response)
@@ -41,6 +49,10 @@ public class HomeController {
         return modelview;
     }
 
+	/**
+	 * 
+	 * Vincula URL /usersmenu amb vista menuUsuaris, i ha de tenir rol de ADMIN
+	 */
     @RequestMapping(value = "/usersmenu", method = RequestMethod.GET)
     public ModelAndView menuUsuaris(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,6 +62,10 @@ public class HomeController {
         return modelview;
     }
 
+	/**
+	 * 
+	 * Vincula URL /secciomenu amb vista menuSeccions, i ha de tenir rol de ADMIN
+	 */
     @RequestMapping(value = "/secciomenu", method = RequestMethod.GET)
     public ModelAndView menuSeccions(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,6 +75,10 @@ public class HomeController {
         return modelview;
     }
 
+	/**
+	 * 
+	 * Vincula URL /instalaciomenu amb vista menuInstalacions, i ha de tenir rol de ADMIN
+	 */
     @RequestMapping(value = "/insalaciomenu", method = RequestMethod.GET)
     public ModelAndView menuInstalacions(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,6 +88,10 @@ public class HomeController {
         return modelview;
     }
 
+	/**
+	 * 
+	 * Vincula URL /referenciamenu amb vista menuReferencies, i ha de tenir rol de ADMIN
+	 */
     @RequestMapping(value = "/referenciamenu", method = RequestMethod.GET)
     public ModelAndView menuReferencies(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -77,11 +101,15 @@ public class HomeController {
         return modelview;
     }
 
+	/**
+	 * 
+	 * Vincula URL /processmenu amb vista menuEdicio, i ha de tenir rol de ADMIN
+	 */
     @RequestMapping(value = "/processmenu", method = RequestMethod.GET)
     public ModelAndView menuProcessos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ModelAndView modelview = new ModelAndView("menuProcessos");
+        ModelAndView modelview = new ModelAndView("menuEdicio");
         modelview.getModelMap().addAttribute("benvinguda", "Menú processos");
         return modelview;
     }

@@ -14,19 +14,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @SpringBootApplication
 public class DawM12ProccontrolApplication implements CommandLineRunner {
 
+	/**
+	 * Encriptar la contrasenya
+	 */
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Repositori d'usuari
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Inicia l'applicació
+     * @param args
+     */
     public static void main(String[] args) {
         SpringApplication.run(DawM12ProccontrolApplication.class, args);
     }
 
+    /**
+     * Primer cop iniciada la aplicació es crea un usuari administrador 
+     */
     @Override
     public void run(String... args) throws Exception {
-        //Primer cop iniciada la aplicació es crea un usuari administrador 
         Usuari admin = null;
         admin = userRepository.findByNom("proccontrol");
         if (admin == null) {

@@ -5,8 +5,8 @@ package cat.xtec.ioc.Proccontrol.config;
  * Es crida l'usuari pel nom i es comprova el seu rol.
  * 
  * @author JoseAndrade
- * @Version 1.0
- * @Since1.0
+ * @version 1.0
+ * @since 1.0
  */
 import cat.xtec.ioc.Proccontrol.domain.Usuari;
 import cat.xtec.ioc.Proccontrol.repository.UserRepository;

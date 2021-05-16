@@ -17,27 +17,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- *
+ * Aquesta classe serveix per crear instal·lació, secció, vincular-les  
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("/instalacions")
 public class InstalacioController {
 
+	/**
+	 * Servei de l'instalació
+	 */
     @Autowired
     InstalacioServiceImpl instService;
     
+    /**
+     * Servei de secció
+     */
     @Autowired
     SeccioServiceImpl seccioService;
 
-    /*Retorna llistat de totes les instal·lacions*/
+    /**
+     * 
+     * @return Retorna llistat de totes les instal·lacions
+     */
     @RequestMapping("/all")
     public String getAllInstalacions(Model model) {
         model.addAttribute("instalacionsBD", instService.getAllInstalacions());
         return "instalacioLlistat";
     }
 
-    /*Afegeix una instalació*/
+    /**
+     * Afegeix una instalació
+     */
     @GetMapping("/new")
     public String newInstalacio(Model model) {
         List<Seccio> seccionsDisponibles = seccioService.getAllSeccions();        
@@ -49,14 +60,18 @@ public class InstalacioController {
         return "instalacioForm";
     }
 
-    /*Processa el formulari i afegeix l'instalació a la BD*/
+    /**
+     * Processa el formulari i afegeix l'instalació a la BD
+     */
     @GetMapping(value = "/instalacio/add")
     public String processAddForm(@ModelAttribute("forminstalacio") Instalacio formInstalacio, BindingResult result) {
         instService.saveInstalacio(formInstalacio);
         return "redirect:/instalacions/all";
     }
 
-    /*Actualizta una instalació*/
+    /**
+     * Actualizta una instalació
+     */
     @GetMapping("/instalacio")
     public String updateInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model) {
         List<Seccio> seccionsDisponibles = seccioService.getAllSeccions();        
@@ -73,14 +88,18 @@ public class InstalacioController {
         return "instalacioForm";
     }
 
-    /*Processa el formulari i actualitza la instal·lació a la BD*/
+    /**
+     * Processa el formulari i actualitza la instal·lació a la BD
+     */
     @GetMapping("/instalacio/update")
     public String processUpdateForm(@ModelAttribute("forminstalacio") Instalacio formInstalacio, BindingResult result) {
         instService.updateInstalacio(formInstalacio);
         return "redirect:/instalacions/all";
     }
 
-    /*Esborra la instal·lació per la ID*/
+    /**
+     * Esborra la instal·lació per la ID
+     */
     @GetMapping("/delete")
     public String deleteInstalacio(@RequestParam("idInstalacio") long idInstalacio)
             throws ServletException, IOException {

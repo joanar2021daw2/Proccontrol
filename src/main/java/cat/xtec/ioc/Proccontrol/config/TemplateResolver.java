@@ -19,7 +19,10 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Configuration
 public class TemplateResolver {
 
-    /*-----------Mapeja el directori template instalacio-----------*/
+	/**
+	 * Mapeja el directori template instalacio
+	 * @return Resolutor de la plantilla Instalació
+	 */
     @Bean
     public ClassLoaderTemplateResolver instalacioTemplateResolver() {
         ClassLoaderTemplateResolver instalacioTemplateResolver = new ClassLoaderTemplateResolver();
@@ -33,7 +36,10 @@ public class TemplateResolver {
         return instalacioTemplateResolver;
     }
 
-    /*-----------Mapeja el directori template seccio-----------*/
+    /**
+     * Mapeja el directori template seccio
+     * @return Resolutor de la plantilla Secció
+     */
     @Bean
     public ClassLoaderTemplateResolver seccioTemplateResolver() {
         ClassLoaderTemplateResolver seccioTemplateResolver = new ClassLoaderTemplateResolver();
@@ -47,7 +53,10 @@ public class TemplateResolver {
         return seccioTemplateResolver;
     }
 
-    /*-----------Mapeja el directori template user-----------*/
+    /**
+     * Mapeja el directori template user
+     * @return Mapeja el directori template Usuari
+     */
     @Bean
     public ClassLoaderTemplateResolver userTemplateResolver() {
         ClassLoaderTemplateResolver userTemplateResolver = new ClassLoaderTemplateResolver();
@@ -61,7 +70,10 @@ public class TemplateResolver {
         return userTemplateResolver;
     }
 
-    /*-----------Mapeja el directori template proces-----------*/
+    /**
+     * Mapeja el directori template proces
+     * @return Mapeja el directori template procés
+     */
     @Bean
     public ClassLoaderTemplateResolver procesemplateResolver() {
         ClassLoaderTemplateResolver processosTemplateResolver = new ClassLoaderTemplateResolver();
@@ -75,7 +87,10 @@ public class TemplateResolver {
         return processosTemplateResolver;
     }
 
-    /*-----------Mapeja el directori template referencia-----------*/
+    /**
+     * Mapeja el directori template referencia
+     * @return Mapeja el directori template referència
+     */
     @Bean
     public ClassLoaderTemplateResolver referenciaTemplateResolver() {
         ClassLoaderTemplateResolver referenciesTemplateResolver = new ClassLoaderTemplateResolver();
