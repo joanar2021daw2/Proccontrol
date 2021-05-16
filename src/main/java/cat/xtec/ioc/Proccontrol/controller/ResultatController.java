@@ -7,7 +7,10 @@ import cat.xtec.ioc.Proccontrol.service.impl.ProcesServiceImpl;
 import cat.xtec.ioc.Proccontrol.service.impl.ReferenciaServiceImpl;
 import cat.xtec.ioc.Proccontrol.service.impl.ResultatServiceImpl;
 import cat.xtec.ioc.Proccontrol.service.impl.SeccioServiceImpl;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.TreeMultimap;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,16 +80,19 @@ public class ResultatController {
     public String getResultatByProcesChart(@RequestParam("idProces") long idProces, Model model) {
         Proces proces = procesService.getProcesById(idProces);
         List<Resultat> resultatsPerProces = resultatService.getResultatsByProces(idProces);
-        Map<String, Long> barUsuariTempsTotal = new HashMap<>();
+        List<Long> tempsUsuaris = new ArrayList<>();
+        List<String> noms = new ArrayList<>();
 
         for (Resultat r : resultatsPerProces) {
-            barUsuariTempsTotal.put((r.getUsuari().getNom() + " "
-                    + r.getUsuari().getCognom1()), r.getTempsTotal());
+            noms.add((r.getUsuari().getNom() + " "
+                    + r.getUsuari().getCognom1()));
+            tempsUsuaris.add(r.getTempsTotal());
 
         }
 
         model.addAttribute("proces", proces);
-        model.addAttribute("barUsuariTempsTotal", barUsuariTempsTotal);
+        model.addAttribute("usuaris", noms);
+        model.addAttribute("tempsusuaris", tempsUsuaris);
         return "graficaUsuariTempsTotal";
     }
 

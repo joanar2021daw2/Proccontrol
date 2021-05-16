@@ -86,7 +86,7 @@
                                 text: 'Temps total emprat pel treballador'
                                 },
                                 xAxis: {
-                                categories: [[${barUsuariTempsTotal.keySet()}]],
+                                categories: [[${usuaris}]],
                                         crosshair: true
                                 },
                                 yAxis: {
@@ -110,8 +110,8 @@
                                 }
                                 },
                                 series: [{
-                                name: 'Temps',
-                                        data: [[${barUsuariTempsTotal.values()}]]
+                                name: 'Temps usuari',
+                                        data: [[${tempsusuaris}]]
 
                                 }]
                         });
