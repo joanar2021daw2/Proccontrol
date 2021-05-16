@@ -16,7 +16,9 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**
- *
+ * Aquesta classe model conté propietats, constructor, getter i setter de referència
+ * Anotem amb JsonIgnore per tal de no mostrar les instal·lacions quan es genera la 
+ * resposta Json de llistar processos i fer bucle
  * @author JoseAndrade
  */
 @Entity
@@ -31,13 +33,17 @@ public class Referencia implements Serializable {
     @Column(name = "nom", nullable = false)
     private String nom;
 
-    /*L'entitat Referencia pot tenir múltiples resultats(propietari de la relació 
-    és a Resultat "ManyToOne Referencia referencia"*/
+    /**
+     * L'entitat Referencia pot tenir múltiples resultats(propietari de la relació 
+     * és a Resultat "ManyToOne Referencia referencia"
+     */
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "referencia", fetch = FetchType.LAZY)
     @OrderBy("created_on asc")
     private Set<Resultat> resultat;
 
-    //La entitat Refernecia pot tenir múltiples processos
+    /**
+     * La entitat Referència pot tenir múltiples processos
+     */
     @JsonIgnore
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "referencia")
     private Set<Proces> processos;
@@ -89,11 +95,6 @@ public class Referencia implements Serializable {
     public void setProcessos(Set<Proces> processos) {
         this.processos = processos;
     }
-
-    /*
-    * Anotem amb JsonIgnore per tal de no mostrar les instal·lacions
-    * quan es genera la resposta Json de llistar processos i fer bucle
-     */
     
     public Instalacio getInstalacio() {
         return instalacio;

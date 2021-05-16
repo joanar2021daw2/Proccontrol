@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Classe del domini representa un usuari
+ * Aquesta classe model conté propietats, constructor, getter i setter d'usuari
  * @author JoseAndrade
  */
 @Entity
@@ -45,8 +45,10 @@ public class Usuari implements Serializable {
     @Column(name = "active", columnDefinition = "BOOLEAN DEFAULT true", nullable = false)
     private Boolean active;
 
-    /*Usuari conté resultats, mappedBy per indicar que és una relació bidireccional
-    és a dir, tindrà també una rel·lació capa l'entitat User */
+    /**
+     * Usuari conté resultats, mappedBy per indicar que és una relació bidireccional
+     * és a dir, tindrà també una rel·lació capa l'entitat User
+     */
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "usuari")
     private Set<Resultat> resultats;
 

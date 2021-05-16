@@ -17,27 +17,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- *
+ * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar referència
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("referencies")
 public class ReferenciaController {
 
+	/**
+	 * Servei de referència
+	 */
     @Autowired
     ReferenciaServiceImpl referenciaService;
 
+    /**
+     * Servei d'instal·lació
+     */
     @Autowired
     InstalacioServiceImpl instalacioService;
 
-    /*Retorna llistat de totes les referències*/
+    /**
+     * Retorna llistat de totes les referències
+     */
     @RequestMapping("/all")
     public String getAllReferencies(Model model) {
         model.addAttribute("referenciesBD", referenciaService.getAllReferencies());
         return "referenciaLlistat";
     }
 
-    /*Afegeix una referència*/
+    /**
+     * Afegeix una referència
+     */
     @GetMapping("/new")
     public String newReferencia(Model model) {
         List<Instalacio> instalacionsDisponibles = instalacioService.getAllInstalacions();
@@ -49,14 +59,18 @@ public class ReferenciaController {
         return "referenciaForm";
     }
 
-    /*Processa el formulari i afegeix la referència a la BD*/
+    /**
+     * Processa el formulari i afegeix la referència a la BD
+     */
     @GetMapping(value = "/referencia/add")
     public String processAddForm(@ModelAttribute("formreferencia") Referencia formReferencia, BindingResult result) {
         referenciaService.saveReferencia(formReferencia);
         return "redirect:/referencies/all";
     }
 
-    /*Actualizta una referència*/
+    /**
+     * Actualitza una referència
+     */
     @GetMapping("/referencia")
     public String updateReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
         List<Instalacio> instalacionsDisponibles = instalacioService.getAllInstalacions();
@@ -73,14 +87,18 @@ public class ReferenciaController {
         return "referenciaForm";
     }
 
-    /*Processa el formulari i actualitza la referència a la BD*/
+    /**
+     * Processa el formulari i actualitza la referència a la BD
+     */
     @GetMapping("/referencia/update")
     public String processUpdateForm(@ModelAttribute("formreferencia") Referencia formReferencia, BindingResult result) {
         referenciaService.updateReferencia(formReferencia);
         return "redirect:/referencies/all";
     }
 
-    /*Esborra la referència per la ID*/
+    /**
+     * Esborra la referència per la ID
+     */
     @GetMapping("/delete")
     public String deleteReferencia(@RequestParam("idReferencia") long idReferencia)
             throws ServletException, IOException {

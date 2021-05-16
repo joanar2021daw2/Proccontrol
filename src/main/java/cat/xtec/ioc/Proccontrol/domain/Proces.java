@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * Aquesta classe model conté propietats, constructor, getter i setter de procés
  * @author JoseAndrade
  */
 @Entity

@@ -17,16 +17,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar usuari
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
+	/**
+	 * Servei usuari
+	 */
     @Autowired
     UserServiceImpl userService;
 
+    /**
+     * Obtenir tots els usuaris de la base de dades
+     */
     @GetMapping("/all")
     public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,7 +43,9 @@ public class UserController {
         return modelView;
     }
 
-    /*Nou usuari*/
+    /**
+     * Posar vista de crear usuari
+     */
     @GetMapping("/new")
     public ModelAndView newUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,14 +56,19 @@ public class UserController {
         modelview.getModelMap().addAttribute("formuser", formUser);
         return modelview;
     }
-
+    
+    /**
+     * Crear nou usuari
+     */
     @GetMapping(value = "/user/add")
     public String processAddForm(@ModelAttribute("formuser") Usuari formUser, BindingResult result) {
         userService.saveUsuari(formUser);
         return "redirect:/users/all";
     }
 
-    /*Actualiztar usuari*/
+    /**
+     * Actualitzar usuari per id
+     */
     @GetMapping("/user")
     public ModelAndView updateUser(@RequestParam("userId") long userId, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -72,12 +85,18 @@ public class UserController {
         return modelView;
     }
 
+    /**
+     * Actualitzar usuari
+     */
     @GetMapping("/user/update")
     public String processUpdateForm(@ModelAttribute("formuser") Usuari formUser, BindingResult result) {
         userService.updateUsuari(formUser);
         return "redirect:/users/all";
     }
 
+    /**
+     * Esborrar usuari per id
+     */
     @GetMapping("/delete")
     public String deleteUser(@RequestParam("userId") int userId, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

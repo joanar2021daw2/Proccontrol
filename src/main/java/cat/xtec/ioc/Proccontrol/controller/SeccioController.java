@@ -14,24 +14,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- *
+ * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar secció
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("/seccions")
 public class SeccioController {
-
+	/**
+	 * Servei de secció
+	 */
     @Autowired
     SeccioServiceImpl seccioService;
 
-    /*Retorna llistat de totes les seccions*/
+    /**
+     * Retorna llistat de totes les seccions
+     */
     @RequestMapping("/all")
     public String getAllSeccions(Model model) {
         model.addAttribute("seccionsBD", seccioService.getAllSeccions());
         return "seccioLlistat";
     }
 
-    /*Afegeix una secció*/
+    /**
+     * Afegeix una secció
+     */
     @GetMapping("/new")
     public String newSeccio(Model model) {
         Seccio formSeccio = new Seccio();
@@ -40,7 +46,9 @@ public class SeccioController {
         return "seccioForm";
     }
 
-    /*Processa el formulari i afegeix la secció a la BD*/
+    /**
+     * Processa el formulari i afegeix la secció a la BD
+     */
      //@PostMapping("/seccio/add")
     @GetMapping(value = "/seccio/add")
     //@RequestMapping(value="/seccio/add", method = RequestMethod.POST)
@@ -49,7 +57,9 @@ public class SeccioController {
         return "redirect:/seccions/all";
     }
 
-    /*Actualizta una secció*/
+    /**
+     * Actualitza una secció
+     */
     @GetMapping("/seccio")
     public String updateSeccio(@RequestParam("idSeccio") long idSeccio, Model model) {
 
@@ -64,14 +74,18 @@ public class SeccioController {
         return "seccioForm";
     }
 
-    /*Processa el formulari i actualitza la secció a la BD*/
+    /**
+     * Processa el formulari i actualitza la secció a la BD
+     */
     @GetMapping("/seccio/update")
     public String processUpdateForm(@ModelAttribute("formseccio") Seccio formSeccio, BindingResult result) {
         seccioService.updateSeccio(formSeccio);
         return "redirect:/seccions/all";
     }
 
-    /*Esborra la secció per la ID*/
+    /**
+     * Esborra la secció per la ID
+     */
     @GetMapping("/delete")
     public String deleteSeccio(@RequestParam("idSeccio") long idSeccio)
             throws ServletException, IOException {

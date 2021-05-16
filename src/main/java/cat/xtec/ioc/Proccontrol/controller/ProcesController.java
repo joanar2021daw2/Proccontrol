@@ -18,27 +18,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- *
+ * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar procés
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("/processos")
 public class ProcesController {
 
+	
     @Autowired
     ProcesServiceImpl procesService;
     
     @Autowired
     ReferenciaServiceImpl referenciaService;
 
-    /*Retorna llistat de tots els processos*/
+    /**
+     * Retorna llistat de tots els processos
+     */
     @RequestMapping("/all")
     public String getAllProcessos(Model model) {
         model.addAttribute("processosBD", procesService.getAllProcessos());
         return "procesLlistat";
     }
 
-    /*Afegeix un procès*/
+    /**
+     * Afegeix un procés
+     */
     @GetMapping("/new")
     public String newProces(Model model) {
         List<Referencia> referenciesDisponibles = referenciaService.getAllReferencies();
@@ -50,7 +55,9 @@ public class ProcesController {
         return "procesForm";
     }
 
-    /*Processa el formulari i afegeix el procès a la BD*/
+    /**
+     * Processa el formulari i afegeix el procès a la BD
+     */
     @GetMapping(value = "/proces/add")
     public String processAddForm(@ModelAttribute("formproces") Proces formProces, BindingResult result) {
         Calendar calendar = Calendar.getInstance();
@@ -59,7 +66,9 @@ public class ProcesController {
         return "redirect:/processos/all";
     }
 
-    /*Actualizta un procès*/
+    /**
+     * Actualizta un procés
+     */
     @GetMapping("/proces")
     public String updateProces(@RequestParam("idProces") long idProces, Model model) {
         List<Referencia> referenciesDisponibles = referenciaService.getAllReferencies();
@@ -76,7 +85,9 @@ public class ProcesController {
         return "procesForm";
     }
 
-    /*Processa el formulari i actualitza el pocès a la BD*/
+    /**
+     * Processa el formulari i actualitza el pocés a la BD
+     */
     @GetMapping("/proces/update")
     public String processUpdateForm(@ModelAttribute("formproces") Proces formProces, BindingResult result) {
         Calendar calendar = Calendar.getInstance();
@@ -85,7 +96,9 @@ public class ProcesController {
         return "redirect:/processos/all";
     }
 
-    /*Esborra el procès per la ID*/
+    /**
+     * Esborra el procès per la ID
+     */
     @GetMapping("/delete")
     public String deleteProces(@RequestParam("idProces") long idProces)
             throws ServletException, IOException {

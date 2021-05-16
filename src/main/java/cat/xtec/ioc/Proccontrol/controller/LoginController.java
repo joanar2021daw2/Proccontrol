@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- *
+ * Classe per iniciar sessió, pot ser succés o és dóna error
  * @author JoseAndrade
  */
 @Controller

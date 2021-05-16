@@ -4,10 +4,9 @@ import cat.xtec.ioc.Proccontrol.domain.Referencia;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ * Classe interfície referència
  * @author JoseAndrade
  */
 public interface ReferenciaRepository extends  JpaRepository<Referencia, Long>{
     Referencia findByNom(String nom);
-    
 }

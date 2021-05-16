@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Aquesta classe model conté propietats, constructor, getter i setter de secció
  * @author JoseAndrade
  */
 @Entity
@@ -31,7 +31,9 @@ public class Seccio implements Serializable {
     @Column(name = "tipus_produccio", nullable = false)
     private String tipusProduccio;
 
-    //La Secció conté instal·lacions
+    /**
+     * La Secció conté instal·lacions
+     */
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "seccio")
     private Set<Instalacio> instalacions;
 

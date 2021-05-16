@@ -6,7 +6,7 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
 /**
- *
+ * Aquesta classe serveix per donar format a les dades
  * @author JoseAndrade
  */
 import java.time.LocalDateTime;

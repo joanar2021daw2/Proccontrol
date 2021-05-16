@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 /**
- *
+ * Classe interfície d'instal·lació
  * @author JoseAndrade
  */
 public interface InstalacioRepository extends JpaRepository<Instalacio, Long>{

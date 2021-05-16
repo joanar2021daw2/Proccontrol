@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * Aquesta classe model conté propietats, constructor, getter i setter d'instal·lació
  * @author JoseAndrade
  */
 @Entity
@@ -28,7 +28,9 @@ public class Instalacio implements Serializable{
     @Column (name="nom", nullable = false)
     private String nom;
     
-    //La instal·lació conté referències
+    /**
+     * La instal·lació conté referències
+     */
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Set<Referencia> referencies;
     

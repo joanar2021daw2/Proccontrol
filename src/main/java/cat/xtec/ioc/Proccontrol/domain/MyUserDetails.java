@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- *
+ * Aquesta classe conté credencial de l'usuari per autenticar
  * @author JoseAndrade
  */
 public class MyUserDetails implements UserDetails {

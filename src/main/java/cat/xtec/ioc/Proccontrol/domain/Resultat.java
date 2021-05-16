@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * Aquesta classe model conté propietats, constructor, getter i setter de resultat
  * @author JoseAndrade
  */
 @Entity
@@ -26,13 +26,17 @@ public class Resultat implements Serializable {
     @Column(name = "resultat_id")
     private long idResultat;
 
-    /*JPA permet tenir una referència sense la columna típica ID i s'encarregarà
-    de realitzar un SELECT adicional per carregar l'entitat*/
+    /**
+     * JPA permet tenir una referència sense la columna típica ID i s'encarregarà
+     * de realitzar un SELECT adicional per carregar l'entitat
+     */
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Usuari usuari;
 
-    /*JPA permet tenir una referència sense la columna típica ID i s'encarregarà
-    de realitzar un SELECT adicional per carregar l'entitat*/
+    /**
+     * JPA permet tenir una referència sense la columna típica ID i s'encarregarà
+     * de realitzar un SELECT adicional per carregar l'entitat
+     */
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Referencia referencia;
 
@@ -105,8 +109,5 @@ public class Resultat implements Serializable {
     public void setTempsTotal(int tempsTotal) {
         this.tempsTotal = tempsTotal;
     }
-
-    
-    
 
 }

@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- *
+ * Aquesta classe model conté propietats, constructor, getter i setter de pas de procés
  * @author JoseAndrade
  */
 @Entity
