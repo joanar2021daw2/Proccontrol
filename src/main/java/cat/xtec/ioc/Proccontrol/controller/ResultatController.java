@@ -69,7 +69,7 @@ public class ResultatController {
         return "resultatLlistat";
     }
 
-    /*
+    /**
      * Mètode que retorna la vista de la gràfica de barres que mostra usuari/tempsTotal
      * dels resultats obtinguts pels diferents usuaris que han realitzat un procés
      *
@@ -96,35 +96,45 @@ public class ResultatController {
         return "graficaUsuariTempsTotal";
     }
 
-    /*Retorna seccions per que l'usuari seleccioni una i verue les instalacions*/
+    /**
+     * Retorna seccions per que l'usuari seleccioni una i verue les instalacions
+     */
     @RequestMapping("/selectsection")
     public String selectOneSeccio(Model model) {
         model.addAttribute("seccionsBD", seccioService.getAllSeccions());
         return "perSeccio";
     }
 
-    /*Selecciona les instalacions que hi han a la seccio*/
+    /**
+     * Selecciona les instalacions que hi han a la seccio
+     */
     @RequestMapping("/byseccio")
     public String getInstalacionsBySeccio(@RequestParam("idSeccio") long idSeccio, Model model) {
         model.addAttribute("instalacions", instalacioService.getInstalacioBySeccio(idSeccio));
         return "perInstalacio";
     }
 
-    /*Retorna llistat de les referencias d'una instal·lació*/
+    /**
+     * Retorna llistat de les referencias d'una instal·lació
+     */
     @GetMapping("/byinstalacio")
     public String byInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model) {
         model.addAttribute("referencies", referenciaService.getReferenciesByInstalacio(idInstalacio));
         return "perReferencia";
     }
 
-    /*Retorna llistat dels processos d'una referència de producte*/
+    /** 
+     * Retorna llistat dels processos d'una referència de producte
+     */
     @GetMapping("byreferencia")
     public String byReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
         model.addAttribute("processos", procesService.getProcessosByReferencia(idReferencia));
         return "perProces";
     }
 
-    /*Esborra el resultat per la ID*/
+    /**
+     * Esborra el resultat per la ID
+     */
     @GetMapping("/delete")
     public String deleteResultat(@RequestParam("idResultat") long idResultat,
             RedirectAttributes redirectAttributes) throws ServletException, IOException {

@@ -1,121 +1,115 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="eng">
 
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Proccontrol</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
+	<title>Proccontrol</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
 
-        <!-- Favicons -->
-        <link href="/assets/img/favicon.png" rel="icon">
-        <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<!-- Favicons -->
+	<link href="/assets/img/favicon.png" rel="icon">
+	<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        <!-- Google Fonts -->
-        <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-            rel="stylesheet">
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
 
-        <!-- Vendor CSS Files -->
-        <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-        <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-        <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<!-- Vendor CSS Files -->
+	<link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+	<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        <!-- Template Main CSS File -->
-        <link href="/assets/css/style.css" rel="stylesheet">
-    </head>
+	<!-- Template Main CSS File -->
+	<link href="/assets/css/style.css" rel="stylesheet">
+</head>
 
-    <body>
-        <!-- ======= Header ======= -->
-        <header id="header" class="d-flex align-items-center">
-            <div class="container d-flex justify-content-between align-items-center">
+<body>
+	<!-- ======= Header ======= -->
+	<header id="header" class="d-flex align-items-center">
+		<div class="container d-flex justify-content-between align-items-center">
 
-                <div class="logo">
-                    <h1><a href="/">Proccontrol</a></h1>
-                    <!-- Uncomment below if you prefer to use an image logo -->
-                    <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-                </div>
+			<div class="logo">
+				<h1><a href="/">Proccontrol</a></h1>
+			</div>
 
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li role="presentation" class="active">
-                            <a href="/">
-                                Inici
-                            </a>
-                        </li>
-                        <li role="presentation" class="active">
-                            <a href="/edicio">
-                                Edició i creació
-                            </a>
-                        </li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-            </div>
+			<nav id="navbar" class="navbar">
+				<ul>
+					<li role="presentation" class="active">
+						<a href="/">
+							Inici
+						</a>
+					</li>
+					<li role="presentation" class="active">
+						<a href="/edicio">
+							Edició i creació
+						</a>
+					</li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav><!-- .navbar -->
+		</div>
 
-        </header><!-- End Header -->
+	</header><!-- End Header -->
 
 
-        <!-- ======= Table Section ======= -->
-        <section class="contact">
-            <div class="section-title addPaddingTop">
-                <h2>Resultats</h2>
-                <a th:href="@{/resultats/byproceschart(idProces=${idProces})}" class="btn btn-primary">
-                    <i class="bi bi-info"></i>
-                </a>
-            </div>
-            <div class="container">
-                <table class="table table-striped table-hover">
-                    <thead class="table-danger">
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Proces</th>
-                            <th scope="col">Num operari</th>
-                            <th scope="col">Nom usuari</th>
-                            <th scope="col">Temps emprat</th>
-                            <th scope="col">Data realitzat</th>
-                            <th scope="col">Accions</th>
-                        </tr>
-                    </thead>
+	<!-- ======= Table Section ======= -->
+	<section class="contact">
+		<div class="section-title addPaddingTop">
+			<h2>Resultats</h2>
+			<a th:href="@{/resultats/byproceschart(idProces=${idProces})}" class="btn btn-primary">
+				<i class="bi bi-info"></i>
+			</a>
+		</div>
+		<div class="container">
+			<table class="table table-striped table-hover">
+				<thead class="table-danger">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Proces</th>
+						<th scope="col">Num operari</th>
+						<th scope="col">Nom usuari</th>
+						<th scope="col">Temps emprat</th>
+						<th scope="col">Data realitzat</th>
+						<th scope="col">Accions</th>
+					</tr>
+				</thead>
 
-                    <tbody>
-                    <th:block th:each="resultat : ${resultatsBD}">
-                        <tr>
-                            <th scope="row" th:text="${resultat.idResultat}"></th>
-                            <td id="nom" th:text="${resultat.proces.nom}"></td>
-                            <td id="nom" th:text="${resultat.usuari.numOperari}"></td>
-                            <td id="nom" th:text="${resultat.usuari.nom} + ' ' + ${resultat.usuari.cognom1}"></td>
-                            <td id="tipus" th:text="${resultat.tempsTotal} + ' segons'"></td>
-                            <td id="tipus" th:text="${resultat.dataRegistre}"></td>                            
+				<tbody>
+					<th:block th:each="resultat : ${resultatsBD}">
+						<tr>
+							<th scope="row" th:text="${resultat.idResultat}"></th>
+							<td id="nom" th:text="${resultat.proces.nom}"></td>
+							<td id="nom" th:text="${resultat.usuari.numOperari}"></td>
+							<td id="nom" th:text="${resultat.usuari.nom} + ' ' + ${resultat.usuari.cognom1}"></td>
+							<td id="tipus" th:text="${resultat.tempsTotal} + ' segons'"></td>
+							<td id="tipus" th:text="${resultat.dataRegistre}"></td>
 
-                            <td>
-                                <a th:href="@{/resultats/details(idResultat=${resultat.idResultat})}" class="btn btn-primary">
-                                    <i class="bi bi-info"></i>
-                                </a>
-                                <a th:href="@{/resultats/delete(idResultat=${resultat.idResultat})}" class="btn btn-danger">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
+							<td>
+								<a th:href="@{/resultats/details(idResultat=${resultat.idResultat})}"
+									class="btn btn-primary">
+									<i class="bi bi-info"></i>
+								</a>
+								<a th:href="@{/resultats/delete(idResultat=${resultat.idResultat})}"
+									class="btn btn-danger">
+									<i class="bi bi-trash"></i>
+								</a>
+							</td>
 
-                        </tr>
-                    </th:block>
-                    </tbody>
+						</tr>
+					</th:block>
+				</tbody>
 
-                </table>
-            </div>
-        </section><!-- End Table Section -->
+			</table>
+		</div>
+	</section><!-- End Table Section -->
 
-
-    </body>
+</body>
 
 </html>
-
-
-
-
-

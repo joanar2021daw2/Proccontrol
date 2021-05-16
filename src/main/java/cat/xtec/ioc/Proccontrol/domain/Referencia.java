@@ -31,7 +31,9 @@ public class Referencia implements Serializable {
     @Column(name = "nom", nullable = false)
     private String nom;
 
-    //La entitat Refernecia pot tenir múltiples processos
+    /**
+     * La entitat Referencia pot tenir múltiples processos
+     */
     @JsonIgnore
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "referencia")
     private Set<Proces> processos;
