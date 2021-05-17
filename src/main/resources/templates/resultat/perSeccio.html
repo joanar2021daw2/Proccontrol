@@ -42,14 +42,18 @@
 
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li th:if="${#authorization.expression('isAnonymous()')}"><a class="active" href="/login">Iniciar sessió</a></li>
-                        <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/seccions/selectone">Selecció de procès</a></li>                       
+                        <li th:if="${#authorization.expression('isAnonymous()')}"><a class="active" href="/login">Iniciar
+                                sessió</a></li>
+                        <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/seccions/selectone">Selecció
+                                de procès</a></li>
+                        <li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a href="/edicio">Edició i
+                                control</a></li>
                         <li style="margin-left: 20px" th:if="${#authorization.expression('isAuthenticated()')}">
                             <h6 th:inline="text">Hola [[${#httpServletRequest.remoteUser}]]</h6>
                         </li>
                         <li style="margin-left: 20px" th:if="${#authorization.expression('isAuthenticated()')}">
                             <form th:action="@{/logout}" method="post">
-                                <input type="submit" value="Sign Out"/>
+                                <input type="submit" value="Sign Out" />
                             </form>
                         </li>
                     </ul>

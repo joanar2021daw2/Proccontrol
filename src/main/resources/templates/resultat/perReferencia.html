@@ -1,54 +1,58 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="eng">
 
-<head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<title>Proccontrol</title>
-	<meta content="" name="description">
-	<meta content="" name="keywords">
+        <title>Proccontrol</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
 
-	<!-- Favicons -->
-	<link href="../assets/img/favicon.png" rel="icon">
-	<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <!-- Favicons -->
+        <link href="../assets/img/favicon.png" rel="icon">
+        <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-	<!-- Google Fonts -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-		rel="stylesheet">
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
 
-	<!-- Vendor CSS Files -->
-	<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-	<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-	<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-	<link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-	<link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <!-- Vendor CSS Files -->
+        <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-	<!-- Template Main CSS File -->
-	<link href="../assets/css/style.css" rel="stylesheet">
-</head>
+        <!-- Template Main CSS File -->
+        <link href="../assets/css/style.css" rel="stylesheet">
+    </head>
 
-<body>
-	<!-- ======= Header ======= -->
-	<header id="header" class="d-flex align-items-center">
-		<div class="container d-flex justify-content-between align-items-center">
+    <body>
+        <!-- ======= Header ======= -->
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex justify-content-between align-items-center">
 
-			<div class="logo">
-				<h1><a href="/">Proccontrol</a></h1>
-			</div>
+                <div class="logo">
+                    <h1><a href="/">Proccontrol</a></h1>
+                </div>
 
-			<nav id="navbar" class="navbar">
-				<ul>
-					<li th:if="${#authorization.expression('isAnonymous()')}"><a class="active" href="/login">Iniciar sessió</a></li>
-                        <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/seccions/selectone">Selecció de procès</a></li>                        
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li th:if="${#authorization.expression('isAnonymous()')}"><a class="active" href="/login">Iniciar
+                                sessió</a></li>
+                        <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/seccions/selectone">Selecció
+                                de procès</a></li>
+                        <li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a href="/edicio">Edició i
+                                control</a></li>
                         <li style="margin-left: 20px" th:if="${#authorization.expression('isAuthenticated()')}">
                             <h6 th:inline="text">Hola [[${#httpServletRequest.remoteUser}]]</h6>
                         </li>
                         <li style="margin-left: 20px" th:if="${#authorization.expression('isAuthenticated()')}">
                             <form th:action="@{/logout}" method="post">
-                                <input type="submit" value="Sign Out"/>
+                                <input type="submit" value="Sign Out" />
                             </form>
                         </li>
                     </ul>
@@ -66,7 +70,7 @@
                         <h2>Selecciona la referència</h2>
                     </div>
                     <div class="row">
-                        
+
                         <div class="row">
                             <th:block th:each="referencia : ${referencies}">
                                 <div class="col-lg-4 col-md-6">
