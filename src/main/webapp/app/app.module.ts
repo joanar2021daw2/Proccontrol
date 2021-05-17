@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrivacitatComponent } from './privacitat/privacitat.component';
 import { PlayProcesComponent } from './play-proces/play-proces.component';
 import { PlayPasComponent } from './play-pas/play-pas.component';
+import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { PlayPasComponent } from './play-pas/play-pas.component';
     PrivacitatComponent,
     PlayProcesComponent,
     PlayPasComponent,
+    UserLayoutComponent,
+    AdminLayoutComponent,
   ],
   imports: [
     BrowserModule,
