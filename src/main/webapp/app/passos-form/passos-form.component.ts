@@ -9,6 +9,9 @@ import { ProcesService } from '../proces.service';
   templateUrl: './passos-form.component.html',
   styleUrls: ['./passos-form.component.css']
 })
+/**
+ * Aquesta classe serveix per crear un pas
+ */
 export class PassosFormComponent implements OnInit {
 
   proces: any;
@@ -21,16 +24,24 @@ export class PassosFormComponent implements OnInit {
     descripcio: new FormControl(null, Validators.required)
   });
 
-
   constructor(private procesService: ProcesService, private router: Router) { }
 
+  /**
+   * Carreguem el procés desat pel component proces-form
+     per afegir-li els passos
+   */
   ngOnInit(): void {
-    /*Carreguem el procés desat pel component proces-form
-     per afegir-li els passos*/
     this.proces = this.procesService.getProcesDesat();
   }
 
+  /**
+   * Retornar titol a la pàgina HTML
+   */
   get titol() { return this.passosForm.get('titol'); }
+
+  /**
+   * Retornar descripció a la pàgina HTML
+   */
   get descripcio() { return this.passosForm.get('descripcio'); }
 
   onSelectFile(e: any) {
@@ -44,8 +55,10 @@ export class PassosFormComponent implements OnInit {
     }
   }
 
+  /**
+   * Afegim pas al procés i ho desem a memòria, quan cliquem el botó SUBMIT
+   */
   onSubmit() {
-    //Afegim pas al procés i ho desem a memòria
     this.length = this.proces.passos.push(this.pas);
     this.pas.numeroDePas = (this.length);
     this.proces.numPassos++;
@@ -54,7 +67,9 @@ export class PassosFormComponent implements OnInit {
     this.goToPassosList();
   }
 
-  //Redirecciona a altre pàgina
+  /**
+   * Redirecciona a la pàgina llista de passos
+   */
   goToPassosList() {
     this.router.navigate(['/passos']);
   }

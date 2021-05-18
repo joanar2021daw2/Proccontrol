@@ -9,6 +9,9 @@ import { ProcesService } from '../proces.service';
   templateUrl: './passos-list.component.html',
   styleUrls: ['./passos-list.component.css']
 })
+/**
+ * Aquesta classe serveix per llistar tots els passos
+ */
 export class PassosListComponent implements OnInit {
 
   passos: Pas[] = [];
@@ -23,20 +26,24 @@ export class PassosListComponent implements OnInit {
     this.passos = this.proces.passos;
   }
 
-  afegirPas(){
-    //Desem pas i tornem al formulari dels passos
+  /**
+   * Crear un pas, desem pas i tornem al formulari dels passos
+   */
+  afegirPas() {
     this.procesService.desarproces(this.proces);
     this.route.navigate(['passos-form']);
   }
 
-    //Desar proces completat a SpringBoot
-    saveProces(){
-      this.proces.numPassos = this.proces.passos.length ;
-      this.procesService.crearProces(this.proces).subscribe( dades => {
-        console.log(dades);
-        this.route.navigate(['proces']);
-      },
+  /**
+   * Desar procéss completat a SpringBoot
+   */
+  saveProces() {
+    this.proces.numPassos = this.proces.passos.length;
+    this.procesService.crearProces(this.proces).subscribe(dades => {
+      console.log(dades);
+      this.route.navigate(['proces']);
+    },
       error => console.log(error));
-    }
+  }
 
 }

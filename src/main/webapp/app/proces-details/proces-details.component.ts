@@ -8,6 +8,9 @@ import { ProcesService } from '../proces.service';
   templateUrl: './proces-details.component.html',
   styleUrls: ['./proces-details.component.css']
 })
+/**
+ * Aquesta classe serveix per mostrar els detalls d'un procés
+ */
 export class ProcesDetailsComponent implements OnInit {
 
   idProces: any;
@@ -16,21 +19,27 @@ export class ProcesDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private procesService: ProcesService,
     private router: Router) { }
 
-  //Agafem id del procés de la ruta, cridem ProcesService i ordenem passos
+  /**
+   * Agafem id del procés de la ruta, cridem ProcesService i ordenem passos
+   */
   ngOnInit(): void {
     this.idProces = this.route.snapshot.params['idProces'];
 
     this.proces = new Proces();
-    this.procesService.getProcesbyId(this.idProces).subscribe( dades => {
+    this.procesService.getProcesbyId(this.idProces).subscribe(dades => {
       this.proces = dades;
-      this.proces.passos.sort(function(a, b){
+      this.proces.passos.sort(function (a, b) {
         return a.numeroDePas - b.numeroDePas;
       })
     });
- 
-  }
 
-  updateProces(idProces : number){
+  }
+  
+  /**
+   * Actualitza el procés
+   * @param idProces id d'un procés
+   */
+  updateProces(idProces: number) {
     this.router.navigate(['update-proces', idProces]);
   }
 

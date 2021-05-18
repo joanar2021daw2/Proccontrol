@@ -16,7 +16,7 @@ import { Usuari } from '../usuari';
  * Classe que controla el inici de la realització del procés guiat,
  * on l'usuari/treballador polsa el botó iniciar per començar-ho.
  * 
- *  @Author
+ * @Author JoseAndrade
  */
 export class PlayProcesComponent implements OnInit {
 
@@ -26,16 +26,16 @@ export class PlayProcesComponent implements OnInit {
   resultat = new Resultat();
   usuari = new Usuari();
 
-
   constructor(private route: ActivatedRoute, private procesService: ProcesService,
     private resultatService: ResultatService, private router: Router) { }
 
 
-  /*
-    Al iniciar el component s'agafen els paràmetres per saber quin proces i
-    quin usuari venen de springboot, per tal de que el treballador segueixi 
-    el proces i puguem generar un resultat amb proces i usuari.
-  */
+  /**
+   * Al iniciar el component s'agafen els paràmetres per saber quin proces i
+   * quin usuari venen de springboot, per tal de que el treballador segueixi 
+   * el proces i puguem generar un resultat amb proces i usuari.
+   */
+
   ngOnInit(): void {
     this.idProces = this.route.snapshot.params['idProces'];
     this.idUsuari = this.route.snapshot.params['idUsuari'];
@@ -44,7 +44,6 @@ export class PlayProcesComponent implements OnInit {
     this.resultat = new Resultat();
     this.usuari.userId = this.idUsuari;
     this.resultat.usuari = this.usuari;
-
 
     this.procesService.getProcesbyId(this.idProces).subscribe(dades => {
       this.proces = dades;
@@ -55,8 +54,9 @@ export class PlayProcesComponent implements OnInit {
 
   }
 
-  /*Al polsar START del procés guiat inicialitzem el resultat que desarem al
-   resultatService i redireccionem al component play-pas*/
+  /** Al polsar START del procés guiat inicialitzem el resultat que desarem al
+   * resultatService i redireccionem al component play-pas
+  */
   iniciarProces() {
     this.resultatService.pasActual = 0;
     this.resultatService.resultatDesat.tempsPassos.length = this.proces.passos.length;

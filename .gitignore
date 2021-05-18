@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /doc
+/src/main/webapp/docs
 # Only exists if Bazel was run
 /bazel-out
 

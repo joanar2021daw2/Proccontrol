@@ -27,7 +27,9 @@ export class PlayPasComponent implements OnInit {
     private resultatService: ResultatService, private router: Router) { }
 
 
-  //Al iniciar carreguem el proces i el resultat desat a memòria per completar-ho
+  /**
+   * Al iniciar carreguem el proces i el resultat desat a memòria per completar-ho
+   */
   ngOnInit(): void {
     this.resultat = this.resultatService.getResultatDesat();
     this.pasActual = this.resultatService.getPasActual();
@@ -39,12 +41,9 @@ export class PlayPasComponent implements OnInit {
   }
 
   /**
-    * pasSeguent
-    * Mètode que gestiona quan el treballador polsa pas següent
-    * 
-    */
+   * Mètode que gestiona quan el treballador polsa pas següent
+   */
   pasSeguent() {
-
     //Parem temporitzador i desem el temps a l'array del resultat
     this.pararTemporitzador();
     this.resultat.tempsPassos[this.pasActual] = this.temps;
@@ -73,6 +72,9 @@ export class PlayPasComponent implements OnInit {
 
   }
 
+  /**
+   * Comptador de temp una vegada iniciat el procés
+   */
   iniciarTemportitzador() {
     this.play = false;
     this.interval = setInterval(() => {
@@ -80,6 +82,9 @@ export class PlayPasComponent implements OnInit {
     }, 1000)
   }
 
+  /**
+   * Pausa al temporitzador
+   */
   pararTemporitzador() {
     this.play = false;
     clearInterval(this.interval);

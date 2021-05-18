@@ -12,6 +12,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './proces-form.component.html',
   styleUrls: ['./proces-form.component.css']
 })
+/**
+ * Aquesta classe serveix per crear un procés
+ */
 export class ProcesFormComponent implements OnInit {
 
   proces: Proces = new Proces();
@@ -31,21 +34,24 @@ export class ProcesFormComponent implements OnInit {
   get nom() { return this.procesForm.get('nom'); }
   get referencia() { return this.procesForm.get('referencia'); }
 
+  /**
+   * Una vegada clicat el botó SUBMIT, va crear el procés i canvi ruta
+   */
   onSubmit() {
-    //console.log(this.proces);
     this.procesService.desarproces(this.proces);
     this.router.navigate(['passos-form']);
     //this.saveProces();
   }
 
-  //Crida llistat referencies per sel·leccionar al formulari
+  /**
+   * Obtenir totes les referències i subscriure-les
+  */
   private getAllReferencies() {
     this.referenciaService.getAllReferencies().subscribe(dades => {
       this.referencies = dades;
     });
   }
 
-  //Desar proces completat a SpringBoot
   private saveProces(){
     this.procesService.crearProces(this.proces).subscribe( dades => {
       console.log(dades);
@@ -54,7 +60,9 @@ export class ProcesFormComponent implements OnInit {
     error => console.log(error));
   }
 
-  //Redirecciona a altre pàgina
+  /**
+   * Redirecciona a altre pàgina
+   */
   goToProcesList(){
     this.router.navigate(['/proces']);
   }
