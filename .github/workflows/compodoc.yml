@@ -2,7 +2,7 @@
 # i els publica a la branca gh-pages (branca per defecte de GitHub Pages, que es un
 # allotjament de pàgines estàtiques)
 
-name: Build JavaDoc
+name: Build Compodoc
 
 on:
   push:
@@ -20,8 +20,9 @@ jobs:
       with:
         node-version: '14'
     - name: Build with Compodoc
-      run: npm install
-      run: npm test
+      run: |
+        npm install
+        npm test
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
