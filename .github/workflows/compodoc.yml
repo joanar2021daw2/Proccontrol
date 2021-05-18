@@ -1,0 +1,29 @@
+# Aquesta acció crea els documents JavaDoc quan es fa un commit a la branca Master,
+# i els publica a la branca gh-pages (branca per defecte de GitHub Pages, que es un
+# allotjament de pàgines estàtiques)
+
+name: Build JavaDoc
+
+on:
+  push:
+    branches: [ fusio ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up nodeJS
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Build with Compodoc
+      run: npm install
+      run: npm test
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/site/apidocs
