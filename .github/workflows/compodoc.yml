@@ -20,6 +20,7 @@ jobs:
         node-version: '14'
     - name: Build with Compodoc
       run: |
+        npm install
         npm run compodoc
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
