@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author JoseAndrade
  */
 public interface ResultatRepository extends JpaRepository<Resultat, Long> {
+
     List<Resultat> findByProcesIdProces(long idProces);
+
     List<Resultat> findByUsuariUserId(long userId);
 }

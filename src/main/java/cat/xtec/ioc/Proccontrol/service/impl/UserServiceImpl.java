@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 
 /**
  * Aquesta classe serveix per implementar servei d'usuari
+ *
  * @author JoseAndrade
  */
 @Service
 public class UserServiceImpl {
 
-	/**
-	 * Repositori d'usuari
-	 */
+    /**
+     * Repositori d'usuari
+     */
     @Autowired
     private UserRepository userRepository;
 
@@ -27,7 +28,9 @@ public class UserServiceImpl {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
-     * Guarda usuari
+     * Guarda usuari a la base de dades
+     * @param usuari objecte usuari a desar a la base de dades
+     * @return objecte usuari desat a la base de dades
      */
     public Usuari saveUsuari(Usuari usuari) {
         usuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
@@ -36,6 +39,7 @@ public class UserServiceImpl {
 
     /**
      * Obtenir tots els usuaris
+     * @return llistat de tots els usuaris registrats al sistema
      */
     public List<Usuari> getAllUsuaris() {
         return userRepository.findAll();
@@ -43,6 +47,8 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per id
+     * @param id id del compte d'usuari
+     * @return usuari amb el id passat per paràmetre
      */
     public Usuari getUsuariById(long id) {
         return userRepository.findByUserId(id);
@@ -50,6 +56,8 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per nom
+     * @param nom nom del usuari
+     * @return usuari amb el nom passat al paràmetre
      */
     public Usuari getUsuariByNom(String nom) {
         return userRepository.findByNom(nom);
@@ -57,6 +65,8 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per número d'operari
+     * @param numOperari número d'operari del'usuari
+     * @return usuari amb el número d'operari passat al paràmetre
      */
     public Usuari getUserByNumOperari(long numOperari) {
         return userRepository.findByNumOperari(numOperari);
@@ -64,6 +74,8 @@ public class UserServiceImpl {
 
     /**
      * Esborrar un usuari
+     * @param id
+     * @return llistat d'usuaris
      */
     public String deleteUsuari(long id) {
         userRepository.deleteById(id);
@@ -72,6 +84,7 @@ public class UserServiceImpl {
 
     /**
      * Actualitzar un usuari
+     *
      * @param usuari
      * @return
      */

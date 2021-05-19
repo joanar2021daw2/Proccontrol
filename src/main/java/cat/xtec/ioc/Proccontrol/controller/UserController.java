@@ -18,15 +18,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar usuari
+ *
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
-	/**
-	 * Servei usuari
-	 */
+    /**
+     * Servei usuari
+     */
     @Autowired
     UserServiceImpl userService;
 
@@ -38,6 +39,20 @@ public class UserController {
             throws ServletException, IOException {
 
         ModelAndView modelView = new ModelAndView("userLlistat");
+        List<Usuari> users = userService.getAllUsuaris();
+        modelView.getModelMap().addAttribute("usuarisBD", users);
+        return modelView;
+    }
+    
+    
+    /**
+     * Obtenir només els usuaris de la base de dades que estàn inactius
+     */
+    @GetMapping("/inactius")
+    public ModelAndView getInactiusUsers(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        ModelAndView modelView = new ModelAndView("userInactiulLlistat");
         List<Usuari> users = userService.getAllUsuaris();
         modelView.getModelMap().addAttribute("usuarisBD", users);
         return modelView;
@@ -56,7 +71,7 @@ public class UserController {
         modelview.getModelMap().addAttribute("formuser", formUser);
         return modelview;
     }
-    
+
     /**
      * Crear nou usuari
      */
@@ -98,7 +113,7 @@ public class UserController {
      * Esborrar usuari per id
      */
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam("userId") int userId, HttpServletRequest request, HttpServletResponse response)
+    public String deleteUser(@RequestParam("userId") long userId, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         userService.deleteUsuari(userId);
         return "redirect:/users/all";

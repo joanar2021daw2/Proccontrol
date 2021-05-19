@@ -6,9 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Classe interfície referència
+ *
  * @author JoseAndrade
  */
-public interface ReferenciaRepository extends  JpaRepository<Referencia, Long>{
+public interface ReferenciaRepository extends JpaRepository<Referencia, Long> {
+
     Referencia findByNom(String nom);
+
     List<Referencia> findByInstalacioIdInstalacio(long idInstalacio);
 }

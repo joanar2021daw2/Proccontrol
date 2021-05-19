@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Classe interfície usuari
+ *
  * @author JoseAndrade
  */
-
 public interface UserRepository extends JpaRepository<Usuari, Long> {
-    
+
     Usuari findByUserId(long userId);
 
     Usuari findByNom(String nom);

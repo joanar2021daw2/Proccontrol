@@ -49,20 +49,10 @@
                             <a href="/edicio">
                                 Edició i creació
                             </a>
-                        </li>                                       
+                        </li>
                         <li role="presentation" class="active">
                             <a href="/users/new">
                                 Nou usuari
-                            </a>
-                        </li>
-                        <li role="presentation" class="active">
-                            <a href="/users/inactius">
-                                Usuaris inactius
-                            </a>
-                        </li>
-                        <li role="presentation" class="active">
-                            <a href="/comptesusuari/all">
-                                Comptes baixa
                             </a>
                         </li>
                     </ul>
@@ -75,43 +65,33 @@
         <!-- ======= Table Section ======= -->
         <section class="contact">
             <div class="section-title addPaddingTop">
-                <h2>Usuaris</h2>
+                <h2>Històric comptes donades de baixa</h2>
+                <h6>Usuaris que han donat de baixa les seves dades</h6>
             </div>
             <div class="container">
                 <table class="table table-striped table-hover">
                     <thead class="table-danger">
-                        <tr>
-                            <th scope="col">Id</th>
+                        <tr>        
                             <th scope="col">Nom</th>
                             <th scope="col">Cognom 1</th>
                             <th scope="col">Cognom 2</th>
                             <th scope="col">Número operari</th>
-                            <th scope="col">Rol</th>
-                            <th scope="col">Accions</th>
+                            <th scope="col">Data baixa compte</th>
+                            <th scope="col">Esborrar registre</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                    <th:block th:each="usuari : ${usuarisBD}">
+                    <th:block th:each="compte : ${comptesUsuariDeBaixa}">
                         <tr>
-                        <div th:switch="${usuari.active}">
-                            <div th:case="true">
-                                <th scope="row" id="id" th:text="${usuari.userId}"></th>
-                                <td id="nom" th:text="${usuari.nom}"></td>
-                                <td th:text="${usuari.cognom1}"></td>
-                                <td th:text="${usuari.cognom2}"></td>
-                                <td id="numop" th:text="${usuari.numOperari}"></td>
-                                <td id="rol" th:text="${usuari.rol}"></td>
-                                <td>
-                                    <a th:href="@{/users/user(userId=${usuari.userId})}" class="btn btn-primary">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a th:href="@{/users/delete(userId=${usuari.userId})}" class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </div>
-                        </div>
+                            <td th:text="${compte.nom}"></td>
+                            <td th:text="${compte.cognom1}"></td>
+                            <td th:text="${compte.cognom2}"></td>
+                            <td th:text="${compte.numOperari}"></td>             
+                            <td th:text="${compte.dataBaixaCompte}"></td>
+                            <td><a th:href="@{/comptesusuari/delete(idCompteUsuariBaixa=${compte.idCompteUsuariBaixa})}" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i></td>
+                            </a>
                         </tr>
                     </th:block>
                     </tbody>

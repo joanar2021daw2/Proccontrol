@@ -13,16 +13,17 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 /**
  * Classe que dona a coneixer els sub-directoris de les Templates (pàgines html)
  * que creem per organitzar-les
- * 
+ *
  * @author JoseAndrade
  */
 @Configuration
 public class TemplateResolver {
 
-	/**
-	 * Mapeja el directori template instalacio
-	 * @return Resolutor de la plantilla Instalació
-	 */
+    /**
+     * Mapeja el directori template instalacio
+     *
+     * @return Resolutor de la plantilla Instalació
+     */
     @Bean
     public ClassLoaderTemplateResolver instalacioTemplateResolver() {
         ClassLoaderTemplateResolver instalacioTemplateResolver = new ClassLoaderTemplateResolver();
@@ -38,6 +39,7 @@ public class TemplateResolver {
 
     /**
      * Mapeja el directori template seccio
+     *
      * @return Resolutor de la plantilla Secció
      */
     @Bean
@@ -55,6 +57,7 @@ public class TemplateResolver {
 
     /**
      * Mapeja el directori template user
+     *
      * @return Mapeja el directori template Usuari
      */
     @Bean
@@ -72,6 +75,7 @@ public class TemplateResolver {
 
     /**
      * Mapeja el directori template proces
+     *
      * @return Mapeja el directori template procés
      */
     @Bean
@@ -89,6 +93,7 @@ public class TemplateResolver {
 
     /**
      * Mapeja el directori template referencia
+     *
      * @return Mapeja el directori template referència
      */
     @Bean
@@ -103,12 +108,26 @@ public class TemplateResolver {
 
         return referenciesTemplateResolver;
     }
-    
-        /*-----------Mapeja el directori template resultat-----------*/
+
+    /*-----------Mapeja el directori template resultat-----------*/
     @Bean
     public ClassLoaderTemplateResolver resultatTemplateResolver() {
         ClassLoaderTemplateResolver referenciesTemplateResolver = new ClassLoaderTemplateResolver();
         referenciesTemplateResolver.setPrefix("templates/resultat/");
+        referenciesTemplateResolver.setSuffix(".html");
+        referenciesTemplateResolver.setTemplateMode(TemplateMode.HTML);
+        referenciesTemplateResolver.setCharacterEncoding("UTF-8");
+        referenciesTemplateResolver.setOrder(1);
+        referenciesTemplateResolver.setCheckExistence(true);
+
+        return referenciesTemplateResolver;
+    }
+
+    /*-----------Mapeja el directori template comptesUsuariBaixa-----------*/
+    @Bean
+    public ClassLoaderTemplateResolver compteUsuariBaixaTemplateResolver() {
+        ClassLoaderTemplateResolver referenciesTemplateResolver = new ClassLoaderTemplateResolver();
+        referenciesTemplateResolver.setPrefix("templates/comptesUsuariBaixa/");
         referenciesTemplateResolver.setSuffix(".html");
         referenciesTemplateResolver.setTemplateMode(TemplateMode.HTML);
         referenciesTemplateResolver.setCharacterEncoding("UTF-8");

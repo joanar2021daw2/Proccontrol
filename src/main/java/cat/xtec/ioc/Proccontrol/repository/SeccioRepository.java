@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Classe interfície secció
+ *
  * @author JoseAndrade
  */
-public interface SeccioRepository extends JpaRepository<Seccio, Long>{
+public interface SeccioRepository extends JpaRepository<Seccio, Long> {
+
     Seccio findByNom(String nom);
 }
