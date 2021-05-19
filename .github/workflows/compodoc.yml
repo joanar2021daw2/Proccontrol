@@ -25,4 +25,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        publish_dir: ./src/main/webapp/docs
+        # Carpeta de destino de documentacion de Angular
+        destination_dir: angular
+

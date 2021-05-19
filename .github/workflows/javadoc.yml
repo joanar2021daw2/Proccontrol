@@ -6,7 +6,7 @@ name: Build JavaDoc
 
 on:
   push:
-    branches: [ master, plantilla ]
+    branches: [ fusio ]
 
 jobs:
   build:
@@ -27,3 +27,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./target/site/apidocs
+        # Carpeta de destino de documentacion de Java
+        destination_dir: java
