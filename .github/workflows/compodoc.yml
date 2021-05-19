@@ -1,4 +1,4 @@
-# Aquesta acció crea els documents JavaDoc quan es fa un commit a la branca Master,
+# Aquesta acció crea els documents amb Compodoc quan es fa un commit a la branca Master,
 # i els publica a la branca gh-pages (branca per defecte de GitHub Pages, que es un
 # allotjament de pàgines estàtiques)
 
@@ -23,6 +23,7 @@ jobs:
       run: |
         npm install
         npm i -g @compodoc/compodoc 
+        npm run compodoc
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
