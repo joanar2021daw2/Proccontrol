@@ -3,11 +3,10 @@
 # allotjament de pàgines estàtiques)
 
 name: Build Compodoc
-
 on:
   push:
     branches: [ fusio ]
-
+    
 jobs:
   build:
 
