@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compodoc": "npx compodoc -p tsconfig.doc.json -d src/main/webapp/docs"
+    "compodoc": "compodoc -p tsconfig.doc.json -d src/main/webapp/docs/"
   },
   "private": true,
   "dependencies": {
