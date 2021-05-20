@@ -25,7 +25,7 @@ public class HomeController {
 	/**
 	 * Vincula URL / amb vista index
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de l'index
 	 * @throws ServletException Excepció d'error de Servlet
@@ -43,7 +43,7 @@ public class HomeController {
 	/**
 	 * Vincula URL /edicio amb vista menuEdicio, i ha de tenir rol de ADMIN
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de menú d'edició
 	 * @throws ServletException Excepció d'error de Servlet
@@ -62,7 +62,7 @@ public class HomeController {
 	/**
 	 * Vincula URL /usersmenu amb vista menuUsuaris, i ha de tenir rol de ADMIN
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de menú d'edició
 	 * @throws ServletException Excepció d'error de Servlet
@@ -80,7 +80,7 @@ public class HomeController {
 	/**
 	 * Vincula URL /secciomenu amb vista menuSeccions, i ha de tenir rol de ADMIN
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de secció menu
 	 * @throws ServletException Excepció d'error de Servlet
@@ -98,7 +98,7 @@ public class HomeController {
 	/**
 	 * Vincula URL /instalaciomenu amb vista menuInstalacions, i ha de tenir rol de ADMIN
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de menú d'edició
 	 * @throws ServletException Excepció d'error de Servlet
@@ -117,7 +117,7 @@ public class HomeController {
 	  * Vincula URL /referenciamenu amb vista menuReferencies, i ha de tenir rol de
 	 * ADMIN
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de referencies
 	 * @throws ServletException Excepció d'error de Servlet
@@ -135,7 +135,7 @@ public class HomeController {
 	/**
 	  * Vincula URL /processmenu amb vista menuEdicio, i ha de tenir rol de ADMIN
 	 * 
-	 * @param equest   Request
+	 * @param request   Request
 	 * @param response Resposta
 	 * @return Retorna model i vista de procés
 	 * @throws ServletException Excepció d'error de Servlet

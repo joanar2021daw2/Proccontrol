@@ -126,8 +126,8 @@ public class ReferenciaController {
      * Esborra la referència per la ID
      * @param idReferencia id de referència
      * @return redirecció a la llista de referència
-     * @throws ServletException
-     * @throws IOException
+     * @throws ServletException excepció de servlet
+     * @throws IOException excepció d'entrada i salida
      */
     @GetMapping("/delete")
     public String deleteReferencia(@RequestParam("idReferencia") long idReferencia)
