@@ -40,18 +40,23 @@ public class ProcesController {
     UserServiceImpl userService;
 
      /**
-     * Retorna llistat de tots els processos
-     */
+      * Retorna llistat de tots els processos
+      * @param model model de procés
+      * @return llista de processos
+      */
     @RequestMapping("/all")
     public String getAllProcessos(Model model) {
         model.addAttribute("processosBD", procesService.getAllProcessos());
         return "procesLlistat";
     }
 
-    /*
-        Retorna llistat dels processos d'una referència de producte
-         passem l'id de l'usuari loguejat a angular (component play-proces)
-        per fer el resultat
+    /**
+     * Retorna llistat dels processos d'una referència de producte
+     * passem l'id de l'usuari loguejat a angular (component play-proces)
+     * per fer el resultat
+     * @param idReferencia id referència
+     * @param model model de referència
+     * @return llistat dels processos d'una referència 
      */
     @GetMapping("/byreferencia")
     public String byReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
@@ -67,7 +72,11 @@ public class ProcesController {
         return "seleccioProces";
     }
 
-    /*Afegeix un procès*/
+    /**
+     * Afegeix un procès 
+     * @param model de procés
+     * @return formulari de procés
+     */
     @GetMapping("/new")
     public String newProces(Model model) {
         List<Referencia> referenciesDisponibles = referenciaService.getAllReferencies();
@@ -81,6 +90,9 @@ public class ProcesController {
 
     /**
      * Processa el formulari i afegeix el procès a la BD
+     * @param formProces formulari de procés
+     * @param result resultat de procés
+     * @return retorna a la llista de processos
      */
     @GetMapping(value = "/proces/add")
     public String processAddForm(@ModelAttribute("formproces") Proces formProces, BindingResult result) {
@@ -92,6 +104,9 @@ public class ProcesController {
 
     /**
      * Actualizta un procés
+     * @param idProces id de procés
+     * @param model de procés
+     * @return redirecció a la llista o formulari de procés
      */
     @GetMapping("/proces")
     public String updateProces(@RequestParam("idProces") long idProces, Model model) {
@@ -111,6 +126,9 @@ public class ProcesController {
 
     /**
      * Processa el formulari i actualitza el pocés a la BD
+     * @param formProces formulari de procés
+     * @param result de procés
+     * @return redirecció a la llista de processos
      */
     @GetMapping("/proces/update")
     public String processUpdateForm(@ModelAttribute("formproces") Proces formProces, BindingResult result) {
@@ -122,6 +140,10 @@ public class ProcesController {
 
     /**
      * Esborra el procès per la ID
+     * @param idProces id de procés
+     * @return redirecció a la llista de processos
+     * @throws ServletException Excepció d'error de Servlet
+	 * @throws IOException Excepció d'error d'entrada i salida
      */
     @GetMapping("/delete")
     public String deleteProces(@RequestParam("idProces") long idProces)
