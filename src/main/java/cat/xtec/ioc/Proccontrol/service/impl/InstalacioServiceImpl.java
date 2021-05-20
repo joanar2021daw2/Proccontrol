@@ -22,6 +22,8 @@ public class InstalacioServiceImpl {
 
     /**
      * Guardar l'instal·lació
+     * @param instalacio instal·lació que volem guardar
+     * @return guardar l'instal·lació
      */
     public Instalacio saveInstalacio(Instalacio instalacio) {
         return instalacioRepo.save(instalacio);
@@ -29,6 +31,7 @@ public class InstalacioServiceImpl {
 
 	/**
 	 * Obtenir tots els instal·lacions
+	 * @return tots els instal·lacions
 	 */
     public List<Instalacio> getAllInstalacions() {
         return instalacioRepo.findAll();
@@ -36,6 +39,8 @@ public class InstalacioServiceImpl {
 
     /**
      * Obtenir un instal·lació per id
+     * @param id id de l'instal·lació
+     * @return instal·lació amb aquel id
      */
     public Instalacio getInstalacioById(long id) {
         return instalacioRepo.getOne(id);
@@ -44,12 +49,17 @@ public class InstalacioServiceImpl {
     /**
      * Obtenir un instal·lació per nom 
      * @param nom
-     * @return
+     * @return instal·lació amb aquel nom
      */
     public Instalacio getInstalacioByNom(String nom) {
         return instalacioRepo.findByNom(nom);
     }
     
+    /**
+     * Obtenir secció per l'instal·lació
+     * @param seccio id de secció
+     * @return secciño amb aquel id de secció
+     */
     public List<Instalacio> getInstalacioBySeccio(long seccio){
         return instalacioRepo.findBySeccioIdSeccio(seccio);
     }
@@ -57,7 +67,7 @@ public class InstalacioServiceImpl {
     /**
      * Esborrar un instal·lació per id 
      * @param id
-     * @return
+     * @return redirecció la llista d'instal·lacions
      */
     public String deleteInstalacio(long id) {
         instalacioRepo.deleteById(id);
@@ -66,6 +76,8 @@ public class InstalacioServiceImpl {
 
     /**
      * Actualitza un intal·lació 
+     * @param instalacio instal·lació que volem actualitzar
+     * @return guardar dades actualitzades
      */
     public Instalacio updateInstalacio(Instalacio instalacio) {
         Instalacio existingInstalacio = instalacioRepo.findById(instalacio.getIdInstalacio()).orElse(null);

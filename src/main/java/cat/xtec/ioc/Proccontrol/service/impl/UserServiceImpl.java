@@ -27,7 +27,9 @@ public class UserServiceImpl {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
-     * Guarda usuari
+     * Crear usuari
+     * @param usuari omplit
+     * @return guardar usuari
      */
     public Usuari saveUsuari(Usuari usuari) {
         usuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
@@ -36,6 +38,7 @@ public class UserServiceImpl {
 
     /**
      * Obtenir tots els usuaris
+     * @return retornar tots els usuaris
      */
     public List<Usuari> getAllUsuaris() {
         return userRepository.findAll();
@@ -43,6 +46,8 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per id
+     * @param id id de l'usuari 
+     * @return retornar usuari que busquem
      */
     public Usuari getUsuariById(long id) {
         return userRepository.findByUserId(id);
@@ -50,13 +55,17 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per nom
+     * @param nom nom de l'usuari
+     * @return usuari que busquem
      */
     public Usuari getUsuariByNom(String nom) {
         return userRepository.findByNom(nom);
     }
 
     /**
-     * Obtenir un usuari per número d'operari
+     * Obtenir un usuari per nombre d'operari
+     * @param numOperari num operari
+     * @return usuari amb aquest nombre d'operari
      */
     public Usuari getUserByNumOperari(long numOperari) {
         return userRepository.findByNumOperari(numOperari);
@@ -64,6 +73,8 @@ public class UserServiceImpl {
 
     /**
      * Esborrar un usuari
+     * @param id id de l'usuari
+     * @return retorna la llista de tots els usuaris
      */
     public String deleteUsuari(long id) {
         userRepository.deleteById(id);
@@ -72,8 +83,8 @@ public class UserServiceImpl {
 
     /**
      * Actualitzar un usuari
-     * @param usuari
-     * @return
+     * @param usuari omplit per actualitzar
+     * @return guardar usuari actualitzat
      */
     public Usuari updateUsuari(Usuari usuari) {
         Usuari existingUsuari = userRepository.findById(usuari.getUserId()).orElse(null);
