@@ -11,9 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 /**
  * Aquesta classe model conté propietats, constructor, getter i setter d'usuari
+ *
  * @author JoseAndrade
  */
 @Entity
@@ -25,21 +29,27 @@ public class Usuari implements Serializable {
     @Column(name = "user_id")
     private long userId;
 
+    @NotNull(message = "Has d'indicar un número d'operari")
     @Column(name = "num_operari", nullable = false, unique = true)
     private long numOperari;
 
+    @NotBlank(message = "Has d'indicar el nom")
     @Column(name = "nom", length = 20, nullable = false)
     private String nom;
 
+    @NotBlank(message = "Has d'indicar un cognom")
     @Column(name = "cognom1", length = 20, nullable = false)
     private String cognom1;
 
+    @NotBlank(message = "Has d'indicar el segon cognom")
     @Column(name = "cognom2", length = 20, nullable = false)
     private String cognom2;
 
     @Column(name = "rol", nullable = false)
     private String rol;
 
+    @NotBlank(message = "Has de posar una contrasenya")
+    @Length(min = 4, message  = "La contrasenya ha de tenir mínim 4 caràcters")
     @Column(name = "password", nullable = false)
     private String password;
 

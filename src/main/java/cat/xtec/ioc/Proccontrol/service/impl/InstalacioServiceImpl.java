@@ -64,13 +64,4 @@ public class InstalacioServiceImpl {
         return "redirect:/instalacions/all";
     }
 
-    /**
-     * Actualitza un intal·lació 
-     */
-    public Instalacio updateInstalacio(Instalacio instalacio) {
-        Instalacio existingInstalacio = instalacioRepo.findById(instalacio.getIdInstalacio()).orElse(null);
-        existingInstalacio.setNom(instalacio.getNom());
-        existingInstalacio.setSeccio(instalacio.getSeccio());
-        return instalacioRepo.save(existingInstalacio);
-    }
 }

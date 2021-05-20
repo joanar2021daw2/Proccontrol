@@ -7,11 +7,17 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,53 +36,48 @@ public class UserController {
      */
     @Autowired
     UserServiceImpl userService;
-
+    
     /**
      * Obtenir tots els usuaris de la base de dades
      */
     @GetMapping("/all")
-    public ModelAndView getAllUsers(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        ModelAndView modelView = new ModelAndView("userLlistat");
+    public String getAllUsers(Model model) {
         List<Usuari> users = userService.getAllUsuaris();
-        modelView.getModelMap().addAttribute("usuarisBD", users);
-        return modelView;
+        model.addAttribute("usuarisBD", users);
+        return "userLlistat";
     }
-    
-    
+
     /**
      * Obtenir només els usuaris de la base de dades que estàn inactius
      */
     @GetMapping("/inactius")
-    public ModelAndView getInactiusUsers(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public String getInactiusUsers(Model model) {
 
-        ModelAndView modelView = new ModelAndView("userInactiulLlistat");
         List<Usuari> users = userService.getAllUsuaris();
-        modelView.getModelMap().addAttribute("usuarisBD", users);
-        return modelView;
+        model.addAttribute("usuarisBD", users);
+        return "userInactiulLlistat";
     }
 
     /**
      * Posar vista de crear usuari
      */
     @GetMapping("/new")
-    public ModelAndView newUser(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        ModelAndView modelview = new ModelAndView("userForm");
+    public String newUser(Model model) {
         Usuari formUser = new Usuari();
-        modelview.getModelMap().addAttribute("act", "user/add");
-        modelview.getModelMap().addAttribute("formuser", formUser);
-        return modelview;
+        model.addAttribute("formuser", formUser);
+        return "userForm";
     }
 
     /**
      * Crear nou usuari
      */
-    @GetMapping(value = "/user/add")
-    public String processAddForm(@ModelAttribute("formuser") Usuari formUser, BindingResult result) {
+    @PostMapping(value = "/new")
+    public String processAddForm(@Valid @ModelAttribute("formuser") Usuari formUser, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "userForm";
+        }
+
         userService.saveUsuari(formUser);
         return "redirect:/users/all";
     }
@@ -85,28 +86,16 @@ public class UserController {
      * Actualitzar usuari per id
      */
     @GetMapping("/user")
-    public ModelAndView updateUser(@RequestParam("userId") long userId, HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        ModelAndView modelView;
+    public String updateUser(@RequestParam("userId") long userId, Model model) {
+
         if (userId != 0) {
-            modelView = new ModelAndView("userForm");
             Usuari formUser = userService.getUsuariById(userId);
-            modelView.getModelMap().addAttribute("act", "user/update");
-            modelView.getModelMap().addAttribute("formuser", formUser);
+            model.addAttribute("formuser", formUser);
         } else {
-            modelView = new ModelAndView("users");
+            return "redirect:/users/all";
         }
 
-        return modelView;
-    }
-
-    /**
-     * Actualitzar usuari
-     */
-    @GetMapping("/user/update")
-    public String processUpdateForm(@ModelAttribute("formuser") Usuari formUser, BindingResult result) {
-        userService.updateUsuari(formUser);
-        return "redirect:/users/all";
+        return "userForm";
     }
 
     /**

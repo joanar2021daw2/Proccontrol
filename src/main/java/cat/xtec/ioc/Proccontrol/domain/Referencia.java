@@ -12,11 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
- * Aquesta classe model conté propietats, constructor, getter i setter de referència
- * Anotem amb JsonIgnore per tal de no mostrar les instal·lacions quan es genera la 
- * resposta Json de llistar processos i fer bucle
+ * Aquesta classe model conté propietats, constructor, getter i setter de
+ * referència Anotem amb JsonIgnore per tal de no mostrar les instal·lacions
+ * quan es genera la resposta Json de llistar processos i fer bucle
+ *
  * @author JoseAndrade
  */
 @Entity
@@ -28,6 +31,7 @@ public class Referencia implements Serializable {
     @GeneratedValue
     private long idReferencia;
 
+    @NotBlank(message = "Has d'indicar el nom")
     @Column(name = "nom", nullable = false)
     private String nom;
 
@@ -40,6 +44,7 @@ public class Referencia implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "fk_instalacio")
+    @NotNull(message = "La referència del producte ha de pertànyer a una instal·lació")
     private Instalacio instalacio;
 
     public Referencia() {

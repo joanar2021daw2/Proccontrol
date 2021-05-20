@@ -11,33 +11,39 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
- * Aquesta classe model conté propietats, constructor, getter i setter d'instal·lació
+ * Aquesta classe model conté propietats, constructor, getter i setter
+ * d'instal·lació
+ *
  * @author JoseAndrade
  */
 @Entity
 @Table(name = "instalacio")
-public class Instalacio implements Serializable{
-    
+public class Instalacio implements Serializable {
+
     @Id
     @GeneratedValue
-    @Column (name = "instalacio_id")
+    @Column(name = "instalacio_id")
     private long idInstalacio;
- 
-    @Column (name="nom", nullable = false)
+
+    @NotBlank(message = "Has d'indicar el nom")
+    @Column(name = "nom", nullable = false)
     private String nom;
-    
+
     /**
      * La instal·lació conté referències
      */
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Set<Referencia> referencies;
-    
+
+    @NotNull(message = "Has d'ubicar la instal·lació a una secció de l'empresa")
     @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Seccio seccio;
-    
-    public Instalacio(){
+
+    public Instalacio() {
     }
 
     public Instalacio(int idInstalacio, String nom, Set<Referencia> referencies, Seccio seccio) {
@@ -78,7 +84,5 @@ public class Instalacio implements Serializable{
     public void setSeccio(Seccio seccio) {
         this.seccio = seccio;
     }
-    
-    
-    
+
 }

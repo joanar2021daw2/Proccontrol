@@ -7,26 +7,29 @@ import cat.xtec.ioc.Proccontrol.service.impl.ReferenciaServiceImpl;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar referència
+ *
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("referencies")
 public class ReferenciaController {
 
-	/**
-	 * Servei de referència
-	 */
+    /**
+     * Servei de referència
+     */
     @Autowired
     ReferenciaServiceImpl referenciaService;
 
@@ -44,10 +47,10 @@ public class ReferenciaController {
         model.addAttribute("referenciesBD", referenciaService.getAllReferencies());
         return "referenciaLlistat";
     }
-    
+
     /*Retorna llistat de les referencias d'una instal·lació*/
     @GetMapping("/byinstalacio")
-    public String byInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model){
+    public String byInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model) {
         model.addAttribute("referencies", referenciaService.getReferenciesByInstalacio(idInstalacio));
         return "seleccioReferencia";
     }
@@ -61,7 +64,6 @@ public class ReferenciaController {
         Referencia formReferencia = new Referencia();
 
         model.addAttribute("instalacionsBD", instalacionsDisponibles);
-        model.addAttribute("act", "referencia/add");
         model.addAttribute("formreferencia", formReferencia);
         return "referenciaForm";
     }
@@ -69,8 +71,13 @@ public class ReferenciaController {
     /**
      * Processa el formulari i afegeix la referència a la BD
      */
-    @GetMapping(value = "/referencia/add")
-    public String processAddForm(@ModelAttribute("formreferencia") Referencia formReferencia, BindingResult result) {
+    @PostMapping(value = "/new")
+    public String processAddForm(@Valid @ModelAttribute("formreferencia") Referencia formReferencia, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "referenciaForm";
+        }
+
         referenciaService.saveReferencia(formReferencia);
         return "redirect:/referencies/all";
     }
@@ -85,22 +92,12 @@ public class ReferenciaController {
         if (idReferencia != 0) {
             Referencia formReferencia = referenciaService.getReferenciaById(idReferencia);
             model.addAttribute("instalacionsBD", instalacionsDisponibles);
-            model.addAttribute("act", "referencia/update");
             model.addAttribute("formreferencia", formReferencia);
         } else {
             return "redirect:/referencies/all";
         }
 
         return "referenciaForm";
-    }
-
-    /**
-     * Processa el formulari i actualitza la referència a la BD
-     */
-    @GetMapping("/referencia/update")
-    public String processUpdateForm(@ModelAttribute("formreferencia") Referencia formReferencia, BindingResult result) {
-        referenciaService.updateReferencia(formReferencia);
-        return "redirect:/referencies/all";
     }
 
     /**

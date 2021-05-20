@@ -82,22 +82,5 @@ public class UserServiceImpl {
         return "redirect:/users/all";
     }
 
-    /**
-     * Actualitzar un usuari
-     *
-     * @param usuari
-     * @return
-     */
-    public Usuari updateUsuari(Usuari usuari) {
-        Usuari existingUsuari = userRepository.findById(usuari.getUserId()).orElse(null);
-        existingUsuari.setNom(usuari.getNom());
-        existingUsuari.setCognom1(usuari.getCognom1());
-        existingUsuari.setCognom2(usuari.getCognom2());
-        existingUsuari.setNumOperari(usuari.getNumOperari());
-        existingUsuari.setActive(usuari.getActive());
-        existingUsuari.setRol(usuari.getRol());
-        existingUsuari.setPassword(bCryptPasswordEncoder.encode(usuari.getPassword()));
-        return userRepository.save(existingUsuari);
-    }
 
 }

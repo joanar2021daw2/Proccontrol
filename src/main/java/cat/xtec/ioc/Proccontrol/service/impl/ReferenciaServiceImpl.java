@@ -59,15 +59,4 @@ public class ReferenciaServiceImpl {
         return "redirect:/referencies/all";
     }
 
-    /**
-     * Actualitzar una referència
-     */
-    public Referencia updateReferencia(Referencia referencia) {
-        Referencia existingReferencia = referenciaRepo.findById(referencia.getIdReferencia()).orElse(null);
-        existingReferencia.setNom(referencia.getNom());
-        existingReferencia.setInstalacio(referencia.getInstalacio());
-        existingReferencia.setProcessos(referencia.getProcessos());
-
-        return referenciaRepo.save(existingReferencia);
-    }
 }

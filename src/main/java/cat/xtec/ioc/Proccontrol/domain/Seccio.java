@@ -11,9 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Aquesta classe model conté propietats, constructor, getter i setter de secció
+ *
  * @author JoseAndrade
  */
 @Entity
@@ -25,9 +28,11 @@ public class Seccio implements Serializable {
     @Column(name = "seccio_id")
     private long idSeccio;
 
+    @NotBlank(message = "Has d'indicar el nom")
     @Column(name = "nom", nullable = false)
     private String nom;
 
+    @NotBlank(message = "Has el tipus de producció")
     @Column(name = "tipus_produccio", nullable = false)
     private String tipusProduccio;
 

@@ -55,15 +55,4 @@ public class SeccioServiceImpl {
         return "redirect:/seccions/all";
     }
 
-    /**
-     * Actualitzar un secció
-     */
-    public Seccio updateSeccio(Seccio seccio) {
-        Seccio existingSeccio = seccioRepo.findById(seccio.getIdSeccio()).orElse(null);
-        existingSeccio.setNom(seccio.getNom());
-        existingSeccio.setTipusProduccio(seccio.getTipusProduccio());
-        existingSeccio.setInstalacions(seccio.getInstalacions());
-        return seccioRepo.save(existingSeccio);
-    }
-
 }
