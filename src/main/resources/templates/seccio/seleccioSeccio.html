@@ -45,7 +45,7 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li th:if="${#authorization.expression('isAnonymous()')}"><a class="active" href="/login">Iniciar sessió</a></li>
-                        <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/seccions/selectone">Selecció de procès</a></li>                       
+                        <li><a href="/">Inici</a></li>                  
                         <li style="margin-left: 20px" th:if="${#authorization.expression('isAuthenticated()')}">
                             <h6 th:inline="text">Hola [[${#httpServletRequest.remoteUser}]]</h6>
                         </li>
