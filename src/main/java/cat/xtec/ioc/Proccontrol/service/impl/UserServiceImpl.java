@@ -29,6 +29,7 @@ public class UserServiceImpl {
 
     /**
      * Guarda usuari a la base de dades
+     *
      * @param usuari objecte usuari a desar a la base de dades
      * @return objecte usuari desat a la base de dades
      */
@@ -39,6 +40,7 @@ public class UserServiceImpl {
 
     /**
      * Obtenir tots els usuaris
+     *
      * @return llistat de tots els usuaris registrats al sistema
      */
     public List<Usuari> getAllUsuaris() {
@@ -47,6 +49,7 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per id
+     *
      * @param id id del compte d'usuari
      * @return usuari amb el id passat per paràmetre
      */
@@ -56,6 +59,7 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per nom
+     *
      * @param nom nom del usuari
      * @return usuari amb el nom passat al paràmetre
      */
@@ -65,6 +69,7 @@ public class UserServiceImpl {
 
     /**
      * Obtenir un usuari per número d'operari
+     *
      * @param numOperari número d'operari del'usuari
      * @return usuari amb el número d'operari passat al paràmetre
      */
@@ -74,6 +79,7 @@ public class UserServiceImpl {
 
     /**
      * Esborrar un usuari
+     *
      * @param id
      * @return llistat d'usuaris
      */
@@ -82,5 +88,16 @@ public class UserServiceImpl {
         return "redirect:/users/all";
     }
 
+    /**
+     * Mètode que comprova si el numOperari ja existeix al sistema
+     *
+     * @param numOperari número d'operari a compovar abans de validar formulari
+     * @return true el número d'operari ja existeix, false està lliure
+     */
+    public boolean existeixNumOperari(long numOperari) {
+        List<Usuari> usuarisBD = getAllUsuaris();
+
+        return usuarisBD.stream().anyMatch(u -> (numOperari == u.getNumOperari()));
+    }
 
 }

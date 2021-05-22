@@ -1,5 +1,8 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
+import cat.xtec.ioc.Proccontrol.ConstraintValidator.NotExistingNumOperari;
+import cat.xtec.ioc.Proccontrol.ConstraintValidator.OnCreate;
+import cat.xtec.ioc.Proccontrol.ConstraintValidator.OnUpdate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
@@ -29,6 +32,7 @@ public class Usuari implements Serializable {
     @Column(name = "user_id")
     private long userId;
 
+    @NotExistingNumOperari(groups = OnUpdate.class)
     @NotNull(message = "Has d'indicar un número d'operari")
     @Column(name = "num_operari", nullable = false, unique = true)
     private long numOperari;

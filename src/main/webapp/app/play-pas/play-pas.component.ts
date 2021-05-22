@@ -63,7 +63,7 @@ export class PlayPasComponent implements OnInit {
       },
         error => console.log(error));
       console.log("proces finalitzat, gràcies!");
-      //window.location.href = 'http://localhost:8080/';
+      window.location.href = 'http://localhost:8080/';
     } else {
       this.resultatService.pasActual++;
       this.pasActual = this.resultatService.pasActual;
