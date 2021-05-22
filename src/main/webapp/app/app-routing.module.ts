@@ -12,6 +12,7 @@ import { UpdateProcesComponent } from './update-proces/update-proces.component';
 import { AppComponent } from './app.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { ProcesCompletatComponent } from './proces-completat/proces-completat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'proces', pathMatch: 'full' },
@@ -31,7 +32,8 @@ const routes: Routes = [
     children: [
       { path: 'privacitat', component: PrivacitatComponent },
       { path: 'play-proces/:idProces/:idUsuari', component: PlayProcesComponent },
-      { path: 'play-pas', component: PlayPasComponent }
+      { path: 'play-pas', component: PlayPasComponent },
+      { path: 'proces-completat', component: ProcesCompletatComponent }
     ]
   },
 

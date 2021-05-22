@@ -17,6 +17,7 @@ import { PlayProcesComponent } from './play-proces/play-proces.component';
 import { PlayPasComponent } from './play-pas/play-pas.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { ProcesCompletatComponent } from './proces-completat/proces-completat.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
     PlayPasComponent,
     UserLayoutComponent,
     AdminLayoutComponent,
+    ProcesCompletatComponent,
   ],
   imports: [
     BrowserModule,
