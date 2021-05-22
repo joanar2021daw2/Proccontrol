@@ -41,14 +41,21 @@ public class ReferenciaController {
 
     /**
      * Retorna llistat de totes les referències
+     * @param model model de referència
+     * @return a la llista de referències
      */
     @RequestMapping("/all")
     public String getAllReferencies(Model model) {
         model.addAttribute("referenciesBD", referenciaService.getAllReferencies());
         return "referenciaLlistat";
     }
-
-    /*Retorna llistat de les referencias d'una instal·lació*/
+    
+    /**
+     * Retorna llistat de les referencias d'una instal·lació
+     * @param idInstalacio id de instal·lació
+     * @param model model de referència
+     * @return selecció de referència
+     */
     @GetMapping("/byinstalacio")
     public String byInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model) {
         model.addAttribute("referencies", referenciaService.getReferenciesByInstalacio(idInstalacio));
@@ -57,6 +64,8 @@ public class ReferenciaController {
 
     /**
      * Afegeix una referència
+     * @param model de referència
+     * @return formulari de referència
      */
     @GetMapping("/new")
     public String newReferencia(Model model) {
@@ -69,7 +78,11 @@ public class ReferenciaController {
     }
 
     /**
+     * 
      * Processa el formulari i afegeix la referència a la BD
+     * @param formReferencia formulari de referència
+     * @param result dades de referència
+     * @return redirecció a la llista de referència
      */
     @PostMapping(value = "/new")
     public String processAddForm(@Valid @ModelAttribute("formreferencia") Referencia formReferencia, BindingResult result) {
@@ -84,6 +97,9 @@ public class ReferenciaController {
 
     /**
      * Actualitza una referència
+     * @param idReferencia id de referència
+     * @param model model de referència
+     * @return redirecció a la llista de referència o a formulari de referència
      */
     @GetMapping("/referencia")
     public String updateReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
@@ -102,6 +118,10 @@ public class ReferenciaController {
 
     /**
      * Esborra la referència per la ID
+     * @param idReferencia id de referència
+     * @return redirecció a la llista de referència
+     * @throws ServletException excepció de servlet
+     * @throws IOException excepció d'entrada i salida
      */
     @GetMapping("/delete")
     public String deleteReferencia(@RequestParam("idReferencia") long idReferencia)

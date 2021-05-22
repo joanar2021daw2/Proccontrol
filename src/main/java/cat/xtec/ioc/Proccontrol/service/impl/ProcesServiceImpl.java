@@ -22,6 +22,8 @@ public class ProcesServiceImpl {
 
     /**
      * Guardar procés
+     * @param proces procés que volem guardar
+     * @return guardar procés
      */
     public Proces saveProces(Proces proces) {
         return procesRepo.save(proces);
@@ -29,6 +31,7 @@ public class ProcesServiceImpl {
 
     /**
      * Obtenir tots els processos
+     * @return Obtenir tots els processos
      */
     public List<Proces> getAllProcessos() {
         return procesRepo.findAll();
@@ -36,6 +39,8 @@ public class ProcesServiceImpl {
 
     /**
      * Obtenir un procés per id
+     * @param id id de procés
+     * @return el procés, si no troba, apareix un error
      */
     public Proces getProcesById(long id) {
         return procesRepo.findById(id)
@@ -44,17 +49,26 @@ public class ProcesServiceImpl {
 
     /**
      * Obtenir un procés per nom
+     * @param nom nom de procés que volem trobar
+     * @return el procés amb el nom indicat
      */
     public Proces getProcesByNom(String nom) {
         return procesRepo.findByNom(nom);
     }
     
+    /**
+     * Obtenir referència per procés
+     * @param idReferencia id de referència
+     * @return Obtenir referència per procés
+     */
     public List<Proces> getProcessosByReferencia(long idReferencia){
         return procesRepo.findByReferenciaIdReferencia(idReferencia);
     }
 
     /**
      * Esborrar un procés per id
+     * @param id id de procés
+     * @return redirecció a la llista de processos
      */
     public String deleteProces(long id) {
         procesRepo.deleteById(id);
@@ -63,6 +77,8 @@ public class ProcesServiceImpl {
 
     /**
      * Actualitzar procés
+     * @param proces procés que volem actualitzar
+     * @return guardar procés actualitzat
      */
     public Proces updateProces(Proces proces) {
         Proces existingProces = procesRepo.findById(proces.getIdProces()).orElse(null);

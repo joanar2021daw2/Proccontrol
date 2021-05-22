@@ -21,6 +21,8 @@ public class SeccioServiceImpl {
 
     /**
      * Guardar un secció
+     * @param seccio que volem guardar
+     * @return Guardar un secció
      */
     public Seccio saveSeccio(Seccio seccio) {
         return seccioRepo.save(seccio);
@@ -28,20 +30,25 @@ public class SeccioServiceImpl {
 
     /**
      * Obtenir tots els seccions
+     * @return Obtenir tots els seccions
      */
     public List<Seccio> getAllSeccions() {
         return seccioRepo.findAll();
     }
-    
+
     /**
      * Obtenir un secció per id
+     * @param id id de secció
+     * @return retorna el secció que busquem per id
      */
     public Seccio getSeccioById(long id){
         return seccioRepo.getOne(id);
     }
 
     /**
-     * Obtenir un secció per nom
+     *  Obtenir un secció per nom
+     * @param nom de secció
+     * @return secció que busquem
      */
     public Seccio getSeccioByNom(String nom) {
         return seccioRepo.findByNom(nom);
@@ -49,6 +56,8 @@ public class SeccioServiceImpl {
 
     /**
      * Esborrar un secció per id
+     * @param id id de secció
+     * @return redirecció a la llista de seccions
      */
     public String deleteSeccio(long id) {
         seccioRepo.deleteById(id);

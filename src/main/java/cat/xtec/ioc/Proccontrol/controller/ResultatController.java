@@ -31,21 +31,42 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/resultats")
 public class ResultatController {
 
+	/**
+	 * Servei d'implementació per resultat
+	 */
     @Autowired
     ResultatServiceImpl resultatService;
 
+    /**
+     * Servei d'implementació per secció
+     */
     @Autowired
     SeccioServiceImpl seccioService;
 
+    /**
+     * Servei d'implementació per instal·lació
+     */
     @Autowired
     InstalacioServiceImpl instalacioService;
 
+    /**
+     * Servei d'implementació per referència
+     */
     @Autowired
     ReferenciaServiceImpl referenciaService;
 
+    /**
+     * Servei d'implementació per procés
+     */
     @Autowired
     ProcesServiceImpl procesService;
 
+    /**
+     * Obtenir detalls de resultat
+     * @param idResultat id de resultat
+     * @param model model de resultat
+     * @return retonar detalls d'un resultat
+     */
     @GetMapping("/details")
     public String resultatDetails(@RequestParam("idResultat") long idResultat, Model model) {
         Resultat resultat = resultatService.getResultatById(idResultat);
@@ -55,12 +76,24 @@ public class ResultatController {
         return "resultatDetails";
     }
 
+    /**
+     * Obtenir resultat per un usuari
+     * @param userId id de l'usuari
+     * @param model model de l'usuari
+     * @return retornar null
+     */
     @GetMapping("/byusuari")
     public String getResultatByUsuari(@RequestParam("idUsuari") long userId, Model model) {
 
         return null;
     }
 
+    /**
+     * Obtenir resultat per procés
+     * @param idProces id d'un procés
+     * @param model d'un procés
+     * @return retornar la llista dels resultats
+     */
     @GetMapping("/byproces")
     public String getResultatByProces(@RequestParam("idProces") long idProces, Model model) {
         List<Resultat> resultatsPerProces = resultatService.getResultatsByProces(idProces);
@@ -72,9 +105,9 @@ public class ResultatController {
     /**
      * Mètode que retorna la vista de la gràfica de barres que mostra usuari/tempsTotal
      * dels resultats obtinguts pels diferents usuaris que han realitzat un procés
-     *
-     * @RequestParam idProces id del procés seleccionat a l'hora de veure els resultats
-     * del mateix
+     * @param idProces
+     * @param model id del procés seleccionat a l'hora de veure els resultats del mateix
+     * @return retornar vista gràfica de temps total
      */
     @GetMapping("/byproceschart")
     public String getResultatByProcesChart(@RequestParam("idProces") long idProces, Model model) {
@@ -97,7 +130,9 @@ public class ResultatController {
     }
 
     /**
-     * Retorna seccions per que l'usuari seleccioni una i verue les instalacions
+     * Retornar seccions per que l'usuari seleccioni una i verue les instalacions
+     * @param model de seleccionar un procés
+     * @return tots els processos disponibles
      */
     @RequestMapping("/selectsection")
     public String selectOneSeccio(Model model) {
@@ -106,7 +141,10 @@ public class ResultatController {
     }
 
     /**
-     * Selecciona les instalacions que hi han a la seccio
+     * Selecciona les instalacions que hi han a la secció
+     * @param idSeccio id de secció 
+     * @param model de secció
+     * @return instalació per triar
      */
     @RequestMapping("/byseccio")
     public String getInstalacionsBySeccio(@RequestParam("idSeccio") long idSeccio, Model model) {
@@ -116,6 +154,9 @@ public class ResultatController {
 
     /**
      * Retorna llistat de les referencias d'una instal·lació
+     * @param idInstalacio id de l'instal·lació
+     * @param model model de instal·lació
+     * @return llista de els referències 
      */
     @GetMapping("/byinstalacio")
     public String byInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model) {
@@ -123,8 +164,11 @@ public class ResultatController {
         return "perReferencia";
     }
 
-    /** 
+    /**
      * Retorna llistat dels processos d'una referència de producte
+     * @param idReferencia id de referència
+     * @param model de referència
+     * @return llistat dels processos d'una referència de producte
      */
     @GetMapping("byreferencia")
     public String byReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
@@ -134,6 +178,11 @@ public class ResultatController {
 
     /**
      * Esborra el resultat per la ID
+     * @param idResultat id d'un resultat que volem esborrar
+     * @param redirectAttributes per poder redireccionar
+     * @return redirecció a selecció de processos
+     * @throws ServletException excepció d'error de servlet
+     * @throws IOException excepció d'error d'entrada i salida
      */
     @GetMapping("/delete")
     public String deleteResultat(@RequestParam("idResultat") long idResultat,

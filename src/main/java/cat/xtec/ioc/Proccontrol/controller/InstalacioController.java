@@ -43,7 +43,8 @@ public class InstalacioController {
     SeccioServiceImpl seccioService;
 
     /**
-     *
+     * 
+     * @param model de l'instalació
      * @return Retorna llistat de totes les instal·lacions
      */
     @RequestMapping("/all")
@@ -52,7 +53,12 @@ public class InstalacioController {
         return "instalacioLlistat";
     }
 
-    /*Selecciona les instalacions que hi han a la seccio*/
+    /**
+     * Selecciona les instalacions que hi han a la secció
+     * @param idSeccio id de secció
+     * @param model model de instal·lació
+     * @return instalació seleccionat
+     */
     @RequestMapping("/byseccio")
     public String getInstalacionsBySeccio(@RequestParam("idSeccio") long idSeccio, Model model) {
         model.addAttribute("instalacions", instalacioService.getInstalacioBySeccio(idSeccio));
@@ -61,6 +67,8 @@ public class InstalacioController {
 
     /**
      * Afegeix una instalació
+     * @param model de instal·lació
+     * @return formulari de l'instal·lació
      */
     @GetMapping("/new")
     public String newInstalacio(Model model) {
@@ -74,6 +82,9 @@ public class InstalacioController {
 
     /**
      * Processa el formulari i afegeix l'instalació a la BD
+     * @param formInstalacio formulari d'instal·lació
+     * @param result agafa resultat
+     * @return redirecció a la llista d'instal·lacions
      */
     @PostMapping(value = "/new")
     public String processAddForm(@Valid @ModelAttribute("forminstalacio") Instalacio formInstalacio, BindingResult result) {
@@ -88,6 +99,9 @@ public class InstalacioController {
 
     /**
      * Actualizta una instalació
+     * @param idInstalacio id d'instal·lació
+     * @param model model de instal·lació
+     * @return formulari d'instal·lació o redirecció a la llista d'instal·lacions
      */
     @GetMapping("/instalacio")
     public String updateInstalacio(@RequestParam("idInstalacio") long idInstalacio, Model model) {
@@ -106,6 +120,10 @@ public class InstalacioController {
 
     /**
      * Esborra la instal·lació per la ID
+     * @param idInstalacio id d'instal·lació
+     * @return redirecció a la llista de instalacions
+     * @throws ServletException Excepció d'error de Servlet
+	 * @throws IOException Excepció d'error d'entrada i salida
      */
     @GetMapping("/delete")
     public String deleteInstalacio(@RequestParam("idInstalacio") long idInstalacio)

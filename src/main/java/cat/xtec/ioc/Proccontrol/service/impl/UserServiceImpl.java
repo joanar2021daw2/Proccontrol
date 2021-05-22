@@ -79,9 +79,8 @@ public class UserServiceImpl {
 
     /**
      * Esborrar un usuari
-     *
-     * @param id
-     * @return llistat d'usuaris
+     * @param id id de l'usuari
+     * @return retorna la llista de tots els usuaris
      */
     public String deleteUsuari(long id) {
         userRepository.deleteById(id);
