@@ -21,12 +21,24 @@ public class NumOperariValidator implements ConstraintValidator<NotExistingNumOp
     @Autowired
     UserServiceImpl userService;
 
+    /**
+     * Mètode que permet inicialitzar o preparar dades per la validació
+     *
+     * @param constraintAnnotation
+     */
     @Override
     public void initialize(NotExistingNumOperari constraintAnnotation) {
     }
 
+    /**
+     * Mètode que s'executa per comprovar si l'entrada de l'usuari es vàlida
+     *
+     * @param numOperari número d'operari del formulari usuaris
+     * @param cvc
+     * @return booleana true = ja existeix numOperari, false = està lliure 
+     */
     @Override
-    public boolean isValid(Long numOperari, ConstraintValidatorContext cvc) {                
+    public boolean isValid(Long numOperari, ConstraintValidatorContext cvc) {
         return numOperari != null && !userService.existeixNumOperari(numOperari);
     }
 
