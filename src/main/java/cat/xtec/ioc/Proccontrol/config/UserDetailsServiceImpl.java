@@ -24,9 +24,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    /**
+     * Servei d'usuari
+     */    
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Mètode que retorna els detalls de l'usuari a loguejar
+     * @param nom nom de l'usuari a autenticar
+     * @return objecte User de Spring Security amb els detalls de l'usuari
+     * @throws UsernameNotFoundException si no es troba l'usuari
+     */
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String nom) throws UsernameNotFoundException {

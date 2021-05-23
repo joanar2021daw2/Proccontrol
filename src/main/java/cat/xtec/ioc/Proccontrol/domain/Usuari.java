@@ -53,7 +53,7 @@ public class Usuari implements Serializable {
     private String rol;
 
     @NotBlank(message = "Has de posar una contrasenya")
-    @Length(min = 4, message  = "La contrasenya ha de tenir mínim 4 caràcters")
+    @Length(min = 4, message = "La contrasenya ha de tenir mínim 4 caràcters")
     @Column(name = "password", nullable = false)
     private String password;
 

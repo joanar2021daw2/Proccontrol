@@ -99,6 +99,4 @@ public class CompteUsuariBaixa implements Serializable {
         this.dataBaixaCompte = dataBaixaCompte;
     }
 
-  
-
 }

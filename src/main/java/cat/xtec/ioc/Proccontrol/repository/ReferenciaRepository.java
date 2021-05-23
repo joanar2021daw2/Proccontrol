@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Classe interfície referència
+ * Interfície del repositori de la referència
  *
  * @author JoseAndrade
  */

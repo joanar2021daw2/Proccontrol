@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 
 /**
  * Aquesta classe model conté propietats, constructor, getter i setter de procés
+ *
  * @author JoseAndrade
  */
 @Entity
@@ -36,17 +37,16 @@ public class Proces implements Serializable {
 
     @Column(name = "num_passos", nullable = false)
     private int numPassos;
-    
+
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Pas> passos;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "regist_data", nullable = false)
     private Date dataRegistre;
-    
+
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<Resultat> resultats;
-    
 
     public Proces() {
     }
@@ -115,6 +115,6 @@ public class Proces implements Serializable {
 
     public void setResultats(List<Resultat> resultats) {
         this.resultats = resultats;
-    }      
+    }
 
 }

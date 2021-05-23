@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Classe interfície procés
+ * Interfície del repositori de procés
  *
  * @author JoseAndrade
  */

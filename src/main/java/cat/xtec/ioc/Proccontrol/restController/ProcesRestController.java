@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,20 +20,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Aquesta classe serveix per crear referència, procès, vincular-les  
+ * Classe controladora de les peticions dels clients rest pels processos
+ *
  * @author JoseAndrade
  */
 @RestController
-
 @RequestMapping("/api/v1/")
 public class ProcesRestController {
 
-	/**
-	 * Servei de procés
-	 */
+    /**
+     * Servei de procés
+     */
     @Autowired
     ProcesServiceImpl procesService;
-    
+
     /**
      * Servei de referència
      */
@@ -42,8 +41,9 @@ public class ProcesRestController {
     ReferenciaServiceImpl referenciaService;
 
     /**
-     * 
-     * @return Retorna llistat de tots els processos rest api*
+     * Retorna al client un llistat amb tots els processos, rest api
+     *
+     * @return retorna llistat de tots els processos
      */
     @GetMapping("/processos")
     public List<Proces> getAllProcessos() {
@@ -51,9 +51,10 @@ public class ProcesRestController {
     }
 
     /**
-     * Retorna procés per id rest api
+     * Retorna procés per id, rest api
+     *
      * @param idProces Identificador del procés
-     * @return Objecte JSON del procés
+     * @return resposta Html i objecte JSON del procés
      */
     @GetMapping("/processos/{idProces}")
     public ResponseEntity<Proces> getProcesById(@PathVariable Long idProces) {
@@ -63,6 +64,7 @@ public class ProcesRestController {
 
     /**
      * Afegeix un procés rest api
+     *
      * @param proces Objecte JSON del procés
      * @return Objecte JSON del procés
      */
@@ -75,10 +77,11 @@ public class ProcesRestController {
     }
 
     /**
-     * Actualitza un procès rest api
+     * Actualitza un procès, rest api
+     *
      * @param idProces Identificador del procés
      * @param procesDetails Objecte JSON del procés
-     * @return Objecte JSON del procés
+     * @return resposta html i objecte JSON del procés
      */
     @PutMapping("/processos/{idProces}")
     public ResponseEntity<Proces> updateProces(@PathVariable Long idProces,
@@ -88,37 +91,40 @@ public class ProcesRestController {
         proces.setNom(procesDetails.getNom());
         proces.setReferencia(procesDetails.getReferencia());
         proces.setNumPassos(procesDetails.getNumPassos());
-        proces.setPassos(procesDetails.getPassos());        
+        proces.setPassos(procesDetails.getPassos());
 
         Proces updatedProces = procesService.saveProces(proces);
         return ResponseEntity.ok(updatedProces);
     }
 
     /**
-     * Esborra un procès rest api
+     * Esborra un procès, rest api
+     *
      * @param idProces Identificador del procés
-     * @return Objecte JSON del procés
+     * @return resposta html i objecte JSON del procés
      */
     @DeleteMapping("/processos/{idProces}")
     public ResponseEntity<Map<String, Boolean>> deleteProces(@PathVariable Long idProces) {
         Map<String, Boolean> response = new HashMap<>();
-        
+
         procesService.deleteProces(idProces);
         response.put("eliminat", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 
     /**
+     * Retorna llistat de referències 
      * 
-     * @return Retorna llistat de referències rest api
+     * @return Retorna llistat de referències, rest api
      */
     @GetMapping("/referencies")
     public List<Referencia> getAllReferencies() {
         return referenciaService.getAllReferencies();
     }
-    
+
     /**
-     * 
+     * permet crear una referència, rest api
+     *
      * @param ref Objecte JSON del la referència
      * @return Crea un objecte JSON de la referència
      */

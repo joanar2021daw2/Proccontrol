@@ -7,8 +7,6 @@ import cat.xtec.ioc.Proccontrol.service.impl.UserServiceImpl;
 import java.io.IOException;
 import java.util.Calendar;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
+ * Classe controladora de les peticions relacionades amb la baixa dels comptes
+ * dels usuaris que volen donar de baixa les seves dades
  *
  * @author JoseAndrade
  */
@@ -34,10 +34,10 @@ public class CompteUsuariBaixaController {
     private UserServiceImpl userService;
 
     /**
-     * Retorna històric dels comptes donats de baixa
+     * Mètode que retorna l'històric dels comptes donats de baixa
      *
-     * @param model
-     * @return pagina web de l'històric dels usuaris que han volgut donar de
+     * @param model model de la plantilla
+     * @return plantilla html de l'històric dels usuaris que han volgut donar de
      * baixa les seves dades (baixa del compte d'usuari + dades a Resultat)
      */
     @GetMapping("/all")
@@ -47,8 +47,8 @@ public class CompteUsuariBaixaController {
     }
 
     /**
-     * Dona de baixa les dades de l'usuari loguejat a tot al sistema i guarda el
-     * registre a la base de dades
+     * Mètode que dona de baixa les dades de l'usuari loguejat al sistema i
+     * guarda el registre a la base de dades
      *
      * @return retorna a la pàgina inicial
      */
@@ -75,7 +75,12 @@ public class CompteUsuariBaixaController {
     }
 
     /**
-     * Esborrar usuari per id
+     * Mètode que esborra del històric un registe de compte de baixa
+     *
+     * @param idCompteUsuariBaixa id del compte donat de baixa
+     * @return plantilla html de l'istòric de comptes donats de baixa
+     * @throws ServletException excepcions de servlet
+     * @throws IOException excepcions d'entrada/sortida
      */
     @GetMapping("/delete")
     public String deleteCompteUsuariBaixa(@RequestParam("idCompteUsuariBaixa") long idCompteUsuariBaixa)
@@ -85,9 +90,9 @@ public class CompteUsuariBaixaController {
     }
 
     /**
-     * Mètode que retorna el nom de l'usuari autenticat al sistema.
+     * Mètode que retorna el nom de l'usuariactualment autenticat al sistema.
      *
-     * @return nomUsuariAutenticat
+     * @return nomUsuariAutenticat nom de l'usuari loguejat actualment
      */
     private String nomUsuariAutenticat() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

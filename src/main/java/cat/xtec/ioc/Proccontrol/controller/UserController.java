@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar usuari
+ * Classe controladora de les peticions relacionades amb els usuaris
  *
  * @author JoseAndrade
  */
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     /**
-     * Posar vista de crear usuari
+     * Gestiona la petició new i retorna el formulari de creació usuaris
      *
      * @param model
      * @return

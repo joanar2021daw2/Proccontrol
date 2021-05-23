@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.xtec.ioc.Proccontrol.config;
 
 import org.springframework.context.annotation.Bean;
@@ -22,7 +17,7 @@ public class TemplateResolver {
     /**
      * Mapeja el directori template instalacio
      *
-     * @return Resolutor de la plantilla Instalació
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
      */
     @Bean
     public ClassLoaderTemplateResolver instalacioTemplateResolver() {
@@ -40,7 +35,7 @@ public class TemplateResolver {
     /**
      * Mapeja el directori template seccio
      *
-     * @return Resolutor de la plantilla Secció
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
      */
     @Bean
     public ClassLoaderTemplateResolver seccioTemplateResolver() {
@@ -58,7 +53,7 @@ public class TemplateResolver {
     /**
      * Mapeja el directori template user
      *
-     * @return Mapeja el directori template Usuari
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
      */
     @Bean
     public ClassLoaderTemplateResolver userTemplateResolver() {
@@ -76,7 +71,7 @@ public class TemplateResolver {
     /**
      * Mapeja el directori template proces
      *
-     * @return Mapeja el directori template procés
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
      */
     @Bean
     public ClassLoaderTemplateResolver procesemplateResolver() {
@@ -94,7 +89,7 @@ public class TemplateResolver {
     /**
      * Mapeja el directori template referencia
      *
-     * @return Mapeja el directori template referència
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
      */
     @Bean
     public ClassLoaderTemplateResolver referenciaTemplateResolver() {
@@ -109,31 +104,39 @@ public class TemplateResolver {
         return referenciesTemplateResolver;
     }
 
-    /*-----------Mapeja el directori template resultat-----------*/
+    /**
+     * Mapeja el directori template referencia
+     *
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
+     */
     @Bean
     public ClassLoaderTemplateResolver resultatTemplateResolver() {
-        ClassLoaderTemplateResolver referenciesTemplateResolver = new ClassLoaderTemplateResolver();
-        referenciesTemplateResolver.setPrefix("templates/resultat/");
-        referenciesTemplateResolver.setSuffix(".html");
-        referenciesTemplateResolver.setTemplateMode(TemplateMode.HTML);
-        referenciesTemplateResolver.setCharacterEncoding("UTF-8");
-        referenciesTemplateResolver.setOrder(1);
-        referenciesTemplateResolver.setCheckExistence(true);
+        ClassLoaderTemplateResolver resultatTemplateResolver = new ClassLoaderTemplateResolver();
+        resultatTemplateResolver.setPrefix("templates/resultat/");
+        resultatTemplateResolver.setSuffix(".html");
+        resultatTemplateResolver.setTemplateMode(TemplateMode.HTML);
+        resultatTemplateResolver.setCharacterEncoding("UTF-8");
+        resultatTemplateResolver.setOrder(1);
+        resultatTemplateResolver.setCheckExistence(true);
 
-        return referenciesTemplateResolver;
+        return resultatTemplateResolver;
     }
 
-    /*-----------Mapeja el directori template comptesUsuariBaixa-----------*/
+    /**
+     * Mapeja el directori template compteUsuariBaixa
+     *
+     * @return objecte classloaderTemplateResolver amb les dades de la ruta
+     */
     @Bean
     public ClassLoaderTemplateResolver compteUsuariBaixaTemplateResolver() {
-        ClassLoaderTemplateResolver referenciesTemplateResolver = new ClassLoaderTemplateResolver();
-        referenciesTemplateResolver.setPrefix("templates/comptesUsuariBaixa/");
-        referenciesTemplateResolver.setSuffix(".html");
-        referenciesTemplateResolver.setTemplateMode(TemplateMode.HTML);
-        referenciesTemplateResolver.setCharacterEncoding("UTF-8");
-        referenciesTemplateResolver.setOrder(1);
-        referenciesTemplateResolver.setCheckExistence(true);
+        ClassLoaderTemplateResolver compteUsuariBaixaTemplateResolver = new ClassLoaderTemplateResolver();
+        compteUsuariBaixaTemplateResolver.setPrefix("templates/comptesUsuariBaixa/");
+        compteUsuariBaixaTemplateResolver.setSuffix(".html");
+        compteUsuariBaixaTemplateResolver.setTemplateMode(TemplateMode.HTML);
+        compteUsuariBaixaTemplateResolver.setCharacterEncoding("UTF-8");
+        compteUsuariBaixaTemplateResolver.setOrder(1);
+        compteUsuariBaixaTemplateResolver.setCheckExistence(true);
 
-        return referenciesTemplateResolver;
+        return compteUsuariBaixaTemplateResolver;
     }
 }

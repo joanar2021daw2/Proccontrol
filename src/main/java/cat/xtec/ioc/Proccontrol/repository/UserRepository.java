@@ -4,7 +4,7 @@ import cat.xtec.ioc.Proccontrol.domain.Usuari;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Classe interfície usuari
+ * Interfície del repositori de l'usuari
  *
  * @author JoseAndrade
  */

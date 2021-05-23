@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
- * Aquesta classe serveix per implementar servei d'usuari
+ * Classe d'implementació del servei d'usuari
  *
  * @author JoseAndrade
  */
@@ -22,13 +22,13 @@ public class UserServiceImpl {
     private UserRepository userRepository;
 
     /**
-     * Encriptar la contrasenya
+     * Encriptació de contrasenya
      */
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
-     * Guarda usuari a la base de dades
+     * Encripta contrasenya i guarda l'usuari a la base de dades
      *
      * @param usuari objecte usuari a desar a la base de dades
      * @return objecte usuari desat a la base de dades
@@ -39,7 +39,7 @@ public class UserServiceImpl {
     }
 
     /**
-     * Obtenir tots els usuaris
+     * Obté tots els usuaris
      *
      * @return llistat de tots els usuaris registrats al sistema
      */
@@ -48,7 +48,7 @@ public class UserServiceImpl {
     }
 
     /**
-     * Obtenir un usuari per id
+     * Obté un usuari per id
      *
      * @param id id del compte d'usuari
      * @return usuari amb el id passat per paràmetre
@@ -58,7 +58,7 @@ public class UserServiceImpl {
     }
 
     /**
-     * Obtenir un usuari per nom
+     * Obté un usuari per nom
      *
      * @param nom nom del usuari
      * @return usuari amb el nom passat al paràmetre
@@ -68,7 +68,7 @@ public class UserServiceImpl {
     }
 
     /**
-     * Obtenir un usuari per número d'operari
+     * Obtenir un usuari pel número d'operari
      *
      * @param numOperari número d'operari del'usuari
      * @return usuari amb el número d'operari passat al paràmetre
@@ -79,6 +79,7 @@ public class UserServiceImpl {
 
     /**
      * Esborrar un usuari
+     *
      * @param id id de l'usuari
      * @return retorna la llista de tots els usuaris
      */
@@ -88,7 +89,8 @@ public class UserServiceImpl {
     }
 
     /**
-     * Mètode que comprova si el numOperari ja existeix al sistema
+     * Mètode que comprova si el numOperari ja existeix al sistema a l'hora de
+     * validar el formulari d'usuaris
      *
      * @param numOperari número d'operari a compovar abans de validar formulari
      * @return true el número d'operari ja existeix, false està lliure

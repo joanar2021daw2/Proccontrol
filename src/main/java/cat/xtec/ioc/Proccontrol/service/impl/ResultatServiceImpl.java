@@ -7,74 +7,77 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Aquesta classe servei per veure els resultats de processos
+ * Classe d'implementació del servei dels resultats
+ *
  * @author JoseAndrade
  */
 @Service
 public class ResultatServiceImpl {
-    
-	/**
-	 * Repositori de resultat
-	 */
+
+    /**
+     * Repositori de resultat
+     */
     @Autowired
     ResultatRepository resultatRepo;
-    
+
     /**
-     * Guardar resultat
+     * Guarda resultat a la base de dades
+     *
      * @param resultat que volem guardar
      * @return guardar resultat
      */
-    public Resultat saveResultat(Resultat resultat){
+    public Resultat saveResultat(Resultat resultat) {
         return resultatRepo.save(resultat);
     }
-    
+
     /**
-     * Obtenir tots els resultats
-     * @return retorna tots els resultats
+     * Obté un llistat de tots els resultats
+     *
+     * @return retorna llistat dels resultats
      */
-    public List<Resultat> getAllResultats(){
+    public List<Resultat> getAllResultats() {
         return resultatRepo.findAll();
     }
-    
+
     /**
-     * Obtenir resulat per id resultat
-     * @param idResultat id resultat que volem buscar
-     * @return retornar resultat que volem buscar
+     * Obté resulat pel seu id
+     *
+     * @param idResultat id resultat
+     * @return retorna resultat cercat
      */
-    public Resultat getResultatById(long idResultat){
+    public Resultat getResultatById(long idResultat) {
         return resultatRepo.getOne(idResultat);
     }
-    
+
     /**
-     * Obtenr resultats per usuari
-     * @param userId id d'usuari que volem buscar
-     * @return retorna usuari amb aquel id
+     * Obté els resultats d'un usuari
+     *
+     * @param userId id d'usuari
+     * @return retorna llistat de resultats de l'usuari
      */
-    public List<Resultat> getResultatsByUsuari(long userId){
+    public List<Resultat> getResultatsByUsuari(long userId) {
         return resultatRepo.findByUsuariUserId(userId);
     }
-    
+
     /**
-     * Obtenir els resultats per procés
-     * @param idProces id procés
-     * @return retornar proces que busquem
+     * Obté els resultats d'un procés
+     *
+     * @param idProces id del procés
+     * @return llistat de resultats del procés 
      */
-    public List<Resultat> getResultatsByProces(long idProces){
+    public List<Resultat> getResultatsByProces(long idProces) {
         return resultatRepo.findByProcesIdProces(idProces);
     }
-    
+
     /**
-     * Esborrar resultat
-     * @param id id de resultat que volem esborrar
+     * Esborra un resultat
+     *
+     * @param id id de resultat
      * @return redirecció a menú d'edició
      */
-     public String deleteResultat(long id) {
+    public String deleteResultat(long id) {
         resultatRepo.deleteById(id);
         return "redirect:/edicio";
     }
-    
-    //De moment no actualitzem resultats 
-    /*public updateResultat(Resultat resultat){
-        Resultat existingResultat = resultatRepo.findById(resultat.getIdResultat()).orElse(null);                
-    }*/
+
 }

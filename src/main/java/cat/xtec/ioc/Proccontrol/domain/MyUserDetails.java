@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Aquesta classe conté credencial de l'usuari per autenticar
+ *
  * @author JoseAndrade
  */
 public class MyUserDetails implements UserDetails {
@@ -54,7 +55,7 @@ public class MyUserDetails implements UserDetails {
         return true;
     }
 
-   // @Override
+    // @Override
     public String getName() {
         return user.getNom();
     }

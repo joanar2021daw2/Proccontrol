@@ -4,6 +4,7 @@ import cat.xtec.ioc.Proccontrol.domain.CompteUsuariBaixa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
+ * Interfície del repositori dels comptes d'usuari donats de baixa
  *
  * @author JoseAndrade
  */

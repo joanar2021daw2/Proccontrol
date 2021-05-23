@@ -6,20 +6,17 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar secció
+ * Classe controladora de les peticions relacionades amb les seccions
  *
  * @author JoseAndrade
  */
@@ -35,6 +32,9 @@ public class SeccioController {
 
     /**
      * Retorna llistat de totes les seccions
+     *
+     * @param model model de la plantilla del llistat de seccions
+     * @return vitsa del llistat de secicons
      */
     @RequestMapping("/all")
     public String getAllSeccions(Model model) {
@@ -42,7 +42,13 @@ public class SeccioController {
         return "seccioLlistat";
     }
 
-    /*Retorna seccions per que l'usuari seleccioni una i verue les instalacions*/
+    /**
+     * Retorna seccions per que l'usuari seleccioni una i pugui verue les
+     * instalacions a l'hora de cercar procés per executar-lo
+     *
+     * @param model de la vista de selecció de secció
+     * @return
+     */
     @RequestMapping("/selectone")
     public String selectOneSeccio(Model model) {
         model.addAttribute("seccionsBD", seccioService.getAllSeccions());
@@ -50,7 +56,10 @@ public class SeccioController {
     }
 
     /**
-     * Afegeix una secció
+     * Gestiona la petició new per preparar el formulari de nova secció
+     *
+     * @param model model de la plantilla del formulari
+     * @return vista del formulari de nova secció
      */
     @GetMapping("/new")
     public String newSeccio(Model model) {
@@ -61,6 +70,10 @@ public class SeccioController {
 
     /**
      * Processa el formulari i afegeix la secció a la BD
+     *
+     * @param formSeccio seccio passada del formulari
+     * @param result resultat enllaçat amb el commit
+     * @return vista de llistat amb totes les seccions
      */
     @PostMapping(value = "/new")
     public String processAddForm(@Valid @ModelAttribute("formseccio") Seccio formSeccio, BindingResult result) {
@@ -74,7 +87,12 @@ public class SeccioController {
     }
 
     /**
-     * Actualitza una secció
+     * Gestiona l'Actualització d'una secció preparant el formulari amb les
+     * dades de la secció passada per paràmetre
+     *
+     * @param idSeccio id de la secció
+     * @param model model de la plantilla
+     * @return vista del formulari amb les dades de la secció a actualitzar
      */
     @GetMapping("/seccio")
     public String updateSeccio(@RequestParam("idSeccio") long idSeccio, Model model) {
@@ -89,9 +107,13 @@ public class SeccioController {
         return "seccioForm";
     }
 
-
     /**
-     * Esborra la secció per la ID
+     * Esborra la secció per la ID 
+     * 
+     * @param idSeccio id de la secció
+     * @return vista del llistat de totes les seccions
+     * @throws javax.servlet.ServletException 
+     * @throws java.io.IOException 
      */
     @GetMapping("/delete")
     public String deleteSeccio(@RequestParam("idSeccio") long idSeccio)

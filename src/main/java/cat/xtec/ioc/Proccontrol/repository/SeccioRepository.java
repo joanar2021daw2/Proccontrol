@@ -4,7 +4,7 @@ import cat.xtec.ioc.Proccontrol.domain.Seccio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Classe interfície secció
+ * Interfície del repositori de la secció
  *
  * @author JoseAndrade
  */

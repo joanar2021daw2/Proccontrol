@@ -1,7 +1,5 @@
 package cat.xtec.ioc.Proccontrol.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -16,7 +14,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * Aquesta classe model conté propietats, constructor, getter i setter de resultat
+ * Aquesta classe model conté propietats, constructor, getter i setter de
+ * resultat
+ *
  * @author JoseAndrade
  */
 @Entity
@@ -29,12 +29,12 @@ public class Resultat implements Serializable {
     private long idResultat;
 
     /**
-    * JPA permet tenir una referència sense la columna típica ID i s'encarregarà
-    * de realitzar un SELECT adicional per carregar l'entitat
-    */    
+     * JPA permet tenir una referència sense la columna típica ID i
+     * s'encarregarà de realitzar un SELECT adicional per carregar l'entitat
+     */
     @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Usuari usuari;
-    
+
     @ManyToOne(optional = false, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Proces proces;
 
@@ -44,7 +44,7 @@ public class Resultat implements Serializable {
 
     @Column(name = "comentari_passos", nullable = true)
     private String[] comentariPassos;
-    
+
     @Column(name = "temps_passos", nullable = false)
     private long[] tempsPassos;
 

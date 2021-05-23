@@ -22,14 +22,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar procés
+ * Classe controladora de les peticions relacionades amb els processos
+ *
  * @author JoseAndrade
  */
 @Controller
 @RequestMapping("/processos")
 public class ProcesController {
 
-	
     @Autowired
     ProcesServiceImpl procesService;
 
@@ -39,11 +39,12 @@ public class ProcesController {
     @Autowired
     UserServiceImpl userService;
 
-     /**
-      * Retorna llistat de tots els processos
-      * @param model model de procés
-      * @return llista de processos
-      */
+    /**
+     * Retorna llistat de tots els processos
+     *
+     * @param model model de procés
+     * @return llista de processos
+     */
     @RequestMapping("/all")
     public String getAllProcessos(Model model) {
         model.addAttribute("processosBD", procesService.getAllProcessos());
@@ -51,12 +52,14 @@ public class ProcesController {
     }
 
     /**
-     * Retorna llistat dels processos d'una referència de producte
-     * passem l'id de l'usuari loguejat a angular (component play-proces)
-     * per fer el resultat
+     * Retorna llistat dels processos d'una referència de producte per que
+     * l'usuari seleccioni un per tal d'executar-ho. Passem l'id de l'usuari
+     * loguejat i l'id del proces a angular (component play-proces) per poder
+     * generar un objecte Resultat
+     *
      * @param idReferencia id referència
-     * @param model model de referència
-     * @return llistat dels processos d'una referència 
+     * @param model model de la plantilla
+     * @return llistat dels processos d'una referència
      */
     @GetMapping("/byreferencia")
     public String byReferencia(@RequestParam("idReferencia") long idReferencia, Model model) {
@@ -73,7 +76,8 @@ public class ProcesController {
     }
 
     /**
-     * Afegeix un procès 
+     * Gestiona la petició new i retorna el formulari de creació processos
+     *
      * @param model de procés
      * @return formulari de procés
      */
@@ -90,6 +94,7 @@ public class ProcesController {
 
     /**
      * Processa el formulari i afegeix el procès a la BD
+     *
      * @param formProces formulari de procés
      * @param result resultat de procés
      * @return retorna a la llista de processos
@@ -103,9 +108,11 @@ public class ProcesController {
     }
 
     /**
-     * Actualizta un procés
+     * Gestiona la petició per actualitzar un procés i retorna el formulari amb
+     * les dades del que s'ha passat l'id
+     *
      * @param idProces id de procés
-     * @param model de procés
+     * @param model de plantilla del formulari procés
      * @return redirecció a la llista o formulari de procés
      */
     @GetMapping("/proces")
@@ -126,6 +133,7 @@ public class ProcesController {
 
     /**
      * Processa el formulari i actualitza el pocés a la BD
+     *
      * @param formProces formulari de procés
      * @param result de procés
      * @return redirecció a la llista de processos
@@ -140,10 +148,11 @@ public class ProcesController {
 
     /**
      * Esborra el procès per la ID
+     *
      * @param idProces id de procés
      * @return redirecció a la llista de processos
      * @throws ServletException Excepció d'error de Servlet
-	 * @throws IOException Excepció d'error d'entrada i salida
+     * @throws IOException Excepció d'error d'entrada i salida
      */
     @GetMapping("/delete")
     public String deleteProces(@RequestParam("idProces") long idProces)

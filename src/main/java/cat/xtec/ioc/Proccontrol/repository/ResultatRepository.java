@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
+ * Interfície del repositori del resultat
  *
  * @author JoseAndrade
  */

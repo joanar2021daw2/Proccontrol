@@ -32,23 +32,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	/**
-	 * Servei d'usuari
-	 */
+    /**
+     * Servei d'usuari
+     */
     @Autowired
     private UserDetailsService userDetailService;
-    
+
     /**
-     * 
+     *
      * @return La contrasenya encriptada
      */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     /**
-     * Configuració per diferents rol d'usuaris, cal iniciar sessió per accedir, exepte pàgina inicial
+     * Configuració per diferents rol d'usuaris, cal iniciar sessió per accedir,
+     * exepte pàgina inicial
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -63,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                .and()                
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
@@ -94,6 +95,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Configuració de CORS
+     *
      * @return URL
      */
     @Bean
@@ -115,9 +117,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Autenticació global
+     * Autenticació global, gestiona el autentication manager
+     *
      * @param auth autenticació usuari
-     * @throws Exception Exepció per si dona error
+     * @throws Exception Exepció en cas d'error
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

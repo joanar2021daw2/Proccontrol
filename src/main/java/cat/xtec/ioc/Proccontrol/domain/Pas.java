@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.xtec.ioc.Proccontrol.domain;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Aquesta classe model conté propietats, constructor, getter i setter de pas de procés
+ * Aquesta classe model conté propietats, constructor, getter i setter de pas de
+ * procés
+ *
  * @author JoseAndrade
  */
 @Entity
 @Table(name = "pas")
-public class Pas implements Serializable{
+public class Pas implements Serializable {
 
     @Id
     @GeneratedValue

@@ -1,72 +1,78 @@
 package cat.xtec.ioc.Proccontrol.service.impl;
 
 import cat.xtec.ioc.Proccontrol.domain.Instalacio;
-import cat.xtec.ioc.Proccontrol.domain.Seccio;
 import cat.xtec.ioc.Proccontrol.repository.InstalacioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Aquesta classe serveix per implementar servei d'instal·lació
+ * Classe d'implementació del servei de les instal·lacions
+ *
  * @author JoseAndrade
  */
 @Service
 public class InstalacioServiceImpl {
 
-	/**
-	 * Repositori d'instal·lació
-	 */
+    /**
+     * Repositori d'instal·lació
+     */
     @Autowired
     InstalacioRepository instalacioRepo;
 
     /**
-     * Guardar l'instal·lació
-     * @param instalacio instal·lació que volem guardar
-     * @return guardar l'instal·lació
+     * Guarda l'instal·lació a la base de dades
+     *
+     * @param instalacio instal·lació a desar
+     * @return ordre al repositori per guardar l'instal·lació
      */
     public Instalacio saveInstalacio(Instalacio instalacio) {
         return instalacioRepo.save(instalacio);
     }
 
-	/**
-	 * Obtenir tots els instal·lacions
-	 * @return tots els instal·lacions
-	 */
+    /**
+     * Obté un llistat de totes les instal·lacions
+     *
+     * @return llistat de les instal·lacions
+     */
     public List<Instalacio> getAllInstalacions() {
         return instalacioRepo.findAll();
     }
 
     /**
-     * Obtenir un instal·lació per id
+     * Obté un instal·lació pel seu id
+     *
      * @param id id de l'instal·lació
-     * @return instal·lació amb aquel id
+     * @return objecte instal·lació amb l'id passada per paràmetre
      */
     public Instalacio getInstalacioById(long id) {
         return instalacioRepo.getOne(id);
     }
-    
+
     /**
-     * Obtenir un instal·lació per nom 
-     * @param nom
-     * @return instal·lació amb aquel nom
+     * Obté una instal·lació pel seu nom
+     *
+     * @param nom nom de la instal·lació
+     * @return instal·lació amb el nom passat per paràmetre
      */
     public Instalacio getInstalacioByNom(String nom) {
         return instalacioRepo.findByNom(nom);
     }
-    
+
     /**
-     * Obtenir secció per l'instal·lació
-     * @param seccio id de secció
-     * @return secciño amb aquel id de secció
+     * Obté el llistat d'instal·lacions que conté una secció
+     *
+     * @param seccio id de la secció
+     * @return llistat d'instal·lacions
      */
-    public List<Instalacio> getInstalacioBySeccio(long seccio){
+    public List<Instalacio> getInstalacioBySeccio(long seccio) {
         return instalacioRepo.findBySeccioIdSeccio(seccio);
     }
 
     /**
-     * Esborrar un instal·lació per id 
-     * @param id
+     * Esborra una instal·lació pel seu id
+     *
+     * @param id id de la instal·lació a esborrar
      * @return redirecció la llista d'instal·lacions
      */
     public String deleteInstalacio(long id) {

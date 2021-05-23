@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Aquesta classe serveix per crear, actualitzar, obtenir, i esborrar referència
+ * Classe controladora de les peticions relacionades amb les referències
  *
  * @author JoseAndrade
  */
@@ -41,6 +41,7 @@ public class ReferenciaController {
 
     /**
      * Retorna llistat de totes les referències
+     *
      * @param model model de referència
      * @return a la llista de referències
      */
@@ -49,9 +50,10 @@ public class ReferenciaController {
         model.addAttribute("referenciesBD", referenciaService.getAllReferencies());
         return "referenciaLlistat";
     }
-    
+
     /**
      * Retorna llistat de les referencias d'una instal·lació
+     *
      * @param idInstalacio id de instal·lació
      * @param model model de referència
      * @return selecció de referència
@@ -63,7 +65,8 @@ public class ReferenciaController {
     }
 
     /**
-     * Afegeix una referència
+     * Gestiona la petició new i retorna el formulari de creació de referències
+     *
      * @param model de referència
      * @return formulari de referència
      */
@@ -78,8 +81,9 @@ public class ReferenciaController {
     }
 
     /**
-     * 
-     * Processa el formulari i afegeix la referència a la BD
+     *
+     * Processa el formulari de nova referència i la afegeix a la base de dades
+     *
      * @param formReferencia formulari de referència
      * @param result dades de referència
      * @return redirecció a la llista de referència
@@ -96,9 +100,11 @@ public class ReferenciaController {
     }
 
     /**
-     * Actualitza una referència
+     * Gestiona la petició per actualitzar una referència i retorna el formulari
+     * amb les dades del passat a l'id
+     *
      * @param idReferencia id de referència
-     * @param model model de referència
+     * @param model model de la plantilla del formulari referència
      * @return redirecció a la llista de referència o a formulari de referència
      */
     @GetMapping("/referencia")
@@ -118,6 +124,7 @@ public class ReferenciaController {
 
     /**
      * Esborra la referència per la ID
+     *
      * @param idReferencia id de referència
      * @return redirecció a la llista de referència
      * @throws ServletException excepció de servlet
