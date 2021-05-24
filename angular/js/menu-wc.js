@@ -55,13 +55,17 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link">AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AppModule-36ef617511aefcc292a2c0a04d3349f4"' : 'data-target="#xs-components-links-module-AppModule-36ef617511aefcc292a2c0a04d3349f4"' }>
+                                            'data-target="#components-links-module-AppModule-6bdd9cdda99f3d4240f8b12b47de9156"' : 'data-target="#xs-components-links-module-AppModule-6bdd9cdda99f3d4240f8b12b47de9156"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-36ef617511aefcc292a2c0a04d3349f4"' :
-                                            'id="xs-components-links-module-AppModule-36ef617511aefcc292a2c0a04d3349f4"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-6bdd9cdda99f3d4240f8b12b47de9156"' :
+                                            'id="xs-components-links-module-AppModule-6bdd9cdda99f3d4240f8b12b47de9156"' }>
+                                            <li class="link">
+                                                <a href="components/AdminLayoutComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">AdminLayoutComponent</a>
+                                            </li>
                                             <li class="link">
                                                 <a href="components/AppComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AppComponent</a>
@@ -87,6 +91,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">PrivacitatComponent</a>
                                             </li>
                                             <li class="link">
+                                                <a href="components/ProcesCompletatComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">ProcesCompletatComponent</a>
+                                            </li>
+                                            <li class="link">
                                                 <a href="components/ProcesDetailsComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">ProcesDetailsComponent</a>
                                             </li>
@@ -101,6 +109,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             <li class="link">
                                                 <a href="components/UpdateProcesComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">UpdateProcesComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/UserLayoutComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">UserLayoutComponent</a>
                                             </li>
                                         </ul>
                                     </li>

@@ -64,6 +64,13 @@
     <code>src/main/webapp/app/passos-list/passos-list.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Aquesta classe serveix per llistar i gestionar tots els processos</p>
+
+    </p>
 
 
     <p class="comment">
@@ -179,7 +186,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -260,14 +267,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:32</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Desem pas i tornem al formulari dels passos</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -299,14 +308,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:24</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Al iniciar passos list recuperem procés desat i per mostrar passos a la plantilla</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -338,14 +349,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:40</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Desar proces completat a SpringBoot</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -386,7 +399,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -418,7 +431,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/main/webapp/app/passos-list/passos-list.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -437,6 +450,9 @@ import { Pas } from &#x27;../pas&#x27;;
 import { Proces } from &#x27;../proces&#x27;;
 import { ProcesService } from &#x27;../proces.service&#x27;;
 
+/**
+ * Aquesta classe serveix per llistar i gestionar tots els processos
+ */
 @Component({
   selector: &#x27;app-passos-list&#x27;,
   templateUrl: &#x27;./passos-list.component.html&#x27;,
@@ -448,29 +464,33 @@ export class PassosListComponent implements OnInit {
   proces: Proces &#x3D; new Proces();
 
   constructor(private procesService: ProcesService, private route: Router) { }
-
+  /**
+   * Al iniciar passos list recuperem procés desat i per mostrar passos a la plantilla
+   */
   ngOnInit(): void {
-    //Al iniciar passos list recuperem procés desat
     this.proces &#x3D; this.procesService.getProcesDesat();
-    //Per mostrar passos a la plantilla
     this.passos &#x3D; this.proces.passos;
   }
 
-  afegirPas(){
-    //Desem pas i tornem al formulari dels passos
+  /**
+   * Desem pas i tornem al formulari dels passos
+   */
+  afegirPas() {
     this.procesService.desarproces(this.proces);
     this.route.navigate([&#x27;passos-form&#x27;]);
   }
 
-    //Desar proces completat a SpringBoot
-    saveProces(){
-      this.proces.numPassos &#x3D; this.proces.passos.length ;
-      this.procesService.crearProces(this.proces).subscribe( dades &#x3D;&gt; {
-        console.log(dades);
-        this.route.navigate([&#x27;proces&#x27;]);
-      },
+  /**
+   * Desar proces completat a SpringBoot
+   */
+  saveProces() {
+    this.proces.numPassos &#x3D; this.proces.passos.length;
+    this.procesService.crearProces(this.proces).subscribe(dades &#x3D;&gt; {
+      console.log(dades);
+      this.route.navigate([&#x27;proces&#x27;]);
+    },
       error &#x3D;&gt; console.log(error));
-    }
+  }
 
 }
 </code></pre>
@@ -553,7 +573,7 @@ export class PassosListComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="section-title addPaddingTop">    <h2>        <b>{{proces.nom}}</b> de la referència <b>{{proces.referencia?.nom}}</b>    </h2></div><table class="table table-striped table-hover">    <thead class="table-danger">        <tr>            <th>Imatge</th>            <th>Passos</th>            <th>Nom</th>            <th>Descripció</th>        </tr>    </thead>    <tbody>        <tr *ngFor="let pas of passos">            <td><img class="imatge" [src]="pas.imatge" alt="" /></td>            <td>{{ pas.numeroDePas }}</td>            <td>{{ pas.titol }}</td>            <td>{{ (pas.descripcio.length>10)? (pas.descripcio | slice:0:10)+\'..\':(pas.descripcio) }}</td>        </tr>    </tbody></table><div>    <div>        <button class="btn btn-success" style="margin-left: 10px" (click)="afegirPas()">Afegir pas            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle"                viewBox="0 0 16 16">                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />                <path                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />            </svg></button>        <button class="btn btn-primary" style="margin-left: 10px" (click)="saveProces()">Desar procés</button>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'PassosFormComponent', 'selector': 'app-passos-form'},{'name': 'PassosListComponent', 'selector': 'app-passos-list'},{'name': 'PlayPasComponent', 'selector': 'app-play-pas'},{'name': 'PlayProcesComponent', 'selector': 'app-play-proces'},{'name': 'PrivacitatComponent', 'selector': 'app-privacitat'},{'name': 'ProcesDetailsComponent', 'selector': 'app-proces-details'},{'name': 'ProcesFormComponent', 'selector': 'app-proces-form'},{'name': 'ProcesListComponent', 'selector': 'app-proces-list'},{'name': 'UpdateProcesComponent', 'selector': 'app-update-proces'}];
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'PassosFormComponent', 'selector': 'app-passos-form'},{'name': 'PassosListComponent', 'selector': 'app-passos-list'},{'name': 'PlayPasComponent', 'selector': 'app-play-pas'},{'name': 'PlayProcesComponent', 'selector': 'app-play-proces'},{'name': 'PrivacitatComponent', 'selector': 'app-privacitat'},{'name': 'ProcesCompletatComponent', 'selector': 'app-proces-completat'},{'name': 'ProcesDetailsComponent', 'selector': 'app-proces-details'},{'name': 'ProcesFormComponent', 'selector': 'app-proces-form'},{'name': 'ProcesListComponent', 'selector': 'app-proces-list'},{'name': 'UpdateProcesComponent', 'selector': 'app-update-proces'},{'name': 'UserLayoutComponent', 'selector': 'app-user-layout'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PassosListComponent'};
 </script>

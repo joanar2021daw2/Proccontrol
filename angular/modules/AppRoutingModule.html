@@ -81,18 +81,34 @@ import { ProcesDetailsComponent } from &#x27;./proces-details/proces-details.com
 import { ProcesFormComponent } from &#x27;./proces-form/proces-form.component&#x27;;
 import { ProcesListComponent } from &#x27;./proces-list/proces-list.component&#x27;;
 import { UpdateProcesComponent } from &#x27;./update-proces/update-proces.component&#x27;;
+import { AppComponent } from &#x27;./app.component&#x27;;
+import { UserLayoutComponent } from &#x27;./user-layout/user-layout.component&#x27;;
+import { AdminLayoutComponent } from &#x27;./admin-layout/admin-layout.component&#x27;;
+import { ProcesCompletatComponent } from &#x27;./proces-completat/proces-completat.component&#x27;;
 
 const routes: Routes &#x3D; [
-  {path: &#x27;&#x27;, redirectTo: &#x27;proces&#x27;, pathMatch: &#x27;full&#x27;},
-  {path: &#x27;proces&#x27;, component: ProcesListComponent },
-  {path: &#x27;passos&#x27;, component: PassosListComponent},
-  {path: &#x27;newproces&#x27;, component: ProcesFormComponent},
-  {path: &#x27;update-proces/:idProces&#x27;, component: UpdateProcesComponent},
-  {path: &#x27;proces-details/:idProces&#x27;, component: ProcesDetailsComponent},
-  {path: &#x27;passos-form&#x27;, component: PassosFormComponent},
-  {path: &#x27;privacitat&#x27;, component: PrivacitatComponent},
-  {path: &#x27;play-proces/:idProces/:idUsuari&#x27;, component: PlayProcesComponent},
-  {path: &#x27;play-pas&#x27;, component: PlayPasComponent}
+  { path: &#x27;&#x27;, redirectTo: &#x27;proces&#x27;, pathMatch: &#x27;full&#x27; },
+  {
+    path: &#x27;&#x27;, component: AdminLayoutComponent,
+    children: [
+      { path: &#x27;proces&#x27;, component: ProcesListComponent },
+      { path: &#x27;passos&#x27;, component: PassosListComponent },
+      { path: &#x27;newproces&#x27;, component: ProcesFormComponent },
+      { path: &#x27;update-proces/:idProces&#x27;, component: UpdateProcesComponent },
+      { path: &#x27;proces-details/:idProces&#x27;, component: ProcesDetailsComponent },
+      { path: &#x27;passos-form&#x27;, component: PassosFormComponent },
+    ]
+  },
+  {
+    path: &#x27;&#x27;, component: UserLayoutComponent,
+    children: [
+      { path: &#x27;privacitat&#x27;, component: PrivacitatComponent },
+      { path: &#x27;play-proces/:idProces/:idUsuari&#x27;, component: PlayProcesComponent },
+      { path: &#x27;play-pas&#x27;, component: PlayPasComponent },
+      { path: &#x27;proces-completat&#x27;, component: ProcesCompletatComponent }
+    ]
+  },
+
 ];
 
 @NgModule({

@@ -64,6 +64,13 @@
     <code>src/main/webapp/app/proces-details/proces-details.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Aquesta classe serveix per veure detalls d&#39;un procés, com els passos que té i gestionar</p>
+
+    </p>
 
 
     <p class="comment">
@@ -176,7 +183,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -269,14 +276,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:25</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Agafem id del procés de la ruta, cridem ProcesService i ordenem passos</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -308,14 +317,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:41</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Actualitzar procés d&#39;un procés</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -325,6 +336,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -339,6 +351,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>id d&#39;un procés</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -382,7 +398,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -408,7 +424,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/main/webapp/app/proces-details/proces-details.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -426,6 +442,9 @@ import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { Proces } from &#x27;../proces&#x27;;
 import { ProcesService } from &#x27;../proces.service&#x27;;
 
+/**
+ * Aquesta classe serveix per veure detalls d&#x27;un procés, com els passos que té i gestionar
+ */
 @Component({
   selector: &#x27;app-proces-details&#x27;,
   templateUrl: &#x27;./proces-details.component.html&#x27;,
@@ -439,21 +458,26 @@ export class ProcesDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private procesService: ProcesService,
     private router: Router) { }
 
-  //Agafem id del procés de la ruta, cridem ProcesService i ordenem passos
+  /**
+   * Agafem id del procés de la ruta, cridem ProcesService i ordenem passos
+   */
   ngOnInit(): void {
     this.idProces &#x3D; this.route.snapshot.params[&#x27;idProces&#x27;];
 
     this.proces &#x3D; new Proces();
-    this.procesService.getProcesbyId(this.idProces).subscribe( dades &#x3D;&gt; {
+    this.procesService.getProcesbyId(this.idProces).subscribe(dades &#x3D;&gt; {
       this.proces &#x3D; dades;
-      this.proces.passos.sort(function(a, b){
+      this.proces.passos.sort(function (a, b) {
         return a.numeroDePas - b.numeroDePas;
       })
     });
- 
-  }
 
-  updateProces(idProces : number){
+  }
+  /**
+   * Actualitzar procés d&#x27;un procés
+   * @param idProces id d&#x27;un procés
+   */
+  updateProces(idProces: number) {
     this.router.navigate([&#x27;update-proces&#x27;, idProces]);
   }
 
@@ -483,7 +507,7 @@ export class ProcesDetailsComponent implements OnInit {
         &lt;thead class&#x3D;&quot;table-danger&quot;&gt;
             &lt;tr&gt;
                 &lt;th&gt;Imatge&lt;/th&gt;
-                &lt;th&gt;&lt;/th&gt;
+                &lt;th&gt;Pas&lt;/th&gt;
                 &lt;th&gt;Nom&lt;/th&gt;
                 &lt;th&gt;Descripció&lt;/th&gt;
             &lt;/tr&gt;
@@ -558,8 +582,8 @@ export class ProcesDetailsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="section-title addPaddingTop">    <h2>        Detalls del procès    </h2></div><br><div>    <div>        <label><b>{{proces.nom}}</b></label> de la referència<b> {{proces.referencia?.nom}}</b>, te {{proces.numPassos}}        passos.    </div>    <br>    <h4>Passos:</h4>    <table class="table table-striped table-hover">        <thead class="table-danger">            <tr>                <th>Imatge</th>                <th></th>                <th>Nom</th>                <th>Descripció</th>            </tr>        </thead>        <tbody>            <tr *ngFor="let pas of proces.passos">                <td><img class="imatge" [src]="pas.imatge" alt="" /></td>                <td><b>{{ pas.numeroDePas }}</b></td>                <td>{{ pas.titol }}</td>                <td>{{ pas.descripcio }}</td>            </tr>        </tbody>    </table>    <br>    <div>        <button (click)="updateProces(proces.idProces)" class="btn-orange">            Editar el procès        </button>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'PassosFormComponent', 'selector': 'app-passos-form'},{'name': 'PassosListComponent', 'selector': 'app-passos-list'},{'name': 'PlayPasComponent', 'selector': 'app-play-pas'},{'name': 'PlayProcesComponent', 'selector': 'app-play-proces'},{'name': 'PrivacitatComponent', 'selector': 'app-privacitat'},{'name': 'ProcesDetailsComponent', 'selector': 'app-proces-details'},{'name': 'ProcesFormComponent', 'selector': 'app-proces-form'},{'name': 'ProcesListComponent', 'selector': 'app-proces-list'},{'name': 'UpdateProcesComponent', 'selector': 'app-update-proces'}];
+        var COMPONENT_TEMPLATE = '<div><div class="section-title addPaddingTop">    <h2>        Detalls del procès    </h2></div><br><div>    <div>        <label><b>{{proces.nom}}</b></label> de la referència<b> {{proces.referencia?.nom}}</b>, te {{proces.numPassos}}        passos.    </div>    <br>    <h4>Passos:</h4>    <table class="table table-striped table-hover">        <thead class="table-danger">            <tr>                <th>Imatge</th>                <th>Pas</th>                <th>Nom</th>                <th>Descripció</th>            </tr>        </thead>        <tbody>            <tr *ngFor="let pas of proces.passos">                <td><img class="imatge" [src]="pas.imatge" alt="" /></td>                <td><b>{{ pas.numeroDePas }}</b></td>                <td>{{ pas.titol }}</td>                <td>{{ pas.descripcio }}</td>            </tr>        </tbody>    </table>    <br>    <div>        <button (click)="updateProces(proces.idProces)" class="btn-orange">            Editar el procès        </button>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'PassosFormComponent', 'selector': 'app-passos-form'},{'name': 'PassosListComponent', 'selector': 'app-passos-list'},{'name': 'PlayPasComponent', 'selector': 'app-play-pas'},{'name': 'PlayProcesComponent', 'selector': 'app-play-proces'},{'name': 'PrivacitatComponent', 'selector': 'app-privacitat'},{'name': 'ProcesCompletatComponent', 'selector': 'app-proces-completat'},{'name': 'ProcesDetailsComponent', 'selector': 'app-proces-details'},{'name': 'ProcesFormComponent', 'selector': 'app-proces-form'},{'name': 'ProcesListComponent', 'selector': 'app-proces-list'},{'name': 'UpdateProcesComponent', 'selector': 'app-update-proces'},{'name': 'UserLayoutComponent', 'selector': 'app-user-layout'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProcesDetailsComponent'};
 </script>

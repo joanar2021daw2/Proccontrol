@@ -185,7 +185,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -290,14 +290,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:61</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Al polsar START del procés guiat inicialitzem el resultat que desarem al
+resultatService i redireccionem al component play-pas</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -329,14 +332,18 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:38</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Al iniciar el component s&#39;agafen els paràmetres per saber quin proces i
+quin usuari venen de springboot, per tal de que el treballador segueixi
+el proces i puguem generar un resultat amb proces i usuari.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -372,7 +379,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -399,7 +406,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -425,7 +432,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -451,7 +458,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -477,7 +484,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/main/webapp/app/play-proces/play-proces.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -498,18 +505,17 @@ import { Resultat } from &#x27;../resultat&#x27;;
 import { ResultatService } from &#x27;../resultat.service&#x27;;
 import { Usuari } from &#x27;../usuari&#x27;;
 
+/*
+ * Classe que controla el inici de la realització del procés guiat,
+ * on l&#x27;usuari/treballador polsa el botó iniciar per començar-ho.
+ */
 @Component({
   selector: &#x27;app-play-proces&#x27;,
   templateUrl: &#x27;./play-proces.component.html&#x27;,
   styleUrls: [&#x27;./play-proces.component.css&#x27;]
 })
 
-/*
- * Classe que controla el inici de la realització del procés guiat,
- * on l&#x27;usuari/treballador polsa el botó iniciar per començar-ho.
- * 
- *  @Author
- */
+
 export class PlayProcesComponent implements OnInit {
 
   idProces: any;
@@ -523,11 +529,11 @@ export class PlayProcesComponent implements OnInit {
     private resultatService: ResultatService, private router: Router) { }
 
 
-  /*
-    Al iniciar el component s&#x27;agafen els paràmetres per saber quin proces i
-    quin usuari venen de springboot, per tal de que el treballador segueixi 
-    el proces i puguem generar un resultat amb proces i usuari.
-  */
+  /**
+   * Al iniciar el component s&#x27;agafen els paràmetres per saber quin proces i
+   * quin usuari venen de springboot, per tal de que el treballador segueixi
+   * el proces i puguem generar un resultat amb proces i usuari.
+   */
   ngOnInit(): void {
     this.idProces &#x3D; this.route.snapshot.params[&#x27;idProces&#x27;];
     this.idUsuari &#x3D; this.route.snapshot.params[&#x27;idUsuari&#x27;];
@@ -547,8 +553,10 @@ export class PlayProcesComponent implements OnInit {
 
   }
 
-  /*Al polsar START del procés guiat inicialitzem el resultat que desarem al
-   resultatService i redireccionem al component play-pas*/
+  /**
+   * Al polsar START del procés guiat inicialitzem el resultat que desarem al
+   * resultatService i redireccionem al component play-pas
+   */
   iniciarProces() {
     this.resultatService.pasActual &#x3D; 0;
     this.resultatService.resultatDesat.tempsPassos.length &#x3D; this.proces.passos.length;
@@ -565,25 +573,7 @@ export class PlayProcesComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;header id&#x3D;&quot;header&quot; class&#x3D;&quot;d-flex align-items-center&quot;&gt;
-    &lt;div class&#x3D;&quot;container d-flex justify-content-between align-items-center&quot;&gt;
-
-        &lt;div class&#x3D;&quot;logo&quot;&gt;
-            &lt;h1&gt;&lt;a href&#x3D;&quot;http://localhost:8080&quot;&gt;Proccontrol&lt;/a&gt;&lt;/h1&gt;
-        &lt;/div&gt;
-
-        &lt;nav id&#x3D;&quot;navbar&quot; class&#x3D;&quot;navbar&quot;&gt;
-            &lt;ul&gt;
-                &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-                    &lt;a href&#x3D;&quot;http://localhost:8080&quot; class&#x3D;&quot;nav-link&quot;&gt;Tornar&lt;/a&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;i class&#x3D;&quot;bi bi-list mobile-nav-toggle&quot;&gt;&lt;/i&gt;
-        &lt;/nav&gt;
-    &lt;/div&gt;
-&lt;/header&gt;
-
-&lt;div class&#x3D;&quot;section-title addPaddingTop&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;section-title addPaddingTop&quot;&gt;
     &lt;h2&gt;
         {{proces.nom}}
     &lt;/h2&gt;
@@ -649,8 +639,8 @@ export class PlayProcesComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><header id="header" class="d-flex align-items-center">    <div class="container d-flex justify-content-between align-items-center">        <div class="logo">            <h1><a href="http://localhost:8080">Proccontrol</a></h1>        </div>        <nav id="navbar" class="navbar">            <ul>                <li class="nav-item">                    <a href="http://localhost:8080" class="nav-link">Tornar</a>                </li>            </ul>            <i class="bi bi-list mobile-nav-toggle"></i>        </nav>    </div></header><div class="section-title addPaddingTop">    <h2>        {{proces.nom}}    </h2>    <br>    <p>        Per iniciar el procés guiat polsa el botó start    </p>    <br><br><br>    <button (click)="iniciarProces()" class="btn-orange">        START    </button></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'PassosFormComponent', 'selector': 'app-passos-form'},{'name': 'PassosListComponent', 'selector': 'app-passos-list'},{'name': 'PlayPasComponent', 'selector': 'app-play-pas'},{'name': 'PlayProcesComponent', 'selector': 'app-play-proces'},{'name': 'PrivacitatComponent', 'selector': 'app-privacitat'},{'name': 'ProcesDetailsComponent', 'selector': 'app-proces-details'},{'name': 'ProcesFormComponent', 'selector': 'app-proces-form'},{'name': 'ProcesListComponent', 'selector': 'app-proces-list'},{'name': 'UpdateProcesComponent', 'selector': 'app-update-proces'}];
+        var COMPONENT_TEMPLATE = '<div><div class="section-title addPaddingTop">    <h2>        {{proces.nom}}    </h2>    <br>    <p>        Per iniciar el procés guiat polsa el botó start    </p>    <br><br><br>    <button (click)="iniciarProces()" class="btn-orange">        START    </button></div></div>'
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'PassosFormComponent', 'selector': 'app-passos-form'},{'name': 'PassosListComponent', 'selector': 'app-passos-list'},{'name': 'PlayPasComponent', 'selector': 'app-play-pas'},{'name': 'PlayProcesComponent', 'selector': 'app-play-proces'},{'name': 'PrivacitatComponent', 'selector': 'app-privacitat'},{'name': 'ProcesCompletatComponent', 'selector': 'app-proces-completat'},{'name': 'ProcesDetailsComponent', 'selector': 'app-proces-details'},{'name': 'ProcesFormComponent', 'selector': 'app-proces-form'},{'name': 'ProcesListComponent', 'selector': 'app-proces-list'},{'name': 'UpdateProcesComponent', 'selector': 'app-update-proces'},{'name': 'UserLayoutComponent', 'selector': 'app-user-layout'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PlayProcesComponent'};
 </script>

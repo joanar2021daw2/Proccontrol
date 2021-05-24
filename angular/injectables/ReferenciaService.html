@@ -59,6 +59,13 @@
             <code>src/main/webapp/app/referencia.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Aquesta classe conté serveis de la referència</p>
+
+            </p>
 
 
 
@@ -116,7 +123,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/main/webapp/app/referencia.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/main/webapp/app/referencia.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -181,17 +188,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/main/webapp/app/referencia.service.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/main/webapp/app/referencia.service.ts:22</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Petició a Spring Boot per obtenir totes les referències existents</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../classes/Referencia.html" target="_self" >Observable&lt;Referencia[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>get</p>
 
                     </div>
                 </td>
@@ -230,7 +245,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/main/webapp/app/referencia.service.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/main/webapp/app/referencia.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -248,6 +263,9 @@ import { HttpClient } from &#x27;@angular/common/http&#x27;
 import { Observable } from &#x27;rxjs&#x27;;
 import { Referencia } from &#x27;./referencia&#x27;;
 
+/**
+ * Aquesta classe conté serveis de la referència
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -257,8 +275,11 @@ export class ReferenciaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  //Petició a Spring Boot per obtenir totes les referències existents
-  getAllReferencies() : Observable&lt;Referencia[]&gt;{
+  /**
+   * Petició a Spring Boot per obtenir totes les referències existents
+   * @returns get
+   */
+  getAllReferencies(): Observable&lt;Referencia[]&gt; {
     return this.httpClient.get&lt;Referencia[]&gt;(&#x60;${this.baseURL}&#x60;);
   }
 
