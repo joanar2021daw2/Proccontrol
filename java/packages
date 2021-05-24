@@ -1,0 +1,11 @@
+cat.xtec.ioc.Proccontrol.restController
+cat.xtec.ioc.Proccontrol.ConstraintValidatorImpl
+cat.xtec.ioc.Proccontrol.service.impl
+cat.xtec.ioc.Proccontrol.config
+cat.xtec.ioc.Proccontrol
+cat.xtec.ioc.Proccontrol.controller
+cat.xtec.ioc.Proccontrol.Exception
+cat.xtec.ioc.Proccontrol.repository
+cat.xtec.ioc.Proccontrol.repository.impl
+cat.xtec.ioc.Proccontrol.ConstraintValidator
+cat.xtec.ioc.Proccontrol.domain
