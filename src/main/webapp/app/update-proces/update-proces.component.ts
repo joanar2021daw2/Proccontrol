@@ -6,6 +6,9 @@ import { ProcesService } from '../proces.service';
 import { Referencia } from '../referencia';
 import { ReferenciaService } from '../referencia.service';
 
+/**
+ * Aquesta classe serveix per actualitzar procés
+ */
 @Component({
   selector: 'app-update-proces',
   templateUrl: './update-proces.component.html',
@@ -17,6 +20,7 @@ export class UpdateProcesComponent implements OnInit {
   proces: Proces = new Proces();
   referencies: Referencia[] | undefined;
 
+  /**Enllaçar amb html */
   updateForm: FormGroup = new FormGroup({
     nomProces: new FormControl(null, Validators.required),
     referencia: new FormControl(null, Validators.required)
@@ -34,10 +38,16 @@ export class UpdateProcesComponent implements OnInit {
     this.getAllReferencies();
   }
 
+  /** Per retornar dades nom procés a html*/
   get nomProces() { return this.updateForm.get('nomProces'); }
+  /** Per retornar dades referència a html*/
   get referencia() { return this.updateForm.get('referencia'); }
 
-  //Mètode per modificar la imatge del pas corresponent
+  /**
+   * Mètode per modificar la imatge del pas corresponent
+   * @param e qualsevol fitxer
+   * @param pas un pas concret
+   */
   onSelectFile(e: any, pas: any) {
     if (e.target.files) {
       var reader = new FileReader();
@@ -49,6 +59,9 @@ export class UpdateProcesComponent implements OnInit {
     }
   }
 
+  /**
+   * Quan es clica a, actualitza el procés
+   */
   onSubmit() {
     console.log(this.proces);
     this.procesService.updateProces(this.idProces, this.proces).subscribe(dadaes => {
@@ -56,7 +69,10 @@ export class UpdateProcesComponent implements OnInit {
     }, error => console.log(error));
   }
 
-  //Crida un procès per la id 
+  /**
+   * Crida un procès per la id
+   * @param idProces id d'un procés
+   */
   private getProcesById(idProces: number) {
     this.procesService.getProcesbyId(idProces).subscribe(dades => {
       this.proces = dades;
@@ -66,14 +82,20 @@ export class UpdateProcesComponent implements OnInit {
     }, error => console.log(error));
   }
 
-  //Crida llistat referencies per sel·leccionar al formulari
+  /**
+   * Crida llistat referencies per sel·leccionar al formulari
+   */
   private getAllReferencies() {
     this.referenciaService.getAllReferencies().subscribe(dades => {
       this.referencies = dades;
     });
   }
 
-  procesDetails(idProces: number){
+  /**
+   * Anar a veure detalls d'un procés
+   * @param idProces id d'un procés
+   */
+  procesDetails(idProces: number) {
     this.router.navigate(['proces-details', idProces]);
   }
 

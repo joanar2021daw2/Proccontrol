@@ -6,6 +6,9 @@ import { ProcesService } from '../proces.service';
 import { Resultat } from '../resultat';
 import { ResultatService } from '../resultat.service';
 
+/**
+ * Aquesta classe serveix per que un usuari identificar controla cada pas d'un procés inicialitzat.
+ */
 @Component({
   selector: 'app-play-pas',
   templateUrl: './play-pas.component.html',
@@ -26,8 +29,9 @@ export class PlayPasComponent implements OnInit {
   constructor(private route: ActivatedRoute, private procesService: ProcesService,
     private resultatService: ResultatService, private router: Router) { }
 
-
-  //Al iniciar carreguem el proces i el resultat desat a memòria per completar-ho
+  /**
+   * Al iniciar carreguem el proces i el resultat desat a memòria per completar-ho
+   */
   ngOnInit(): void {
     this.resultat = this.resultatService.getResultatDesat();
     this.pasActual = this.resultatService.getPasActual();
@@ -39,9 +43,7 @@ export class PlayPasComponent implements OnInit {
   }
 
   /**
-    * pasSeguent
     * Mètode que gestiona quan el treballador polsa pas següent
-    * 
     */
   pasSeguent() {
 
@@ -64,7 +66,7 @@ export class PlayPasComponent implements OnInit {
         error => console.log(error));
       console.log("proces finalitzat, gràcies!");
       this.router.navigate(['proces-completat']);
-      
+
     } else {
       this.resultatService.pasActual++;
       this.pasActual = this.resultatService.pasActual;
@@ -74,6 +76,9 @@ export class PlayPasComponent implements OnInit {
 
   }
 
+  /**
+   * Inciar temporitzador
+   */
   iniciarTemportitzador() {
     this.play = false;
     this.interval = setInterval(() => {
@@ -81,6 +86,9 @@ export class PlayPasComponent implements OnInit {
     }, 1000)
   }
 
+  /**
+   * Parar temporitzador
+   */
   pararTemporitzador() {
     this.play = false;
     clearInterval(this.interval);

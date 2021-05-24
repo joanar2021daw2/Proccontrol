@@ -6,7 +6,7 @@ name: Build JavaDoc
 
 on:
   push:
-    branches: [ fusio ]
+    branches: [ master, compodoc ]
 
 jobs:
   build:

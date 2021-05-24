@@ -1,6 +1,9 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+/**
+ * Aquesta classe serveix per administrar model personalitzat
+ */
 @Component({
   selector: 'app-user-layout',
   templateUrl: './user-layout.component.html',
@@ -10,7 +13,7 @@ export class UserLayoutComponent {
   title = 'proccontrol';
   public isMenuCollapsed = true;
   closeResult = '';
-  
+
   constructor(private modalService: NgbModal) { }
 
 
@@ -21,6 +24,12 @@ export class UserLayoutComponent {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+  /**
+   * Forma de tancar modal
+   * @param reason si es per teclat, clicant boto o altres
+   * @returns un motiu
+   */
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

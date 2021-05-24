@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Pas } from '../pas';
 import { ProcesService } from '../proces.service';
 
+/**
+ * Aquesta classe serveix per crear passos quan creem un procés
+ */
 @Component({
   selector: 'app-passos-form',
   templateUrl: './passos-form.component.html',
@@ -16,6 +19,7 @@ export class PassosFormComponent implements OnInit {
   passos: Pas[] = [];
   length: number = 0;
 
+  /**Enllaçar amb html */
   passosForm: FormGroup = new FormGroup({
     titol: new FormControl(null, Validators.required),
     descripcio: new FormControl(null, Validators.required)
@@ -23,16 +27,23 @@ export class PassosFormComponent implements OnInit {
 
 
   constructor(private procesService: ProcesService, private router: Router) { }
-
+  /**
+   * Carreguem el procés desat pel component proces-form
+   * per afegir-li els passos 
+   */
   ngOnInit(): void {
-    /*Carreguem el procés desat pel component proces-form
-     per afegir-li els passos*/
     this.proces = this.procesService.getProcesDesat();
   }
 
+  /** Per retornar dades titol a html*/
   get titol() { return this.passosForm.get('titol'); }
+  /** Per retornar dades descripcio a html*/
   get descripcio() { return this.passosForm.get('descripcio'); }
 
+  /**
+   * Seleccionar imatge per pujar
+   * @param e qualsevol fitxer
+   */
   onSelectFile(e: any) {
     if (e.target.files) {
       var reader = new FileReader();
@@ -44,8 +55,10 @@ export class PassosFormComponent implements OnInit {
     }
   }
 
+  /**
+   * Afegim pas al procés i ho desem a memòria
+   */
   onSubmit() {
-    //Afegim pas al procés i ho desem a memòria
     this.length = this.proces.passos.push(this.pas);
     this.pas.numeroDePas = (this.length);
     this.proces.numPassos++;
@@ -54,7 +67,9 @@ export class PassosFormComponent implements OnInit {
     this.goToPassosList();
   }
 
-  //Redirecciona a altre pàgina
+  /**
+   * Redirecciona a altre pàgina
+   */
   goToPassosList() {
     this.router.navigate(['/passos']);
   }
