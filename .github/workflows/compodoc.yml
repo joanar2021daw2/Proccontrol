@@ -5,7 +5,7 @@
 name: Build Compodoc
 on:
   push:
-    branches: [ fusio ]
+    branches: [ master, compodoc ]
     
 jobs:
   build:

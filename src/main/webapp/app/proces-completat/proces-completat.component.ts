@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Aquesta classe servei per quan un procés s'ha 
+ */
 @Component({
   selector: 'app-proces-completat',
   templateUrl: './proces-completat.component.html',
@@ -12,6 +15,9 @@ export class ProcesCompletatComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Una vegada completada, tornar a index
+   */
   tornar() {
     window.location.href = 'http://localhost:8080/';
   }

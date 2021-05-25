@@ -6,7 +6,9 @@ import { ProcesService } from '../proces.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
+/**
+ * Aquesta classe serveix per crear procés
+ */
 @Component({
   selector: 'app-proces-form',
   templateUrl: './proces-form.component.html',
@@ -24,13 +26,20 @@ export class ProcesFormComponent implements OnInit {
   constructor(private referenciaService: ReferenciaService, private procesService: ProcesService,
     private router: Router) { }
 
+  /**
+   * Obtenir totes les referencies
+   */
   ngOnInit(): void {
     this.getAllReferencies();
   }
 
+  /**Enllaçar amb html */
   get nom() { return this.procesForm.get('nom'); }
   get referencia() { return this.procesForm.get('referencia'); }
 
+  /**
+   * Quan es clica, es guarda el procés i redirecciona a formulari de crear passos
+   */
   onSubmit() {
     //console.log(this.proces);
     this.procesService.desarproces(this.proces);
@@ -38,24 +47,30 @@ export class ProcesFormComponent implements OnInit {
     //this.saveProces();
   }
 
-  //Crida llistat referencies per sel·leccionar al formulari
+  /**
+   * Crida llistat referencies per sel·leccionar al formulari
+   */
   private getAllReferencies() {
     this.referenciaService.getAllReferencies().subscribe(dades => {
       this.referencies = dades;
     });
   }
 
-  //Desar proces completat a SpringBoot
-  private saveProces(){
-    this.procesService.crearProces(this.proces).subscribe( dades => {
+  /**
+   * Desar proces completat a SpringBoot
+   */
+  private saveProces() {
+    this.procesService.crearProces(this.proces).subscribe(dades => {
       console.log(dades);
       this.goToProcesList();
     },
-    error => console.log(error));
+      error => console.log(error));
   }
 
-  //Redirecciona a altre pàgina
-  goToProcesList(){
+  /**
+   * Redirecciona a altre pàgina
+   */
+  goToProcesList() {
     this.router.navigate(['/proces']);
   }
 
